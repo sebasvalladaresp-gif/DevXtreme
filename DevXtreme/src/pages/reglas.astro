@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const rules = [
+  { id: '01', text: 'La competencia es individual. No se permite colaboración entre participantes.' },
+  { id: '02', text: 'Cualquier lenguaje de programación permitido por la plataforma oficial es válido.' },
+  { id: '03', text: 'Acceso a internet restringido exclusivamente a la documentación oficial del lenguaje.' },
+  { id: '04', text: 'Puntuación basada en dificultad del problema y velocidad de envío correcto.' },
+  { id: '05', text: 'Decisiones del jurado inapelables. Se evaluará eficiencia y casos borde.' }
+];
+
+const awards = [
+  { rank: '1º', title: 'Campeón DevXtreme', prize: 'Trofeo oficial + Certificado + Reconocimiento', color: 'var(--yellow)' },
+  { rank: '2º', title: 'Subcampeón', prize: 'Medalla de plata + Certificado de excelencia', color: '#B5B5B5' },
+  { rank: '3º', title: 'Finalista', prize: 'Medalla de bronce + Certificado de mérito', color: '#CD7F32' }
+];
+---
+
+<Layout title="Reglas - DevXtreme">
+  <section class="rules-section">
+    <div class="grid-layout">
+      
+      <div class="rules-container">
+        <span class="label">// REGLAMENTO</span>
+        <h2 class="section-title">Reglas del <span class="accent">Juego</span></h2>
+        
+        <div class="terminal-list">
+          {rules.map(rule => (
+            <div class="rule-row">
+              <span class="rule-id">{rule.id}</span>
+              <p class="rule-text">{rule.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="awards-container">
+        <span class="label">// PREMIACIÓN</span>
+        <h2 class="section-title">Reconoci<span class="accent">mientos</span></h2>
+        
+        <div class="podium">
+          {awards.map(award => (
+            <div class="award-card" style={`--rank-color: ${award.color}`}>
+              <div class="rank-badge">{award.rank}</div>
+              <div class="award-info">
+                <strong class="award-title">{award.title}</strong>
+                <p class="award-prize">{award.prize}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="nav-links">
+           <a href="/" class="btn-back">← VOLVER AL PANEL PRINCIPAL</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .rules-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+  }
+
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .label {
+    color: var(--orange);
+    font-family: monospace;
+    font-weight: 800;
+    letter-spacing: 2px;
+  }
+
+  .section-title {
+    font-size: 2.8rem;
+    margin: 10px 0 40px;
+    color: #111;
+  }
+
+  .accent {
+    background: linear-gradient(90deg, var(--orange), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Estilo de lista de reglas */
+  .terminal-list {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 20px;
+  }
+
+  .rule-row {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .rule-row:last-child { border-bottom: none; }
+
+  .rule-id {
+    font-family: monospace;
+    font-weight: 800;
+    color: var(--red);
+    font-size: 1.1rem;
+  }
+
+  .rule-text {
+    color: #444;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  /* Estilo de Premios */
+  .podium {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .award-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-left: 5px solid var(--rank-color);
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.03);
+    transition: 0.3s;
+  }
+
+  .award-card:hover {
+    transform: translateX(5px);
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.06);
+  }
+
+  .rank-badge {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--rank-color);
+    margin-right: 25px;
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .award-title {
+    display: block;
+    font-size: 1.1rem;
+    color: #222;
+    margin-bottom: 4px;
+  }
+
+  .award-prize {
+    font-size: 0.85rem;
+    color: #777;
+    margin: 0;
+  }
+
+  .nav-links {
+    margin-top: 40px;
+  }
+
+  .btn-back {
+    text-decoration: none;
+    color: #999;
+    font-weight: 700;
+    font-size: 0.8rem;
+    transition: 0.3s;
+  }
+
+  .btn-back:hover {
+    color: var(--orange);
+  }
+
+  @media (max-width: 900px) {
+    .grid-layout { grid-template-columns: 1fr; gap: 60px; }
+    .section-title { font-size: 2.2rem; }
+  }
+</style>
