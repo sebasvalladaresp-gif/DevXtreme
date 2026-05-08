@@ -1,5 +1,7 @@
 ---
 // src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+
 const stats = [
   { label: "FECHA", value: "15 MAYO" },
   { label: "INICIO", value: "09:00" },
@@ -8,174 +10,7 @@ const stats = [
 ];
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevXtreme</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&display=swap" rel="stylesheet" />
-
-    <style>
-      :root {
-        --yellow: #ffcc00;
-        --orange: #ff7a00;
-        --red: #ff004c;
-        --bg: #f7f7f7;
-        --grid: rgba(255, 120, 0, 0.08);
-      }
-
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-
-      body {
-        font-family: "Orbitron", sans-serif;
-        background: var(--bg);
-        color: #222;
-      }
-
-      .tech-grid-bg {
-        min-height: 100vh;
-        background: 
-          linear-gradient(var(--grid) 1px, transparent 1px),
-          linear-gradient(90deg, var(--grid) 1px, transparent 1px),
-          radial-gradient(circle at 20% 30%, rgba(255, 204, 0, 0.1), transparent 40%),
-          radial-gradient(circle at 80% 70%, rgba(255, 0, 76, 0.1), transparent 40%),
-          #f7f7f7;
-        background-size: 50px 50px;
-      }
-
-      header {
-        height: 80px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 50px;
-        border-bottom: 1px solid rgba(255, 120, 0, 0.1);
-      }
-
-      .logo-gradient {
-        font-size: 1.8rem;
-        font-weight: 800;
-        letter-spacing: 3px;
-        background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .date-box {
-        border: 1px solid var(--orange);
-        padding: 10px 20px;
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-        color: var(--orange);
-        background: white;
-      }
-
-      main {
-        padding: 60px 20px;
-        text-align: center;
-      }
-
-      .tag {
-        margin-bottom: 20px;
-        font-size: 0.9rem;
-        letter-spacing: 5px;
-        color: var(--orange);
-        font-weight: 600;
-      }
-
-      .title span {
-        display: block;
-        font-size: clamp(3.5rem, 10vw, 8rem);
-        font-weight: 800;
-        line-height: 0.9;
-        background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .version {
-        margin: 20px 0;
-        font-size: 1.2rem;
-        letter-spacing: 8px;
-        color: #888;
-      }
-
-      .description {
-        max-width: 650px;
-        margin: 0 auto 50px;
-        line-height: 1.8;
-        color: #666;
-      }
-
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        max-width: 1000px;
-        margin: 0 auto 60px;
-      }
-
-      .card {
-        background: white;
-        border: 1px solid rgba(255, 122, 0, 0.3);
-        padding: 20px;
-        transition: 0.3s;
-      }
-
-      .card span { font-size: 0.7rem; letter-spacing: 2px; color: #999; }
-      .card h3 { font-size: 1.5rem; color: var(--orange); margin-top: 5px; }
-
-      /* SECCIÓN DE BOTONES ACTUALIZADA */
-      .buttons {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .btn {
-        min-width: 200px; /* Reducido un poco para que quepan más en fila */
-        padding: 15px 25px;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 0.85rem;
-        letter-spacing: 1px;
-        border: 2px solid var(--orange);
-        position: relative;
-        transition: 0.3s;
-        background: white; 
-        display: inline-block;
-      }
-
-      .btn span {
-        background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        position: relative;
-        z-index: 2;
-      }
-
-      .btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(255, 122, 0, 0.15);
-        border-color: var(--red);
-      }
-
-      @media (max-width: 800px) {
-        .stats { grid-template-columns: repeat(2, 1fr); }
-        .btn { width: 45%; }
-      }
-      @media (max-width: 500px) {
-        .stats { grid-template-columns: 1fr; }
-        header { padding: 0 20px; }
-        .btn { width: 100%; }
-      }
-    </style>
-  </head>
-
-  <body class="tech-grid-bg">
+<Layout title="DevXtreme">
     <header>
       <div class="logo">
         <span class="logo-gradient">DEVXTREME</span>
@@ -205,24 +40,120 @@ const stats = [
         ))}
       </div>
 
-      <!-- BOTONES ACTUALIZADOS -->
-        <div class="buttons">
-          <a href="/Explorar" class="btn">
-            <span>EXPLORAR EVENTO</span>
-          </a>
-          <a href="/cronograma" class="btn">
-            <span>CRONOGRAMA</span>
-          </a>
-          <a href="/categorias" class="btn">
-            <span>CATEGORÍAS</span>
-          </a>
-          <a href="/reglas" class="btn">
-            <span>REGLAS</span>
-          </a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WLvdGXD1bmyWqee9N5IfMA6szlF5eUniLZvVFHSRzQWXCw/viewform" target="_blank" class="btn">
-            <span>REGISTRARSE</span>
-          </a>
-        </div>
+      <div class="buttons">
+        <a href="/Explorar" class="btn"><span>EXPLORAR EVENTO</span></a>
+        <a href="/cronograma" class="btn"><span>CRONOGRAMA</span></a>
+        <a href="/categorias" class="btn"><span>CATEGORÍAS</span></a>
+        <a href="/reglas" class="btn"><span>REGLAS</span></a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WLvdGXD1bmyWqee9N5IfMA6szlF5eUniLZvVFHSRzQWXCw/viewform" target="_blank" class="btn"><span>REGISTRARSE</span></a>
+      </div>
     </main>
-  </body>
-</html>
+</Layout>
+
+<style>
+  /* Aquí solo dejamos estilos que NO sean globales */
+  header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    border-bottom: 1px solid rgba(255, 120, 0, 0.1);
+  }
+
+  .logo-gradient {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .date-box {
+    border: 1px solid var(--orange);
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--orange);
+    background: white;
+  }
+
+  main {
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 10; /* Para que esté sobre el grid */
+  }
+
+  .tag { margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 5px; color: var(--orange); font-weight: 600; }
+
+  .title span {
+    display: block;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 800;
+    line-height: 0.9;
+    background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .version { margin: 20px 0; font-size: 1.2rem; letter-spacing: 8px; color: #888; }
+
+  .description { max-width: 650px; margin: 0 auto 50px; line-height: 1.8; color: #666; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid rgba(255, 122, 0, 0.3);
+    padding: 20px;
+  }
+
+  .card span { font-size: 0.7rem; letter-spacing: 2px; color: #999; }
+  .card h3 { font-size: 1.5rem; color: var(--orange); margin-top: 5px; }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; 
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .btn {
+    min-width: 200px;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border: 2px solid var(--orange);
+    transition: 0.3s;
+    background: white; 
+    display: inline-block;
+  }
+
+  .btn span {
+    background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 122, 0, 0.15);
+  }
+
+  @media (max-width: 800px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .btn { width: 45%; }
+  }
+</style>
