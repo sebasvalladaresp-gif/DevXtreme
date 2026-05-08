@@ -1,7 +1,7 @@
 ---
 // src/layouts/Layout.astro
 interface Props {
-	title: string;
+    title: string;
 }
 
 const { title } = Astro.props;
@@ -9,104 +9,67 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
-		<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&display=swap" rel="stylesheet" />
-	</head>
-	<body>
-		<div class="tech-grid-bg">
-			<slot />
-		</div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="tech-grid-bg">
+            <slot /> </div>
 
-		<img src="/Ieee.svg" alt="IEEE Logo" class="side-logo left-center" />
-		<img src="/Utn.svg" alt="UTN Logo" class="side-logo right-center" />
-	</body>
+        <img src="/Ieee.svg" alt="IEEE Logo" class="side-logo left-center" />
+        <img src="/Utn.svg" alt="UTN Logo" class="side-logo right-center" />
+    </body>
 </html>
 
 <style is:global>
-	:root {
-		--yellow: #ffcc00;
-		--orange: #ff7a00;
-		--red: #ff004c;
-		--bg: #f7f7f7;
-		--grid: rgba(255, 120, 0, 0.08);
-		
-		/* Nuevo: Color de brillo para los logos */
-		--logo-glow: rgba(255, 122, 0, 0.3);
-	}
+    :root {
+        --yellow: #ffcc00;
+        --orange: #ff7a00;
+        --red: #ff004c;
+        --bg: #f7f7f7;
+        --grid: rgba(255, 120, 0, 0.08);
+        --logo-glow: rgba(255, 122, 0, 0.3);
+    }
 
-	* { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-	body {
-		font-family: "Orbitron", sans-serif;
-		background: var(--bg);
-		color: #222;
-		overflow-x: hidden; /* Evita scrolls raros */
-	}
+    body {
+        font-family: "Orbitron", sans-serif;
+        background: var(--bg);
+        color: #222;
+        overflow-x: hidden;
+    }
 
-	.tech-grid-bg {
-		min-height: 100vh;
-		background: 
-			linear-gradient(var(--grid) 1px, transparent 1px),
-			linear-gradient(90deg, var(--grid) 1px, transparent 1px),
-			radial-gradient(circle at 20% 30%, rgba(255, 204, 0, 0.1), transparent 40%),
-			radial-gradient(circle at 80% 70%, rgba(255, 0, 76, 0.1), transparent 40%),
-			#f7f7f7;
-		background-size: 50px 50px;
-	}
+    .tech-grid-bg {
+        min-height: 100vh;
+        background: 
+            linear-gradient(var(--grid) 1px, transparent 1px),
+            linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+            radial-gradient(circle at 20% 30%, rgba(255, 204, 0, 0.1), transparent 40%),
+            radial-gradient(circle at 80% 70%, rgba(255, 0, 76, 0.1), transparent 40%),
+            #f7f7f7;
+        background-size: 50px 50px;
+    }
 
-	/* Estilos para los logos laterales GRANDES */
-	.side-logo {
-		position: fixed;
-		top: 50%; /* Centro de la pantalla verticalmente */
-		transform: translateY(-50%); /* Ajuste perfecto para centrar */
-		
-		/* --- TAMAÑO --- */
-		height: 283px; /* ¡¡MUCHO MÁS GRANDE!! (Ajusta este valor si quieres más o menos) */
-		width: auto; /* Mantiene la proporción */
-		
-		z-index: 100; /* Asegura que floten sobre el fondo */
-		
-		/* --- ESTILO TECH --- */
-		/* Añade un sutil brillo de color naranja */
-		filter: drop-shadow(0 0 15px var(--logo-glow));
-		transition: transform 0.3s ease, filter 0.3s ease;
-		
-		/* Para que no bloqueen los clics en el contenido central */
-		pointer-events: none; 
-	}
+    .side-logo {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 400px; 
+        width: auto;
+        z-index: 100;
+        filter: drop-shadow(0 0 15px var(--logo-glow));
+        pointer-events: none;
+    }
 
-	/* Efecto al pasar el mouse por encima (opcional si quitas pointer-events: none) */
-	/* .side-logo:hover {
-		transform: translateY(-50%) scale(1.05);
-		filter: drop-shadow(0 0 25px rgba(255, 122, 0, 0.5));
-	}
-	*/
+    .left-center { left: 50px; }
+    .right-center { right: 50px; }
 
-	.left-center {
-		left: 50px; /* Separación del borde izquierdo */
-	}
-
-	.right-center {
-		right: 50px; /* Separación del borde derecho */
-	}
-
-	/* Ajustes para pantallas más pequeñas (tablets/móvil) */
-	@media (max-width: 1200px) {
-		.side-logo {
-			height: 120px; /* Un tamaño medio para tablets */
-			left: 20px;
-			right: 20px;
-		}
-	}
-
-	@media (max-width: 768px) {
-		.side-logo {
-			height: 80px; /* Tamaño reducido para móvil */
-			opacity: 0.5; /* Más transparentes para no tapar texto */
-		}
-	}
+    @media (max-width: 1200px) {
+        .side-logo { height: 120px; left: 20px; right: 20px; }
+    }
 </style>
