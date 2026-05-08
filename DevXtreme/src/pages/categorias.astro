@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const categories = [
+  {
+    title: "Algoritmos & Complejidad",
+    icon: "⚡",
+    desc: "Optimización, estructuras de datos avanzadas, ordenamiento y análisis de Big O (complejidad temporal y espacial).",
+    color: "var(--yellow)",
+    code: "void solve() { O(log n); }"
+  },
+  {
+    title: "Lógica & Matemáticas",
+    icon: "🧠",
+    desc: "Razonamiento combinatorio, teoría de números, teoría de grafos y matemática discreta aplicada a la computación.",
+    color: "var(--red)",
+    code: "P ∩ Q = { x | x ∈ P ∧ x ∈ Q }"
+  },
+  {
+    title: "Programación Práctica",
+    icon: "🛠️",
+    desc: "Implementación de lógica de negocio, manejo de flujos de datos y creación de soluciones mantenibles y eficientes.",
+    color: "var(--orange)",
+    code: "git commit -m 'feat: optimized'"
+  }
+];
+---
+
+<Layout title="Categorías - DevXtreme">
+  <section class="categories-section">
+    <div class="header-block">
+      <span class="tag-label">// ÁREAS EVALUADAS</span>
+      <h1 class="main-title">Categorías de <span class="accent">Desafío</span></h1>
+      <p class="intro">Cada reto está diseñado para poner a prueba diferentes facetas de tu capacidad como ingeniero.</p>
+    </div>
+
+    <div class="cards-container">
+      {categories.map(cat => (
+        <div class="category-card" style={`--accent-color: ${cat.color}`}>
+          <div class="card-bg"></div>
+          <div class="card-content">
+            <div class="icon-box">
+              <span class="icon">{cat.icon}</span>
+              <div class="icon-glow"></div>
+            </div>
+            <h3>{cat.title}</h3>
+            <p>{cat.desc}</p>
+            <div class="code-snippet">
+              <code>{cat.code}</code>
+            </div>
+          </div>
+          <div class="bottom-bar"></div>
+        </div>
+      ))}
+    </div>
+
+    <div class="footer-actions">
+      <a href="/" class="back-btn">VOLVER AL TERMINAL</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .categories-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .header-block {
+    margin-bottom: 70px;
+  }
+
+  .tag-label {
+    color: var(--orange);
+    font-family: monospace;
+    font-weight: 800;
+    letter-spacing: 3px;
+  }
+
+  .main-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin: 15px 0;
+    color: #222;
+  }
+
+  .accent {
+    background: linear-gradient(90deg, var(--orange), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .intro {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Grid de Tarjetas */
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+  }
+
+  .category-card {
+    position: relative;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 40px 30px;
+    text-align: left;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .category-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+
+  .card-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .icon-box {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 25px;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .icon-glow {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--accent-color);
+    filter: blur(20px);
+    opacity: 0.15;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #111;
+  }
+
+  p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    min-height: 70px;
+  }
+
+  /* Decoración técnica */
+  .code-snippet {
+    background: #fdfdfd;
+    border-left: 3px solid var(--accent-color);
+    padding: 10px 15px;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: #888;
+  }
+
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--accent-color);
+    transform: scaleX(0.1);
+    transform-origin: left;
+    transition: 0.4s;
+  }
+
+  .category-card:hover .bottom-bar {
+    transform: scaleX(1);
+  }
+
+  .footer-actions {
+    margin-top: 80px;
+  }
+
+  .back-btn {
+    text-decoration: none;
+    color: #888;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    transition: 0.3s;
+  }
+
+  .back-btn:hover {
+    color: var(--red);
+    border-color: var(--grid);
+  }
+</style>

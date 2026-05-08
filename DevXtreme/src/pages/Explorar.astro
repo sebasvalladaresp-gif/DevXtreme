@@ -1,0 +1,169 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Explorar - DevXtreme">
+  <section class="explorar-container">
+    <header class="section-header">
+      <span class="subtitle">// ACERCA DEL EVENTO</span>
+      <h1 class="title">¿Qué es <span class="highlight">DevXtreme?</span></h1>
+    </header>
+    
+    <div class="content-grid">
+      <div class="main-text">
+        <p>
+          DevXtreme 3.0 es la tercera edición de la competencia de programación que reúne a los mejores talentos en desarrollo de software para medirse en retos de algoritmos, lógica y resolución de problemas bajo presión real.
+        </p>
+        <p>
+          Los participantes enfrentarán un conjunto de problemas cuidadosamente diseñados para evaluar eficiencia, creatividad y dominio técnico en un entorno de alta intensidad.
+        </p>
+        <p class="cta-text">
+          Solo tienes cuatro horas. Cada segundo cuenta. ¿Estás listo para llevar tu código al límite?
+        </p>
+      </div>
+
+      <div class="stats-panel">
+        <div class="stat-card">
+          <span class="stat-value">4H</span>
+          <span class="stat-label">DE COMPETENCIA</span>
+          <div class="stat-bar red"></div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">3.0</span>
+          <span class="stat-label">EDICIÓN</span>
+          <div class="stat-bar orange"></div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">N+1</span>
+          <span class="stat-label">RETOS TÉCNICOS</span>
+          <div class="stat-bar yellow"></div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">∞</span>
+          <span class="stat-label">LÍNEAS DE CÓDIGO</span>
+          <div class="stat-bar red"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-nav">
+      <a href="/" class="btn-back">← VOLVER AL INICIO</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .explorar-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  .section-header {
+    margin-bottom: 50px;
+  }
+
+  .subtitle {
+    display: block;
+    font-family: monospace;
+    color: var(--orange);
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #222;
+  }
+
+  .highlight {
+    background: linear-gradient(90deg, var(--orange), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .main-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 25px;
+  }
+
+  .cta-text {
+    font-weight: 700;
+    color: var(--red) !important;
+  }
+
+  /* Stats Panel */
+  .stats-panel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .stat-card {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(255, 122, 0, 0.05);
+  }
+
+  .stat-value {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #222;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: #888;
+    margin-top: 5px;
+  }
+
+  .stat-bar {
+    height: 4px;
+    width: 40px;
+    margin-top: 15px;
+  }
+
+  .red { background: var(--red); }
+  .orange { background: var(--orange); }
+  .yellow { background: var(--yellow); }
+
+  .back-nav {
+    margin-top: 60px;
+  }
+
+  .btn-back {
+    text-decoration: none;
+    color: #888;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: 0.3s;
+  }
+
+  .btn-back:hover {
+    color: var(--red);
+    padding-left: 10px;
+  }
+
+  @media (max-width: 850px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

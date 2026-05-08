@@ -1,0 +1,203 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const agenda = [
+  { time: '09:00', title: 'Apertura y registro', desc: 'Bienvenida oficial, verificación de participantes y briefing de reglas generales.', tag: 'INICIO', color: 'var(--yellow)' },
+  { time: '09:30', title: 'Liberación de problemas', desc: 'Se publican todos los retos simultáneamente. El cronómetro comienza.', tag: 'CLAVE', color: 'var(--red)' },
+  { time: '11:30', title: 'Punto medio', desc: 'Revisión parcial de puntajes y validación de envíos en tiempo real.', tag: 'LIVE', color: 'var(--orange)' },
+  { time: '12:45', title: 'Último envío permitido', desc: 'Cierre definitivo de la plataforma de envíos.', tag: 'CRÍTICO', color: 'var(--red)' },
+  { time: '13:00', title: 'Clausura y premiación', desc: 'Anuncio oficial de ganadores y entrega de reconocimientos.', tag: 'FIN', color: 'var(--orange)' }
+];
+---
+
+<Layout title="Cronograma - DevXtreme">
+  <section class="cronograma-wrapper">
+    <div class="header">
+      <span class="prefix">// AGENDA DEL DÍA</span>
+      <h1 class="main-title">Horario de <span class="gradient-text">Competencia</span></h1>
+    </div>
+
+    <div class="timeline-container">
+      {agenda.map((item) => (
+        <div class="timeline-entry">
+          <div class="time-column">
+            <span class="time-stamp">{item.time}</span>
+            <div class="indicator">
+              <div class="outer-dot" style={`border-color: ${item.color}`}>
+                <div class="inner-dot" style={`background: ${item.color}`}></div>
+              </div>
+              <div class="line"></div>
+            </div>
+          </div>
+          
+          <div class="info-card">
+            <div class="card-header">
+              <h3>{item.title}</h3>
+              {item.tag && <span class="status-tag" style={`color: ${item.color}; border-color: ${item.color}`}>{item.tag}</span>}
+            </div>
+            <p>{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="footer-nav">
+      <a href="/" class="back-link">← REGRESAR AL PANEL</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .cronograma-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 20px;
+  }
+
+  .prefix {
+    color: var(--orange);
+    font-weight: 800;
+    font-family: monospace;
+    letter-spacing: 2px;
+  }
+
+  .main-title {
+    font-size: 3rem;
+    margin-top: 10px;
+    margin-bottom: 60px;
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, var(--orange), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-entry {
+    display: flex;
+    gap: 30px;
+  }
+
+  /* Columna de Tiempo e Indicadores */
+  .time-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+  }
+
+  .time-stamp {
+    font-family: monospace;
+    font-weight: 800;
+    color: #444;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .indicator {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .outer-dot {
+    width: 18px;
+    height: 18px;
+    border: 2px solid;
+    border-radius: 4px; /* Estética cuadrada/tech */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    z-index: 2;
+  }
+
+  .inner-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 1px;
+  }
+
+  .line {
+    width: 2px;
+    flex-grow: 1;
+    background: linear-gradient(to bottom, var(--orange), transparent);
+    margin: 5px 0;
+  }
+
+  .timeline-entry:last-child .line {
+    display: none;
+  }
+
+  /* Tarjetas de Información */
+  .info-card {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 25px;
+    margin-bottom: 40px;
+    flex-grow: 1;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+  }
+
+  .info-card:hover {
+    transform: translateX(10px);
+    border-color: var(--orange);
+    box-shadow: 8px 8px 0px var(--grid);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .card-header h3 {
+    font-size: 1.2rem;
+    color: #222;
+  }
+
+  .status-tag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border: 1px solid;
+    font-family: monospace;
+  }
+
+  .info-card p {
+    color: #666;
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+
+  .footer-nav {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .back-link {
+    text-decoration: none;
+    color: #999;
+    font-weight: 700;
+    font-size: 0.8rem;
+    transition: 0.3s;
+  }
+
+  .back-link:hover {
+    color: var(--red);
+  }
+
+  @media (max-width: 600px) {
+    .timeline-entry { gap: 15px; }
+    .time-column { min-width: 60px; }
+  }
+</style>
