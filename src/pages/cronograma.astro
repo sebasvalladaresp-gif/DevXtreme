@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 
 const agenda = [
-  { time: '09:00', title: 'Apertura y registro', desc: 'Bienvenida oficial, verificación de participantes y briefing de reglas generales.', tag: 'INICIO', color: 'var(--yellow)' },
-  { time: '09:30', title: 'Liberación de problemas', desc: 'Se publican todos los retos simultáneamente. El cronómetro comienza.', tag: 'CLAVE', color: 'var(--red)' },
-  { time: '11:30', title: 'Punto medio', desc: 'Revisión parcial de puntajes y validación de envíos en tiempo real.', tag: 'LIVE', color: 'var(--orange)' },
-  { time: '12:45', title: 'Último envío permitido', desc: 'Cierre definitivo de la plataforma de envíos.', tag: 'CRÍTICO', color: 'var(--red)' },
-  { time: '13:00', title: 'Clausura y premiación', desc: 'Anuncio oficial de ganadores y entrega de reconocimientos.', tag: 'FIN', color: 'var(--orange)' }
+  { time: '09:00', title: 'Inauguración', desc: 'Palabras de autoridades y apertura oficial del evento (09:00 - 09:20).', tag: 'INICIO', color: 'var(--yellow)' },
+  { time: '09:20', title: 'Explicación del entorno', desc: 'Introducción a la plataforma HackerRank, normas de envío y formato de puntuación (09:20 - 10:00).', tag: 'INFO', color: 'var(--orange)' },
+  { time: '10:00', title: 'Competencia', desc: 'Competencia principal en HackerRank. Resolución de problemas y envío de soluciones (10:00 - 14:00).', tag: 'COMP', color: 'var(--red)' },
+  { time: '13:00', title: 'Break (opcional)', desc: 'Pausa opcional de 15 minutos para quienes deseen (13:00 - 13:15).', tag: 'PAUSA', color: 'var(--orange)' },
+  { time: '14:00', title: 'Premiación', desc: 'Revisión final de puntajes y ceremonia de premiación (14:00 - 14:30).', tag: 'PREMIA', color: 'var(--yellow)' },
+  { time: '14:30', title: 'Cierre', desc: 'Cierre oficial del evento y despedida.', tag: 'FIN', color: 'var(--orange)' }
 ];
 ---
 

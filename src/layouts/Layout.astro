@@ -23,7 +23,7 @@ const { title } = Astro.props;
         <header class="topbar">
             
             <div class="logo">
-                <span class="logo-gradient">DEVXTREME</span>
+                <a href="/" aria-label="Inicio"><span class="logo-gradient">DEVXTREME</span></a>
             </div>
             <p class="tag">COMPETENCIA DE PROGRAMACIÓN</p>
             <nav class="nav-container">
@@ -34,12 +34,12 @@ const { title } = Astro.props;
         </button>
 
         <div id="nav-menu" class="nav-menu">
+            <a href="/">INICIO</a>
             <a href="/Explorar">EXPLORAR EVENTO</a>
             <a href="/cronograma">CRONOGRAMA</a>
             <a href="/categorias">CATEGORÍAS</a>
             <a href="/reglas">REGLAS</a>
-            <a href="/agradecimiento">Agradecimiento</a>
-            <a href="/">Ininicio</a>
+            <a href="/agradecimiento">AGRADECIMIENTO</a>
 
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WLvdGXD1bmyWqee9N5IfMA6szlF5eUniLZvVFHSRzQWXCw/viewform" target="_blank" class="register-link">REGISTRARSE</a>
         </div>
@@ -86,6 +86,7 @@ const { title } = Astro.props;
         // Especial para Astro (navegación entre páginas)
         document.addEventListener('astro:after-swap', initMenu);
     </script>
+    <a class="home-btn" href="/" aria-label="Ir al inicio">←</a>
 </body>
 
 </html>
@@ -171,17 +172,24 @@ const { title } = Astro.props;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+    .logo a { text-decoration: none; color: inherit; display: inline-block; }
     /* Estilo para la etiqueta de competencia en el Header */
     .tag {
-        font-size: 1.8rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.6rem;
         letter-spacing: 4px;
-        font-weight: 888;
-        color: var(--orange);
-        border: 1px solid rgba(255, 122, 0, 0.3);
-        padding: 5px 15px;
-        background: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(5px);
+        font-weight: 700;
+        color: #fff;
+        border: 1px solid rgba(255, 122, 0, 0.12);
+        padding: 6px 18px;
+        background: linear-gradient(90deg, var(--yellow), var(--orange));
+        box-shadow: 0 6px 18px rgba(255,122,0,0.12);
+        -webkit-background-clip: padding-box;
         text-transform: uppercase;
+        z-index: 101; /* encima del header */
     }
     /* Contenedor del Nav */
     .nav-container {
@@ -245,6 +253,8 @@ const { title } = Astro.props;
         font-weight: 700;
         border-bottom: 1px solid rgba(255, 122, 0, 0.05);
         transition: 0.3s;
+        text-transform: uppercase; /* Fuerza mayúsculas en el menú */
+        letter-spacing: 1px;
     }
 
     .nav-menu a:hover {
@@ -272,6 +282,28 @@ const { title } = Astro.props;
         z-index: 10;
         padding-bottom: 50px; /* Reducido para que no se aleje tanto de los logos */
     }
+
+    /* Botón fijo para volver al inicio desde cualquier página */
+    .home-btn {
+        position: fixed;
+        left: 18px;
+        top: 18px;
+        width: 54px;
+        height: 54px;
+        background: linear-gradient(90deg, var(--yellow), var(--orange));
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(255,122,0,0.18);
+        text-decoration: none;
+        z-index: 1200;
+        font-weight: 800;
+        border: 2px solid rgba(255,255,255,0.18);
+    }
+
+    .home-btn:hover { transform: translateY(-4px); }
 
     /* =========================
        LOGOS INFERIORES
@@ -312,5 +344,7 @@ const { title } = Astro.props;
         .cp-logo { height: 140px; }
         .logo-gradient { font-size: 1.3rem; }
         .date-box { font-size: 0.65rem; padding: 8px 12px; }
+        /* En pantallas pequeñas, evita posicionamiento absoluto que pueda solaparse */
+        .tag { position: static; transform: none; margin: 10px 20px; background: linear-gradient(90deg, var(--yellow), var(--orange)); }
     }
 </style>

@@ -2,17 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 
 const rules = [
-  { id: '01', text: 'La competencia es individual. No se permite colaboración entre participantes.' },
-  { id: '02', text: 'Cualquier lenguaje de programación permitido por la plataforma oficial es válido.' },
-  { id: '03', text: 'Acceso a internet restringido exclusivamente a la documentación oficial del lenguaje.' },
-  { id: '04', text: 'Puntuación basada en dificultad del problema y velocidad de envío correcto.' },
-  { id: '05', text: 'Decisiones del jurado inapelables. Se evaluará eficiencia y casos borde.' }
+  { id: '01', text: 'No se permite la comunicación entre equipos durante la competencia.' },
+  { id: '02', text: 'No se permite la copia entre equipos; si se detecta, habrá descalificación.' },
+  { id: '03', text: 'No se puede copiar soluciones completas de herramientas de IA; la IA solo puede usarse para aprender o generar ideas.' },
+  { id: '04', text: 'La competencia se realiza en equipos de 3 personas (mínimo 2).' },
+  { id: '05', text: 'Se puede programar en cualquier lenguaje soportado por la plataforma HackerRank.' },
+  { id: '06', text: 'Los ejercicios en inglés recibirán mayor puntuación cuando aplique.' },
+  { id: '07', text: 'Puntuación basada en dificultad del problema y velocidad de envío correcto; decisiones del jurado son inapelables.' }
 ];
 
 const awards = [
-  { rank: '1º', title: 'Campeón DevXtreme', prize: 'Trofeo oficial + Certificado + Reconocimiento', color: 'var(--yellow)' },
-  { rank: '2º', title: 'Subcampeón', prize: 'Medalla de plata + Certificado de excelencia', color: '#B5B5B5' },
-  { rank: '3º', title: 'Finalista', prize: 'Medalla de bronce + Certificado de mérito', color: '#CD7F32' }
+  { rank: '1º', title: 'Primer lugar (equipo)', prize: 'Trofeo (uno por cada integrante, 3 trofeos), Producto IEEE, Llavero “Pingüino” Linux', color: 'var(--yellow)' },
+  { rank: '2º', title: 'Segundo lugar (equipo)', prize: 'Producto IEEE y pinguinos Linux para integrantes', color: '#B5B5B5' },
+  { rank: '3º', title: 'Tercer lugar (equipo)', prize: 'Pinguinos Linux para integrantes', color: '#CD7F32' }
 ];
 ---
 
