@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contacto - DevXtreme">
+  <div class="main-container">
+    <header class="top-bar">
+      <span class="brand">DEVXTREME</span>
+      <span class="date">15 • MAYO • 2026</span>
+    </header>
+
+    <main class="card">
+      <div class="card-content">
+        <h2>By Sebastián Valladares</h2>
+        <p class="label">gmail</p>
+        <div class="email">
+          <span class="icon-email">✉</span> f82997419@gmail.com
+        </div>
+        
+        <div class="avatar-container">
+            <img src="https://i.pinimg.com/736x/1d/01/30/1d01303bc786b7c24bccd1eaf6573fdc.jpg" alt="Cheems Avatar" class="avatar">
+        </div>
+      </div>
+    </main>
+
+   
+  </div>
+</Layout>
+
+<style>
+  /* Contenedor principal centrado */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 20px;
+    font-family: 'Orbitron', sans-serif; /* Usando la fuente del evento */
+  }
+
+  /* Barra superior minimalista */
+  .top-bar {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border: 1px solid rgba(255, 122, 0, 0.2);
+    border-radius: 12px 12px 0 0;
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #444;
+  }
+
+  /* La tarjeta central estilo Glassmorphism */
+  .card {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    border: 1px solid rgba(255, 122, 0, 0.2);
+    border-top: none;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-radius: 0 0 12px 12px;
+  }
+
+  .card-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #222;
+  }
+
+  .label {
+    font-size: 0.7rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+  }
+
+  .email {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--orange, #ff7a00);
+    font-weight: 700;
+    margin-bottom: 30px;
+    transition: 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+
+  .email:hover {
+    border-color: var(--orange);
+    transform: translateX(5px);
+  }
+
+  /* Contenedor de la imagen de Cheems */
+  .avatar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .avatar {
+    width: 180px;
+    height: auto;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+    transition: 0.5s ease;
+  }
+
+  .avatar:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  /* Logos inferiores */
+  .footer-logos {
+    margin-top: 40px;
+    display: flex;
+    gap: 30px;
+    opacity: 0.7;
+    filter: grayscale(100%);
+    transition: 0.3s;
+  }
+
+  .footer-logos:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+
+  .logo-img {
+    height: 40px;
+    width: auto;
+  }
+
+  @media (max-width: 480px) {
+    .top-bar, .card {
+      max-width: 100%;
+    }
+  }
+</style>
