@@ -11,22 +11,18 @@ const stats = [
 ---
 
 <Layout title="DevXtreme">
-    <header>
-      <div class="logo">
-        <span class="logo-gradient">DEVXTREME</span>
-      </div>
-      <div class="date-box">15 • MAYO • 2026</div>
-    </header>
+  
 
     <main>
-      <p class="tag">COMPETENCIA DE PROGRAMACIÓN</p>
+      
       <div class="title">
-        <span>DEV</span>
-        <span>XTREME</span>
+        <span>DEVXTREME 3.0</span>
+     
       </div>
-      <div class="version">VERSION_3.0</div>
+      
 
       <p class="description">
+
         Demuestra tu dominio del código. Cuatro horas de desafíos intensos, 
         pensamiento algorítmico y soluciones que hacen la diferencia.
       </p>
@@ -52,32 +48,6 @@ const stats = [
 
 <style>
   /* Aquí solo dejamos estilos que NO sean globales */
-  header {
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 50px;
-    border-bottom: 1px solid rgba(255, 120, 0, 0.1);
-  }
-
-  .logo-gradient {
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: 3px;
-    background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .date-box {
-    border: 1px solid var(--orange);
-    padding: 10px 20px;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    color: var(--orange);
-    background: white;
-  }
 
   main {
     padding: 60px 20px;
@@ -85,9 +55,7 @@ const stats = [
     position: relative;
     z-index: 10; /* Para que esté sobre el grid */
   }
-
-  .tag { margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 5px; color: var(--orange); font-weight: 600; }
-
+  
   .title span {
     display: block;
     font-size: clamp(3.5rem, 10vw, 8rem);
@@ -100,7 +68,14 @@ const stats = [
 
   .version { margin: 20px 0; font-size: 1.2rem; letter-spacing: 8px; color: #888; }
 
-  .description { max-width: 650px; margin: 0 auto 50px; line-height: 1.8; color: #666; }
+ .description { 
+    max-width: 650px; 
+    margin: 0 auto 50px; 
+    line-height: 1.8; 
+    /* Un naranja fuerte para que resalte en el fondo blanco */
+    color: #e66e00; 
+    font-weight: 500; /* Un poco más de peso para mejorar la lectura */
+  }
 
   .stats {
     display: grid;

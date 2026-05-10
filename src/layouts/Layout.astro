@@ -9,20 +9,82 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <title>{title}</title>
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&display=swap" rel="stylesheet" />
-    </head>
-    <body>
-        <div class="tech-grid-bg">
-            <slot /> </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&display=swap" rel="stylesheet" />
+</head>
 
-        <img src="/Ieee.svg" alt="IEEE Logo" class="side-logo left-center" />
-        <img src="/Utn.svg" alt="UTN Logo" class="side-logo right-center" />
-    </body>
+<body>
+    <div class="tech-grid-bg">
+        
+        <header class="topbar">
+            
+            <div class="logo">
+                <span class="logo-gradient">DEVXTREME</span>
+            </div>
+            <p class="tag">COMPETENCIA DE PROGRAMACIÓN</p>
+            <nav class="nav-container">
+        <button id="menu-btn" class="menu-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div id="nav-menu" class="nav-menu">
+            <a href="/Explorar">EXPLORAR EVENTO</a>
+            <a href="/cronograma">CRONOGRAMA</a>
+            <a href="/categorias">CATEGORÍAS</a>
+            <a href="/reglas">REGLAS</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WLvdGXD1bmyWqee9N5IfMA6szlF5eUniLZvVFHSRzQWXCw/viewform" target="_blank" class="register-link">REGISTRARSE</a>
+        </div>
+    </nav>
+        </header>
+
+        <main class="content-wrapper">
+            <slot />
+        </main>
+
+        <div class="bottom-logos">
+            <div class="bottom-logo-left">
+                <img src="/Ieee.svg" alt="IEEE Logo" class="bottom-logo ieee-logo" />
+            </div>
+            <div class="bottom-logo-right">
+                <img src="/Utn.svg" alt="UTN Logo" class="bottom-logo cp-logo" />
+            </div>
+        </div>
+
+    </div>
+    <script is:inline>
+        // Usamos una función para asegurarnos de que el DOM esté listo
+        const initMenu = () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const navMenu = document.getElementById('nav-menu');
+
+            if (menuBtn && navMenu) {
+                menuBtn.addEventListener('click', () => {
+                    menuBtn.classList.toggle('open');
+                    navMenu.classList.toggle('active');
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+                        menuBtn.classList.remove('open');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+        };
+
+        // Ejecutar al cargar
+        initMenu();
+        // Especial para Astro (navegación entre páginas)
+        document.addEventListener('astro:after-swap', initMenu);
+    </script>
+</body>
+
 </html>
 
 <style is:global>
@@ -30,46 +92,222 @@ const { title } = Astro.props;
         --yellow: #ffcc00;
         --orange: #ff7a00;
         --red: #ff004c;
-        --bg: #f7f7f7;
-        --grid: rgba(255, 120, 0, 0.08);
-        --logo-glow: rgba(255, 122, 0, 0.3);
+        --bg: #fdfdfd; 
+        --grid: rgba(255, 120, 0, 0.05);
+        --logo-glow: rgba(255, 122, 0, 0.4);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
     body {
         font-family: "Orbitron", sans-serif;
         background: var(--bg);
-        color: #222;
+        color: #222; /* Texto claro */
         overflow-x: hidden;
     }
 
+    /* =========================
+       FONDO ANIMADO
+    ========================== */
     .tech-grid-bg {
         min-height: 100vh;
-        background: 
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+        background-color: var(--bg);
+        background-image: 
             linear-gradient(var(--grid) 1px, transparent 1px),
-            linear-gradient(90deg, var(--grid) 1px, transparent 1px),
-            radial-gradient(circle at 20% 30%, rgba(255, 204, 0, 0.1), transparent 40%),
-            radial-gradient(circle at 80% 70%, rgba(255, 0, 76, 0.1), transparent 40%),
-            #f7f7f7;
+            linear-gradient(90deg, var(--grid) 1px, transparent 1px);
         background-size: 50px 50px;
     }
 
-    .side-logo {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 400px; 
-        width: auto;
-        z-index: 100;
-        filter: drop-shadow(0 0 15px var(--logo-glow));
-        pointer-events: none;
+    .tech-grid-bg::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 0;
+        background: 
+            radial-gradient(circle at 15% 20%, rgba(255, 204, 0, 0.08), transparent 88%),
+            radial-gradient(circle at 85% 30%, rgba(255, 0, 76, 0.08), transparent 80%),
+            radial-gradient(circle at 50% 80%, rgba(255, 122, 0, 0.08), transparent 80%);
+        filter: blur(60px);
+        animation: glowMove 15s ease-in-out infinite alternate;
     }
 
-    .left-center { left: 50px; }
-    .right-center { right: 50px; }
+    @keyframes glowMove {
+        from { transform: scale(1); }
+        to { transform: scale(1.1) translate(2%, 2%); }
+    }
 
-    @media (max-width: 1200px) {
-        .side-logo { height: 120px; left: 20px; right: 20px; }
+    /* =========================
+       HEADER
+    ========================== */
+    .topbar {
+        height: 111px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        background: rgba(5, 5, 5, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 120, 0, 0.1);
+        position: relative;
+        z-index: 100;
+    }
+
+    .logo-gradient {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: 3px;
+        background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    /* Estilo para la etiqueta de competencia en el Header */
+    .tag {
+        font-size: 1.8rem;
+        letter-spacing: 4px;
+        font-weight: 888;
+        color: var(--orange);
+        border: 1px solid rgba(255, 122, 0, 0.3);
+        padding: 5px 15px;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        text-transform: uppercase;
+    }
+    /* Contenedor del Nav */
+    .nav-container {
+        position: relative;
+    }
+
+    /* Botón de 3 rayas */
+    .menu-hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        background: none;
+        border: 1px solid var(--orange);
+        padding: 10px;
+        cursor: pointer;
+        z-index: 1001;
+        transition: 0.3s;
+    }
+
+    .menu-hamburger span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background-color: var(--orange);
+        transition: 0.3s;
+    }
+
+    /* Menú Desplegable */
+    /* Menú Desplegable Tipo Lateral */
+    .nav-menu {
+        position: fixed;
+        /* CAMBIO: En lugar de 0, usamos la altura de tu topbar */
+        top: 110px; 
+        right: 0;
+        /* CAMBIO: El alto ahora es el 100% menos la altura del header */
+        height: calc(100vh - 110px); 
+        width: 300px;
+        
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        border-left: 2px solid rgba(255, 122, 0, 0.2);
+        
+        display: none;
+        flex-direction: column;
+        /* Ya no necesitas tanto padding-top porque ya no empieza desde arriba */
+        padding-top: 40px; 
+        box-shadow: -10px 10px 30px rgba(0,0,0,0.05);
+        z-index: 1000;
+    }
+
+    /* Cuando el menú esté activo */
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        padding: 15px 25px;
+        text-decoration: none;
+        color: #222;
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid rgba(255, 122, 0, 0.05);
+        transition: 0.3s;
+    }
+
+    .nav-menu a:hover {
+        background: rgba(255, 122, 0, 0.05);
+        color: var(--orange);
+        padding-left: 30px;
+    }
+
+    .register-link {
+        color: var(--red) !important;
+    }
+
+    /* Efecto en las rayas al abrir */
+    .menu-hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-hamburger.open span:nth-child(2) { opacity: 0; }
+    .menu-hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    /* =========================
+       CONTENIDO
+    ========================== */
+    .content-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 10;
+        padding-bottom: 50px; /* Reducido para que no se aleje tanto de los logos */
+    }
+
+    /* =========================
+       LOGOS INFERIORES
+    ========================== */
+    .bottom-logos {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 40px 80px;
+        z-index: 50;
+        position: relative;
+    }
+
+    .bottom-logo {
+        width: auto;
+        filter: drop-shadow(0 0 15px var(--logo-glow));
+        opacity: 0.95;
+        transition: all 0.3s ease;
+    }
+
+    .bottom-logo:hover {
+        filter: drop-shadow(0 0 35px var(--orange));
+        transform: scale(1.05);
+    }
+
+    .ieee-logo { height: 280px; }
+    .cp-logo { height: 230px; }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 900px) {
+        .bottom-logos { padding: 40px 25px; flex-direction: row; justify-content: space-between; }
+        .ieee-logo { height: 120px; }
+        .cp-logo { height: 140px; }
+        .logo-gradient { font-size: 1.3rem; }
+        .date-box { font-size: 0.65rem; padding: 8px 12px; }
     }
 </style>
