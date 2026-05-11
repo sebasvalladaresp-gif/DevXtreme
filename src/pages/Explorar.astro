@@ -83,9 +83,13 @@ import Layout from '../layouts/Layout.astro';
 
   .content-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    /* Cambiamos de 2 columnas a 1 sola para que se apilen */
+    grid-template-columns: 1fr; 
     gap: 40px;
     align-items: start;
+    /* Opcional: Centrar el contenido si queda muy ancho */
+    max-width: 800px; 
+    margin: 0 auto;
   }
 
   .main-text p {

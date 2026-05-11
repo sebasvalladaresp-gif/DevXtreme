@@ -5,6 +5,10 @@ interface Props {
 }
 
 const { title } = Astro.props;
+// NUEVO: Obtenemos la ruta actual
+const { pathname } = Astro.url;
+// Verificamos si NO estamos en la raíz (index)
+const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
 ---
 
 <!doctype html>
@@ -34,14 +38,13 @@ const { title } = Astro.props;
         </button>
 
         <div id="nav-menu" class="nav-menu">
-            <a href="/">INICIO</a>
-            <a href="/Explorar">EXPLORAR EVENTO</a>
-            <a href="/cronograma">CRONOGRAMA</a>
-            <a href="/categorias">CATEGORÍAS</a>
-            <a href="/reglas">REGLAS</a>
             <a href="/agradecimiento">AGRADECIMIENTO</a>
-
+            <a href="/categorias">CATEGORÍAS</a>
+            <a href="/cronograma">CRONOGRAMA</a>
+            <a href="/Explorar">EXPLORAR EVENTO</a>
+            <a href="/">INICIO</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WLvdGXD1bmyWqee9N5IfMA6szlF5eUniLZvVFHSRzQWXCw/viewform" target="_blank" class="register-link">REGISTRARSE</a>
+             <a href="/reglas">REGLAS</a>
         </div>
     </nav>
         </header>
@@ -86,7 +89,10 @@ const { title } = Astro.props;
         // Especial para Astro (navegación entre páginas)
         document.addEventListener('astro:after-swap', initMenu);
     </script>
-    <a class="home-btn" href="/" aria-label="Ir al inicio">←</a>
+   
+    {mostrarFlecha && (
+        <a class="home-btn" href="/" aria-label="Ir al inicio">←</a>
+    )}
 </body>
 
 </html>
@@ -175,21 +181,12 @@ const { title } = Astro.props;
     .logo a { text-decoration: none; color: inherit; display: inline-block; }
     /* Estilo para la etiqueta de competencia en el Header */
     .tag {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 1.6rem;
-        letter-spacing: 4px;
-        font-weight: 700;
-        color: #fff;
-        border: 1px solid rgba(255, 122, 0, 0.12);
-        padding: 6px 18px;
-        background: linear-gradient(90deg, var(--yellow), var(--orange));
-        box-shadow: 0 6px 18px rgba(255,122,0,0.12);
-        -webkit-background-clip: padding-box;
-        text-transform: uppercase;
-        z-index: 101; /* encima del header */
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: 3px;
+        background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     /* Contenedor del Nav */
     .nav-container {
@@ -284,23 +281,52 @@ const { title } = Astro.props;
     }
 
     /* Botón fijo para volver al inicio desde cualquier página */
-    .home-btn {
-        position: fixed;
-        left: 18px;
-        top: 18px;
-        width: 54px;
-        height: 54px;
-        background: linear-gradient(90deg, var(--yellow), var(--orange));
-        color: #fff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 8px 24px rgba(255,122,0,0.18);
-        text-decoration: none;
-        z-index: 1200;
-        font-weight: 800;
-        border: 2px solid rgba(255,255,255,0.18);
+    /* =========================================
+       BOTÓN HOME (FLECHA) - TAMAÑO Y POSICIÓN
+    ============================================ */
+    /* =========================================
+   BOTÓN HOME (FLECHA) - ESTÁTICO
+============================================ */
+.home-btn {
+    /* 1. CAMBIO CLAVE: De fixed a absolute */
+    position: absolute; 
+    z-index: 1200;
+    
+    /* 2. POSICIÓN */
+    left: 88px;
+    top: 158px; /* Se mantendrá a esta distancia del tope del header */
+    
+    /* 3. TAMAÑO (Mantenemos tus medidas) */
+    width: 88px;
+    height: 88px;
+    
+    /* 4. DISEÑO VISUAL */
+    background: linear-gradient(90deg, var(--yellow), var(--orange));
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 2rem;
+    font-weight: 900;
+    text-decoration: none;
+    
+    border: 3px solid rgba(255,255,255,0.25);
+    box-shadow: 0 10px 30px rgba(255, 122, 0, 0.25);
+    
+    /* Mantenemos la transición para el hover, pero ya no te seguirá al bajar */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efecto de Hover */
+.home-btn:hover {
+    transform: scale(1.05); /* Eliminamos el translateY para que sea más sutil si es estático */
+}
+
+    /* Efecto de Hover (mismo efecto, botón más grande) */
+    .home-btn:hover {
+        transform: translateY(-5px) scale(1.05); /* Sube un poco y se agranda */
     }
 
     .home-btn:hover { transform: translateY(-4px); }
