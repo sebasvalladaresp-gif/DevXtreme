@@ -22,8 +22,8 @@ const categories = [
     desc: "Implementación de lógica de negocio, manejo de flujos de datos y creación de soluciones mantenibles y eficientes.",
     color: "var(--orange)",
     code: "git commit -m 'feat: optimized'"
-  }
-  ,{
+  },
+  {
     title: "Estructuras de Datos",
     icon: "📚",
     desc: "Conocimiento y uso eficiente de estructuras (pilas, colas, listas, árboles, tablas hash, grafos) y sus aplicaciones en algoritmos.",
@@ -60,9 +60,6 @@ const categories = [
         </div>
       ))}
     </div>
-
-    <div class="nav-menu"> <a href="/">INICIO</a>
-    </div>
   </section>
 </Layout>
 
@@ -86,9 +83,10 @@ const categories = [
   }
 
   .main-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2.2rem, 5vw, 4rem);
     margin: 15px 0;
     color: #222;
+    line-height: 1.2;
   }
 
   .accent {
@@ -104,13 +102,18 @@ const categories = [
     line-height: 1.6;
   }
 
-  /* Grid de Tarjetas */
-  .cards-container {
+  /* Grid de Tarjetas Responsivo */
+.cards-container {
     display: grid;
-    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    /* CAMBIO: Usamos repeat(auto-fit, minmax(...)) pero con un max-width o limitando las columnas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
+    /* Agregamos esto para que si hay espacio para 3, solo use 2 */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    
     gap: 25px;
     margin-top: 40px;
-    max-width: 980px;
+    max-width: 900px; /* Reducimos el ancho máximo para que 2 tarjetas se vean bien */
     margin-left: auto;
     margin-right: auto;
   }
@@ -123,6 +126,8 @@ const categories = [
     text-align: left;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
   }
 
   .category-card:hover {
@@ -168,17 +173,17 @@ const categories = [
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 25px;
-    min-height: 70px;
+    min-height: 60px;
   }
 
-  /* Decoración técnica */
   .code-snippet {
-    background: #fdfdfd;
+    background: #f8f8f8;
     border-left: 3px solid var(--accent-color);
-    padding: 10px 15px;
-    font-family: monospace;
-    font-size: 0.75rem;
-    color: #888;
+    padding: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    color: #666;
+    border-radius: 4px;
   }
 
   .bottom-bar {
@@ -197,4 +202,46 @@ const categories = [
     transform: scaleX(1);
   }
 
+  /* =========================
+     MEDIA QUERIES (MÓVIL)
+  ========================== */
+  @media (max-width: 650px) {
+    /* Ajuste global de la flecha del Layout solo para esta página */
+
+    :global(.home-btn) {
+      width: 55px !important;
+      height: 55px !important;
+      left: 15px !important;
+      top: 95px !important;
+      font-size: 1.4rem !important;
+    }
+    .cards-container {
+      grid-template-columns: 1fr;
+    }
+    .categories-section {
+      padding: 110px 15px 50px 15px;
+    }
+
+    .header-block {
+      margin-bottom: 40px;
+    }
+
+    .main-title {
+      font-size: 1.8rem;
+    }
+
+    .cards-container {
+      grid-template-columns: 1fr; /* Una sola columna en móvil */
+      gap: 20px;
+    }
+
+    .category-card {
+      padding: 30px 20px;
+    }
+
+    .code-snippet {
+      font-size: 0.75rem;
+      overflow-x: auto;
+    }
+  }
 </style>

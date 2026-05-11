@@ -64,48 +64,71 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
         
     </div>
     <script is:inline>
-        // Usamos una función para asegurarnos de que el DOM esté listo
-        const initMenu = () => {
-            const menuBtn = document.getElementById('menu-btn');
-            const navMenu = document.getElementById('nav-menu');
+    const initMenu = () => {
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        // Buscamos la flecha dentro de la función para asegurar que la encuentre
+        const getHomeBtn = () => document.querySelector('.home-btn');
 
-            if (menuBtn && navMenu) {
-                menuBtn.addEventListener('click', () => {
-                    menuBtn.classList.toggle('open');
-                    navMenu.classList.toggle('active');
-                });
+        if (menuBtn && navMenu) {
+            const toggleHomeBtn = (isHidden) => {
+                const homeBtn = getHomeBtn(); // Lo buscamos en el momento del click
+                if (homeBtn) {
+                    homeBtn.style.opacity = isHidden ? '0' : '1';
+                    homeBtn.style.visibility = isHidden ? 'hidden' : 'visible';
+                    homeBtn.style.transition = 'opacity 0.3s ease';
+                }
+            };
 
-                document.addEventListener('click', (e) => {
-                    if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
-                        menuBtn.classList.remove('open');
-                        navMenu.classList.remove('active');
-                    }
-                });
-            }
-        };
+            // Limpiamos eventos anteriores para evitar duplicados
+            menuBtn.replaceWith(menuBtn.cloneNode(true));
+            const newMenuBtn = document.getElementById('menu-btn');
 
-        // Ejecutar al cargar
+            newMenuBtn.addEventListener('click', () => {
+                const isOpen = newMenuBtn.classList.toggle('open');
+                navMenu.classList.toggle('active');
+                toggleHomeBtn(isOpen);
+            });
+
+            // Cerrar al hacer clic fuera
+            document.addEventListener('click', (e) => {
+                if (!newMenuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+                    newMenuBtn.classList.remove('open');
+                    navMenu.classList.remove('active');
+                    toggleHomeBtn(false);
+                }
+            });
+        }
+    };
+
+    // Inicialización
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMenu);
+    } else {
         initMenu();
-        // Especial para Astro (navegación entre páginas)
-        document.addEventListener('astro:after-swap', initMenu);
-    </script>
-   
-    {mostrarFlecha && (
-        <a class="home-btn" href="/" aria-label="Ir al inicio">←</a>
-    )}
-</body>
+    }
+    
+    // Para Astro View Transitions
+    document.addEventListener('astro:after-swap', initMenu);
+</script>
+    
+        {mostrarFlecha && (
+            <a class="home-btn" href="/" aria-label="Ir al inicio">←</a>
+        )}
+    </body>
 
 </html>
 
-<style is:global>
-    :root {
-        --yellow: #ffcc00;
-        --orange: #ff7a00;
-        --red: #ff004c;
-        --bg: #fdfdfd; 
-        --grid: rgba(255, 120, 0, 0.05);
-        --logo-glow: rgba(255, 122, 0, 0.4);
-    }
+    <style is:global>
+        :root {
+            --yellow: #ffcc00;
+            --orange: #ff7a00;
+            --red: #ff004c;
+            --bg: #fdfdfd; 
+            --grid: rgba(255, 120, 0, 0.05);
+            --logo-glow: rgba(255, 122, 0, 0.4);
+        }
 
     * {
         margin: 0;
@@ -221,6 +244,7 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
         /* CAMBIO: En lugar de 0, usamos la altura de tu topbar */
         top: 110px; 
         right: 0;
+        z-index: 1100;
         /* CAMBIO: El alto ahora es el 100% menos la altura del header */
         height: calc(100vh - 110px); 
         width: 300px;
@@ -288,35 +312,22 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
    BOTÓN HOME (FLECHA) - ESTÁTICO
 ============================================ */
 .home-btn {
-    /* 1. CAMBIO CLAVE: De fixed a absolute */
     position: absolute; 
-    z-index: 1200;
-    
-    /* 2. POSICIÓN */
-    left: 88px;
-    top: 158px; /* Se mantendrá a esta distancia del tope del header */
-    
-    /* 3. TAMAÑO (Mantenemos tus medidas) */
-    width: 88px;
-    height: 88px;
-    
-    /* 4. DISEÑO VISUAL */
+    z-index: 100; /* Asegura que esté encima, pero no bloquee todo */
+    left: 20px;   /* Reducido de 88px para que no flote en medio de la pantalla */
+    top: 130px; 
+    width: 60px;  /* Tamaño más estándar */
+    height: 60px;
     background: linear-gradient(90deg, var(--yellow), var(--orange));
     color: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    font-size: 2rem;
-    font-weight: 900;
     text-decoration: none;
-    
-    border: 3px solid rgba(255,255,255,0.25);
-    box-shadow: 0 10px 30px rgba(255, 122, 0, 0.25);
-    
-    /* Mantenemos la transición para el hover, pero ya no te seguirá al bajar */
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: 900;
+    box-shadow: 0 10px 20px rgba(255, 122, 0, 0.3);
+    transition: transform 0.3s ease;
 }
 
 /* Efecto de Hover */
@@ -364,13 +375,58 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
     /* =========================
        RESPONSIVE
     ========================== */
-    @media (max-width: 900px) {
-        .bottom-logos { padding: 40px 25px; flex-direction: row; justify-content: space-between; }
-        .ieee-logo { height: 120px; }
-        .cp-logo { height: 140px; }
-        .logo-gradient { font-size: 1.3rem; }
-        .date-box { font-size: 0.65rem; padding: 8px 12px; }
-        /* En pantallas pequeñas, evita posicionamiento absoluto que pueda solaparse */
-        .tag { position: static; transform: none; margin: 10px 20px; background: linear-gradient(90deg, var(--yellow), var(--orange)); }
+    /* =========================
+   RESPONSIVE (CORRECCIONES)
+========================== */
+@media (max-width: 768px) {
+    /* 1. Ajuste del Header */
+    .topbar {
+        height: 80px; /* Un poco más bajo en móvil */
+        padding: 0 20px;
     }
+
+    .logo-gradient {
+        font-size: 1.2rem; /* Logo más pequeño */
+    }
+
+    /* 2. El texto del medio: Lo ocultamos en móviles muy pequeños 
+       o bajamos su tamaño para que no choque con el menú */
+    .tag {
+        display: none; /* Es mejor ocultarlo para dar prioridad al logo y al menú */
+    }
+
+    /* 3. Ajuste de la Flecha (Home Button) */
+    .home-btn {
+        width: 45px;
+        height: 45px;
+        left: 15px;   /* Pegado a la izquierda pero con margen */
+        top: 95px;  /* Justo debajo del header */
+        font-size: 1.5rem;
+    }
+
+    /* 4. Ajuste de los Logos de abajo */
+    .bottom-logos {
+        padding: 20px;
+        flex-direction: row; 
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .ieee-logo { height: 60px; }
+    .cp-logo { height: 70px; }
+
+    /* 5. Ajuste del Menú Lateral */
+    .nav-menu {
+        top: 80px; /* Debe coincidir con la nueva altura del topbar */
+        height: calc(100vh - 80px);
+        width: 100%; /* Que ocupe toda la pantalla en móvil para mejor UX */
+    }
+}
+
+/* Extra: Ajuste para pantallas medianas (Tablets) */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .tag {
+        font-size: 1rem; /* Texto pequeño para que quepa */
+    }
+}
 </style>

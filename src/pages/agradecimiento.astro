@@ -4,150 +4,165 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Contacto - DevXtreme">
   <div class="main-container">
+    
+    <header class="top-bar">
+      <span class="brand">DEVXTREME</span>
+      <span class="date">15 • MAYO • 2026</span>
+    </header>
+
     <main class="card">
       <div class="card-content">
-        <h2>Creador: Sebastián Valladares </h2>
-        <h2>Colaborador: Adrian Urresta </h2>
-        <p class="label">gmail</p>
-        <div class="email">
-          <span class="icon-email">✉</span> f82997419@gmail.com
-          
-        </div>
-
-        <div class="email">
-            <span class="icon-email1">✉</span> xdadrianlol@gmail.com
+        <h2>Creador: <span>Sebastián Valladares</span></h2>
+        <h2>Colaborador: <span>Adrian Urresta</span></h2>
+        
+        <p class="label">Gmail / Contacto</p>
+        <div class="email-list">
+          <div class="email-item">
+            <span class="icon-email">✉</span> f82997419@gmail.com
+          </div>
+          <div class="email-item">
+            <span class="icon-email">✉</span> xdadrianlol@gmail.com
+          </div>
         </div>
         
-        
-        <div class="bottom-logo-left">
-          <img src="/Pandilla.jpeg" alt="IEEE Logo" class="bottom-logo ieee-logo" />
+        <div class="bottom-logo-container">
+          <img src="/Pandilla.jpeg" alt="Logo Pandilla" class="mini-logo" />
         </div>
       </div>
     </main>
-      <div style="position: fixed; bottom: 10px; left: 10px; width: 333px; z-index: 100;">
-    <img src="https://i.pinimg.com/736x/1d/01/30/1d01303bc786b7c24bccd1eaf6573fdc.jpg" 
-         alt="Cheems Izquierdo" 
-         style="width: 100%; height: auto;">
-</div>
 
-<div style="position: fixed; bottom: 10px; right: 10px; width: 333px; z-index: 100; transform: scaleX(-1);">
-    <img src="https://i.pinimg.com/736x/1d/01/30/1d01303bc786b7c24bccd1eaf6573fdc.jpg" 
-         alt="Cheems Derecho" 
-         style="width: 100%; height: auto;">
-</div>
-   
   </div>
 </Layout>
 
 <style>
-  /* Contenedor principal centrado */
+  /* Contenedor principal: Centra todo el contenido */
   .main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 80vh;
-    padding: 20px;
-    font-family: 'Orbitron', sans-serif; /* Usando la fuente del evento */
+    min-height: 100vh;
+    padding: 120px 20px 60px; /* Padding extra arriba para la flecha naranja */
+    font-family: 'Orbitron', sans-serif;
   }
 
-  /* Barra superior minimalista */
+  /* Barra superior estilo terminal/tech */
   .top-bar {
     width: 100%;
     max-width: 500px;
     display: flex;
     justify-content: space-between;
-    padding: 15px;
-    border: 1px solid rgba(255, 122, 0, 0.2);
-    border-radius: 12px 12px 0 0;
-    background: rgba(255, 255, 255, 0.8);
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: #444;
+    padding: 12px 25px;
+    background: #0a0a0a;
+    color: #ffcc00; /* Amarillo tech */
+    border-radius: 15px 15px 0 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border: 1px solid rgba(255, 122, 0, 0.3);
+    border-bottom: none;
   }
 
-  /* La tarjeta central estilo Glassmorphism */
+  /* Tarjeta blanca minimalista */
   .card {
     width: 100%;
     max-width: 500px;
-    background: white;
+    background: #ffffff;
     border: 1px solid rgba(255, 122, 0, 0.2);
     border-top: none;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border-radius: 0 0 12px 12px;
+    padding: 50px 40px;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+    position: relative;
   }
 
+  /* Estilos de texto */
   .card-content h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #222;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  .card-content h2 span {
+    color: #ff7a00; /* Naranja corporativo */
+    font-weight: 800;
   }
 
   .label {
-    font-size: 0.7rem;
-    color: #888;
+    font-size: 0.65rem;
+    color: #999;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
+    letter-spacing: 3px;
+    margin: 35px 0 15px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 8px;
   }
 
-  .email {
-    display: inline-block;
-    text-decoration: none;
-    color: var(--orange, #ff7a00);
-    font-weight: 700;
-    margin-bottom: 30px;
-    transition: 0.3s;
-    border-bottom: 1px solid transparent;
+  .email-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
-  .email:hover {
-    border-color: var(--orange);
-    transform: translateX(5px);
+  .email-item {
+    font-size: 0.9rem;
+    color: #444;
+    font-weight: 600;
+    word-break: break-all; /* Protege el diseño en móviles pequeños */
+    display: flex;
+    align-items: center;
   }
 
-  /* Contenedor de la imagen de Cheems */
-  .avatar-container {
+  .icon-email {
+    color: #ff7a00;
+    margin-right: 10px;
+    font-size: 1.1rem;
+  }
+
+  /* Contenedor del logo inferior */
+  .bottom-logo-container {
+    margin-top: 88px;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
   }
 
-  .avatar {
-    width: 180px;
-    height: auto;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
-    transition: 0.5s ease;
-  }
-
-  .avatar:hover {
-    transform: scale(1.1) rotate(5deg);
-  }
-
-  /* Logos inferiores */
-  .footer-logos {
-    margin-top: 40px;
-    display: flex;
-    gap: 30px;
-    opacity: 0.7;
-    filter: grayscale(100%);
-    transition: 0.3s;
-  }
-
-  .footer-logos:hover {
-    opacity: 1;
-    filter: grayscale(0%);
-  }
-
-  .logo-img {
-    height: 40px;
+  .mini-logo {
+    height: 70px;
     width: auto;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
   }
 
-  @media (max-width: 480px) {
-    .top-bar, .card {
-      max-width: 100%;
+  .mini-logo:hover {
+    transform: scale(1.05);
+  }
+
+  /* =========================
+     MEDIA QUERIES (MÓVIL)
+  ========================== */
+  @media (max-width: 600px) {
+    .main-container {
+      padding-top: 140px; /* Más espacio para la flecha en iPhone/Pixel */
+    }
+
+    .top-bar {
+      padding: 10px 15px;
+      font-size: 0.65rem;
+    }
+
+    .card {
+      padding: 35px 20px;
+      width: 95%; /* Que ocupe casi todo el ancho */
+    }
+
+    .card-content h2 {
+      font-size: 1.05rem;
+    }
+
+    .email-item {
+      font-size: 0.8rem;
     }
   }
 </style>

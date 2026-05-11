@@ -17,7 +17,6 @@ const stats = [
       
       <div class="title">
         <span>DEVXTREME 3.0</span>
-     
       </div>
       
 
@@ -60,26 +59,46 @@ const stats = [
     z-index: 10; /* Para que esté sobre el grid */
   }
   
+  .title {
+  width: 100%;
+  max-width: 100vw; /* Asegura que no sea más ancho que la pantalla */
+  overflow: hidden; 
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
   .title span {
-    display: block;
-    font-size: clamp(3.5rem, 10vw, 8rem);
-    font-weight: 800;
-    line-height: 0.9;
-    background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  display: block;
+  /* Bajamos de 1.6rem a 1.4rem y de 12vw a 10vw */
+  font-size: clamp(1.4rem, 10vw, 8rem); 
+  font-weight: 800;
+  line-height: 1.1;
+  white-space: nowrap;
+  background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  text-align: center; /* Asegura el centrado */
+}
+
+  .version-hero {
+    /* El 3.0 puede ser un poco más pequeño para dar jerarquía */
+    font-size: clamp(1.5rem, 10vw, 6rem) !important;
+    margin-top: -5px;
   }
 
-  .version { margin: 20px 0; font-size: 1.2rem; letter-spacing: 8px; color: #888; }
-
- .description { 
+  .description { 
     max-width: 650px; 
     margin: 0 auto 50px; 
-    line-height: 1.8; 
+    line-height: 1.6; 
     color: #e66e00; 
     font-weight: 500;
+    /* Ajuste de fuente para móvil */
+    font-size: clamp(0.85rem, 3vw, 1rem);
+    padding: 0 10px;
   }
-
   .stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -130,8 +149,15 @@ const stats = [
     box-shadow: 0 10px 20px rgba(255, 122, 0, 0.15);
   }
 
-  @media (max-width: 800px) {
-    .stats { grid-template-columns: repeat(2, 1fr); }
-    .btn { width: 45%; }
+  @media (max-width: 400px) {
+    .title span {
+      font-size: 1.5rem; /* Tamaño fijo de seguridad para móviles mini */
+      letter-spacing: -2px;
+    }
+    
+    .description {
+      font-size: 0.85rem;
+      padding: 0 5px;
+    }
   }
 </style>
