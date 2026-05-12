@@ -75,7 +75,8 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
 
         <div class="bottom-logos">
             <div class="bottom-logo-left">
-                <img src="/Ieee.svg" alt="IEEE Logo" class="bottom-logo ieee-logo" />
+                <img src="/Ieee.svg" alt="IEEE Logo" class="bottom-logo ieee-logo ieee-light" />
+                <img src="/ieee-white-v.svg" alt="IEEE Logo" class="bottom-logo ieee-logo ieee-dark" />
             </div>
             <div class="bottom-logo-right">
                 <img src="/Utn.svg" alt="UTN Logo" class="bottom-logo cp-logo" />
@@ -659,7 +660,7 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
        BOTTOM LOGOS
     ============================================== */
     .bottom-logos {
-        width: 100%;
+        width: 98%;
         max-width: 1200px;
         margin: 0 auto;
         display: flex;
@@ -668,6 +669,16 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
         padding: 40px 80px;
         z-index: 50;
         position: relative;
+        background: transparent;
+        transition: background 0.4s ease;
+    }
+
+    [data-theme="dark"] .bottom-logos {
+        background: linear-gradient(135deg, rgba(223, 210, 198, 0.08) 0%, rgba(255, 0, 76, 0.04) 100%);
+        border-radius: 16px;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 122, 0, 0.12);
+        box-shadow: inset 0 0 40px rgba(255, 122, 0, 0.06);
     }
 
     .bottom-logo {
@@ -680,17 +691,26 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
         filter: drop-shadow(0 0 35px var(--orange));
         transform: scale(1.05);
     }
-    .ieee-logo { height: 280px; }
+
+    /* Logo visibility based on theme */
+    .ieee-light { display: block; }
+    .ieee-dark { display: none; }
+
+    [data-theme="dark"] .ieee-light { display: none; }
+    [data-theme="dark"] .ieee-dark { display: block; }
+
+    /* Logo sizes: IEEE 310px, CP 230px */
+    .ieee-logo { height: 310px; }
     .cp-logo   { height: 230px; }
 
     /* =============================================
        DARK MODE — LOGO INVERSION
     ============================================== */
     [data-theme="dark"] .bottom-logo {
-        filter: drop-shadow(0 0 20px var(--logo-glow)) brightness(1.1);
+        filter: drop-shadow(0 0 20px var(--logo-glow)) brightness(1.15);
     }
     [data-theme="dark"] .bottom-logo:hover {
-        filter: drop-shadow(0 0 40px var(--orange)) brightness(1.2);
+        filter: drop-shadow(0 0 40px var(--orange)) brightness(1.25);
     }
 
     /* =============================================
@@ -714,8 +734,9 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
+            border-radius: 12px;
         }
-        .ieee-logo { height: 60px; }
+        .ieee-logo { height: 75px; }
         .cp-logo   { height: 70px; }
         .nav-menu {
             top: 80px;
