@@ -12,46 +12,56 @@ const rules = [
 ];
 
 const awards = [
-  { rank: '1º', title: 'Primer lugar (equipo)', prize: 'Trofeo (uno por cada integrante, 3 trofeos), Producto IEEE, Llavero “Pingüino” Linux', color: 'var(--yellow)' },
+  { rank: '1º', title: 'Primer lugar (equipo)',   prize: 'Trofeo (uno por cada integrante, 3 trofeos), Producto IEEE, Llavero "Pingüino" Linux', color: 'var(--yellow)' },
   { rank: '2º', title: 'Segundo lugar (equipo)', prize: 'Producto IEEE y Pingüino Linux para los integrantes', color: '#B5B5B5' },
-  { rank: '3º', title: 'Tercer lugar (equipo)', prize: 'Pingüino Linux para integrantes', color: '#CD7F32' }
+  { rank: '3º', title: 'Tercer lugar (equipo)',  prize: 'Pingüino Linux para integrantes', color: '#CD7F32' }
 ];
 ---
 
 <Layout title="Reglas - DevXtreme">
   <section class="rules-section">
     <div class="grid-layout">
-      
+
+      <!-- RULES -->
       <div class="rules-container">
-        <span class="label">// REGLAMENTO</span>
-        <h2 class="section-title">Reglas del <span class="accent">Juego</span></h2>
-        
+        <span class="label reveal">// REGLAMENTO</span>
+        <h2 class="section-title reveal delay-1">Reglas del <span class="accent neon-title">Juego</span></h2>
+
         <div class="terminal-list">
-          {rules.map(rule => (
-            <div class="rule-row">
-              <span class="rule-id">{rule.id}</span>
-              <p class="rule-text">{rule.text}</p>
-            </div>
-          ))}
+          <div class="terminal-bar">
+            <span class="t-dot red"></span>
+            <span class="t-dot yellow"></span>
+            <span class="t-dot green"></span>
+            <span class="t-title">rules.sh</span>
+          </div>
+          <div class="terminal-body">
+            {rules.map((rule, index) => (
+              <div class="rule-row reveal-left" style={`--delay: ${0.12 + index * 0.06}s`}>
+                <span class="rule-id">{rule.id}</span>
+                <p class="rule-text">{rule.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
+      <!-- AWARDS -->
       <div class="awards-container">
-        <span class="label">// PREMIACIÓN</span>
-        <h2 class="section-title">Reconoci<span class="accent">mientos</span></h2>
-        
+        <span class="label reveal">// PREMIACIÓN</span>
+        <h2 class="section-title reveal delay-1">Reconoci<span class="accent neon-title">mientos</span></h2>
+
         <div class="podium">
-          {awards.map(award => (
-            <div class="award-card" style={`--rank-color: ${award.color}`}>
+          {awards.map((award, index) => (
+            <div class="award-card reveal-right" style={`--rank-color: ${award.color}; --delay: ${0.14 + index * 0.08}s`}>
               <div class="rank-badge">{award.rank}</div>
               <div class="award-info">
                 <strong class="award-title">{award.title}</strong>
                 <p class="award-prize">{award.prize}</p>
               </div>
+              <div class="award-shine"></div>
             </div>
           ))}
         </div>
-
       </div>
 
     </div>
@@ -80,9 +90,10 @@ const awards = [
   }
 
   .section-title {
-    font-size: 2.8rem;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
     margin: 10px 0 40px;
-    color: #111;
+    color: var(--text-primary);
+    transition: color 0.4s ease;
   }
 
   .accent {
@@ -91,36 +102,71 @@ const awards = [
     -webkit-text-fill-color: transparent;
   }
 
-  /* Estilo de lista de reglas */
+  /* ── TERMINAL BOX ── */
   .terminal-list {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(0,0,0,0.05);
-    padding: 20px;
+    background: var(--bg-terminal);
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: background 0.4s ease, border-color 0.4s ease;
   }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 15px;
+    background: var(--bg-code);
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .t-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .t-dot.red    { background: #ff5f57; }
+  .t-dot.yellow { background: #febc2e; }
+  .t-dot.green  { background: #28c840; }
+
+  .t-title {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    margin-left: 8px;
+  }
+
+  .terminal-body { padding: 8px; }
 
   .rule-row {
     display: flex;
     gap: 20px;
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 18px 12px;
+    border-bottom: 1px solid var(--border-rule);
+    border-radius: 4px;
+    transition: background 0.2s ease;
   }
-
   .rule-row:last-child { border-bottom: none; }
+  .rule-row:hover { background: rgba(255, 122, 0, 0.04); }
+  [data-theme="dark"] .rule-row:hover { background: rgba(255, 122, 0, 0.07); }
 
   .rule-id {
     font-family: monospace;
     font-weight: 800;
     color: var(--red);
     font-size: 1.1rem;
+    flex-shrink: 0;
   }
 
   .rule-text {
-    color: #444;
+    color: var(--text-secondary);
     line-height: 1.6;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    transition: color 0.4s ease;
+    margin: 0;
   }
 
-  /* Estilo de Premios */
+  /* ── AWARDS ── */
   .podium {
     display: flex;
     flex-direction: column;
@@ -130,17 +176,28 @@ const awards = [
   .award-card {
     display: flex;
     align-items: center;
-    background: white;
+    background: var(--bg-card);
     padding: 20px;
     border-left: 5px solid var(--rank-color);
-    box-shadow: 4px 4px 15px rgba(0,0,0,0.03);
-    transition: 0.3s;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
+    position: relative;
+    overflow: hidden;
   }
 
   .award-card:hover {
-    transform: translateX(5px);
-    box-shadow: 8px 8px 20px rgba(0,0,0,0.06);
+    transform: translateX(6px);
+    box-shadow: var(--shadow-card-hover);
   }
+
+  .award-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 60%, rgba(255,255,255,0.04) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .award-card:hover .award-shine { opacity: 1; }
 
   .rank-badge {
     font-size: 1.8rem;
@@ -149,35 +206,27 @@ const awards = [
     margin-right: 25px;
     min-width: 50px;
     text-align: center;
+    text-shadow: 0 0 10px var(--rank-color);
+    transition: text-shadow 0.3s ease;
+  }
+
+  .award-card:hover .rank-badge {
+    text-shadow: 0 0 20px var(--rank-color), 0 0 40px var(--rank-color);
   }
 
   .award-title {
     display: block;
     font-size: 1.1rem;
-    color: #222;
+    color: var(--text-card-title);
     margin-bottom: 4px;
+    transition: color 0.4s ease;
   }
 
   .award-prize {
     font-size: 0.85rem;
-    color: #777;
+    color: var(--text-muted);
     margin: 0;
-  }
-
-  .nav-links {
-    margin-top: 40px;
-  }
-
-  .btn-back {
-    text-decoration: none;
-    color: #999;
-    font-weight: 700;
-    font-size: 0.8rem;
-    transition: 0.3s;
-  }
-
-  .btn-back:hover {
-    color: var(--orange);
+    transition: color 0.4s ease;
   }
 
   @media (max-width: 900px) {

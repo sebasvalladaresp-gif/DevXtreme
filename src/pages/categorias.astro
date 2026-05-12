@@ -36,27 +36,31 @@ const categories = [
 <Layout title="Categorías - DevXtreme">
   <section class="categories-section">
     <div class="header-block">
-      <span class="tag-label">// ÁREAS EVALUADAS</span>
-      <h1 class="main-title">Categorías de <span class="accent">Desafío</span></h1>
-      <p class="intro">Cada reto está diseñado para poner a prueba diferentes facetas de tu capacidad como ingeniero.</p>
+      <span class="tag-label reveal">// ÁREAS EVALUADAS</span>
+      <h1 class="main-title reveal delay-1">Categorías de <span class="accent neon-title">Desafío</span></h1>
+      <p class="intro reveal delay-2">Cada reto está diseñado para poner a prueba diferentes facetas de tu capacidad como ingeniero.</p>
     </div>
 
     <div class="cards-container">
-      {categories.map(cat => (
-        <div class="category-card" style={`--accent-color: ${cat.color}`}>
+      {categories.map((cat, index) => (
+        <div class="category-card reveal-zoom" style={`--accent-color: ${cat.color}; --delay: ${0.18 + index * 0.08}s`}>
           <div class="card-bg"></div>
           <div class="card-content">
             <div class="icon-box">
               <span class="icon">{cat.icon}</span>
-              <div class="icon-glow"></div>
+              <div class="icon-glow pulse-glow"></div>
             </div>
             <h3>{cat.title}</h3>
             <p>{cat.desc}</p>
             <div class="code-snippet">
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
               <code>{cat.code}</code>
             </div>
           </div>
           <div class="bottom-bar"></div>
+          <div class="corner-deco"></div>
         </div>
       ))}
     </div>
@@ -71,9 +75,7 @@ const categories = [
     text-align: center;
   }
 
-  .header-block {
-    margin-bottom: 70px;
-  }
+  .header-block { margin-bottom: 70px; }
 
   .tag-label {
     color: var(--orange);
@@ -85,8 +87,9 @@ const categories = [
   .main-title {
     font-size: clamp(2.2rem, 5vw, 4rem);
     margin: 15px 0;
-    color: #222;
+    color: var(--text-primary);
     line-height: 1.2;
+    transition: color 0.4s ease;
   }
 
   .accent {
@@ -96,64 +99,68 @@ const categories = [
   }
 
   .intro {
-    color: #666;
+    color: var(--text-muted);
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
+    transition: color 0.4s ease;
   }
 
-  /* Grid de Tarjetas Responsivo */
-.cards-container {
+  /* ── GRID ── */
+  .cards-container {
     display: grid;
-    /* CAMBIO: Usamos repeat(auto-fit, minmax(...)) pero con un max-width o limitando las columnas */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    
-    /* Agregamos esto para que si hay espacio para 3, solo use 2 */
-    grid-template-columns: repeat(2, minmax(0, 1fr)); 
-    
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px;
     margin-top: 40px;
-    max-width: 900px; /* Reducimos el ancho máximo para que 2 tarjetas se vean bien */
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
   }
 
+  /* ── CARD ── */
   .category-card {
     position: relative;
-    background: white;
-    border: 1px solid rgba(0,0,0,0.08);
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
     padding: 40px 30px;
     text-align: left;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                box-shadow 0.4s ease,
+                border-color 0.4s ease,
+                background 0.4s ease;
     display: flex;
     flex-direction: column;
   }
 
   .category-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.01);
     border-color: var(--accent-color);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.12), 0 0 0 1px var(--accent-color);
   }
 
-  .card-content {
-    position: relative;
-    z-index: 2;
+  [data-theme="dark"] .category-card:hover {
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 20px rgba(255,122,0,0.1);
   }
+
+  /* Ambient glow bg */
+  .card-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(255,122,0,0.03), transparent 70%);
+    transition: opacity 0.4s ease;
+    opacity: 0;
+  }
+  .category-card:hover .card-bg { opacity: 1; }
+
+  .card-content { position: relative; z-index: 2; }
 
   .icon-box {
     position: relative;
-    width: 60px;
-    height: 60px;
+    width: 60px; height: 60px;
     margin-bottom: 25px;
   }
-
-  .icon {
-    font-size: 2.5rem;
-    position: relative;
-    z-index: 2;
-  }
-
+  .icon { font-size: 2.5rem; position: relative; z-index: 2; }
   .icon-glow {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -165,83 +172,84 @@ const categories = [
   h3 {
     font-size: 1.4rem;
     margin-bottom: 15px;
-    color: #111;
+    color: var(--text-card-title);
+    transition: color 0.4s ease;
   }
 
   p {
-    color: #555;
+    color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 25px;
     min-height: 60px;
+    transition: color 0.4s ease;
   }
 
+  /* Code snippet with fake traffic-lights */
   .code-snippet {
-    background: #f8f8f8;
+    background: var(--bg-code);
     border-left: 3px solid var(--accent-color);
     padding: 12px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.8rem;
-    color: #666;
+    color: var(--text-muted);
     border-radius: 4px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: background 0.4s ease;
   }
 
+  .code-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    margin-right: 3px;
+  }
+  .code-dot:nth-child(1) { background: #ff5f57; }
+  .code-dot:nth-child(2) { background: #febc2e; }
+  .code-dot:nth-child(3) { background: #28c840; }
+
+  code { color: var(--orange); }
+  [data-theme="dark"] code { color: var(--yellow); }
+
+  /* Bottom bar & corner */
   .bottom-bar {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
+    bottom: 0; left: 0;
+    width: 100%; height: 4px;
     background: var(--accent-color);
-    transform: scaleX(0.1);
+    transform: scaleX(0.08);
     transform-origin: left;
-    transition: 0.4s;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .category-card:hover .bottom-bar { transform: scaleX(1); }
 
-  .category-card:hover .bottom-bar {
-    transform: scaleX(1);
+  .corner-deco {
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 30px 30px 0;
+    border-color: transparent var(--accent-color) transparent transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
+  .category-card:hover .corner-deco { opacity: 0.6; }
 
-  /* =========================
-     MEDIA QUERIES (MÓVIL)
-  ========================== */
+  /* ── RESPONSIVE ── */
   @media (max-width: 650px) {
-    /* Ajuste global de la flecha del Layout solo para esta página */
-
     :global(.home-btn) {
-      width: 55px !important;
-      height: 55px !important;
-      left: 15px !important;
-      top: 95px !important;
+      width: 55px !important; height: 55px !important;
+      left: 15px !important; top: 95px !important;
       font-size: 1.4rem !important;
     }
-    .cards-container {
-      grid-template-columns: 1fr;
-    }
-    .categories-section {
-      padding: 110px 15px 50px 15px;
-    }
-
-    .header-block {
-      margin-bottom: 40px;
-    }
-
-    .main-title {
-      font-size: 1.8rem;
-    }
-
-    .cards-container {
-      grid-template-columns: 1fr; /* Una sola columna en móvil */
-      gap: 20px;
-    }
-
-    .category-card {
-      padding: 30px 20px;
-    }
-
-    .code-snippet {
-      font-size: 0.75rem;
-      overflow-x: auto;
-    }
+    .cards-container { grid-template-columns: 1fr; }
+    .categories-section { padding: 110px 15px 50px; }
+    .header-block { margin-bottom: 40px; }
+    .main-title { font-size: 1.8rem; }
+    .category-card { padding: 30px 20px; }
+    .code-snippet { font-size: 0.75rem; overflow-x: auto; }
   }
 </style>
