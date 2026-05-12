@@ -5,8 +5,10 @@ import Layout from '../layouts/Layout.astro';
 const pricing = [
   {
     type: "Miembro IEEE",
-    price: "$1.00",
+    price: "$0.50",
+    originalPrice: "$1.00",
     badge: "MEMBER",
+    discount: "50% OFF",
     color: "var(--yellow)",
     gradient: "linear-gradient(135deg, rgba(255,204,0,0.08), rgba(255,122,0,0.04))",
     perks: [
@@ -19,8 +21,10 @@ const pricing = [
   },
   {
     type: "Público General",
-    price: "$2.00",
+    price: "$1.00",
+    originalPrice: "$2.00",
     badge: "OPEN",
+    discount: "50% OFF",
     color: "var(--red)",
     gradient: "linear-gradient(135deg, rgba(255,0,76,0.08), rgba(255,122,0,0.04))",
     perks: [
@@ -82,6 +86,21 @@ const socials = [
     </div>
 
     <!-- ══════════════════════════════
+         DEADLINE BANNER
+    ═══════════════════════════════ -->
+    <div class="deadline-banner reveal delay-2">
+      <div class="deadline-content">
+        <div class="deadline-icon">⏰</div>
+        <div class="deadline-info">
+          <span class="deadline-label">INSCRIPCIONES ABIERTAS</span>
+          <p class="deadline-text">
+            Las inscripciones estarán disponibles hasta el <strong>15 de mayo a las 8:00 AM</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
          PRICING CARDS
     ═══════════════════════════════ -->
     <div class="pricing-grid">
@@ -92,9 +111,14 @@ const socials = [
         >
           <div class="card-glow"></div>
 
+          <div class="discount-badge">{plan.discount}</div>
+
           <div class="card-top">
             <span class="badge">{plan.badge}</span>
-            <div class="price-amount">{plan.price}</div>
+            <div class="price-container">
+              <div class="price-amount">{plan.price}</div>
+              <div class="original-price">{plan.originalPrice}</div>
+            </div>
             <div class="price-type">{plan.type}</div>
             <p class="price-note">{plan.note}</p>
           </div>
@@ -120,10 +144,10 @@ const socials = [
       <div class="team-info-inner">
         <div class="team-icon">👥</div>
         <div class="team-text">
-          <strong>Pago por equipo completo</strong>
+          <strong>Pago por equipo completo (50% de descuento)</strong>
           <p>
             El monto total se calcula sumando el valor individual de cada integrante según su membresía.
-            Ejemplo: 2 miembros IEEE + 1 general = <span class="highlight-price">$1 + $1 + $2 = $4</span>.
+            Ejemplo: 2 miembros IEEE + 1 general = <span class="highlight-price">$0.50 + $0.50 + $1.00 = $2.00</span>.
             El pago debe realizarse en su totalidad por equipo.
           </p>
         </div>
@@ -287,7 +311,77 @@ const socials = [
   ══════════════════════════════════ */
   .page-header {
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
+  }
+
+  /* ══════════════════════════════════
+     DEADLINE BANNER
+  ══════════════════════════════════ */
+  .deadline-banner {
+    max-width: 780px;
+    margin: 0 auto 60px;
+  }
+
+  .deadline-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(135deg, rgba(255,0,76,0.08), rgba(255,122,0,0.06));
+    border: 2px solid var(--red);
+    border-radius: 8px;
+    padding: 24px 28px;
+    transition: all 0.4s ease;
+  }
+
+  [data-theme="dark"] .deadline-content {
+    background: linear-gradient(135deg, rgba(255,0,76,0.12), rgba(255,122,0,0.08));
+    border-color: rgba(255,0,76,0.5);
+  }
+
+  .deadline-content:hover {
+    border-color: var(--orange);
+    box-shadow: 0 0 20px rgba(255,0,76,0.25);
+  }
+
+  .deadline-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    animation: pulse-icon 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-icon {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .deadline-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .deadline-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--red);
+    font-family: monospace;
+    text-transform: uppercase;
+  }
+
+  .deadline-text {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin: 0;
+    transition: color 0.4s ease;
+  }
+
+  .deadline-text strong {
+    color: var(--orange);
+    font-weight: 800;
+    font-family: monospace;
   }
 
   .prefix {
@@ -374,6 +468,29 @@ const socials = [
 
   .price-card:hover::before { opacity: 1; }
 
+  /* Discount badge */
+  .discount-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, var(--red), var(--orange));
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-family: monospace;
+    z-index: 3;
+    box-shadow: 0 4px 12px rgba(255,0,76,0.3);
+    animation: float-badge 3s ease-in-out infinite;
+  }
+
+  @keyframes float-badge {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+  }
+
   /* Ambient glow */
   .card-glow {
     position: absolute;
@@ -404,6 +521,13 @@ const socials = [
     margin-bottom: 20px;
   }
 
+  .price-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
   .price-amount {
     font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 800;
@@ -411,8 +535,19 @@ const socials = [
     background: linear-gradient(90deg, var(--accent), var(--orange));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
     transition: filter 0.3s ease;
+  }
+
+  .original-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    font-weight: 700;
   }
 
   .price-card:hover .price-amount {
@@ -958,6 +1093,13 @@ const socials = [
   @media (max-width: 768px) {
     .registro-section { padding: 100px 16px 50px; }
 
+    .deadline-content {
+      flex-direction: column;
+      gap: 14px;
+      text-align: center;
+      padding: 20px;
+    }
+
     .pricing-grid {
       grid-template-columns: 1fr;
       max-width: 420px;
@@ -1000,6 +1142,9 @@ const socials = [
   }
 
   @media (max-width: 480px) {
+    .deadline-icon { font-size: 1.6rem; }
+    .deadline-text { font-size: 0.85rem; }
+    
     .social-name, .social-role { white-space: normal; }
     .price-card { padding: 28px 20px; }
     .btn-primary, .btn-secondary { font-size: 0.7rem; padding: 10px 14px; }
