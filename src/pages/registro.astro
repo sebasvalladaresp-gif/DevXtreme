@@ -1,0 +1,835 @@
+---
+// src/pages/registro.astro
+import Layout from '../layouts/Layout.astro';
+
+const pricing = [
+  {
+    type: "Miembro IEEE",
+    price: "$1.00",
+    badge: "MEMBER",
+    color: "var(--yellow)",
+    gradient: "linear-gradient(135deg, rgba(255,204,0,0.08), rgba(255,122,0,0.04))",
+    perks: [
+      "Acceso completo al evento",
+      "Participación en HackerRank",
+      "Elegible para premiación",
+      "Precio exclusivo para miembros",
+    ],
+    note: "Por integrante con membresía activa",
+  },
+  {
+    type: "Público General",
+    price: "$2.00",
+    badge: "OPEN",
+    color: "var(--red)",
+    gradient: "linear-gradient(135deg, rgba(255,0,76,0.08), rgba(255,122,0,0.04))",
+    perks: [
+      "Acceso completo al evento",
+      "Participación en HackerRank",
+      "Elegible para premiación",
+      "Abierto a toda la comunidad",
+    ],
+    note: "Por integrante sin membresía IEEE",
+  },
+];
+
+const socials = [
+  {
+    name: "Adrián Urresta",
+    handle: "@adrx_sanz",
+    role: "Presidente IEEE CS Student Branch UTN",
+    url: "https://www.instagram.com/adrx_sanz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+    color: "var(--orange)",
+  },
+  {
+    name: "Sebastián Valladares",
+    handle: "@franciscov827",
+    role: "Creador · Miembro IEEE UTN",
+    url: "https://www.instagram.com/franciscov827?igsh=MXVrYjA2MGUxZWdtMg=",
+    color: "var(--yellow)",
+  },
+  {
+    name: "IEEE Computer Society UTN",
+    handle: "@ieee_utncs",
+    role: "Capítulo Estudiantil IEEE UTN",
+    url: "https://www.instagram.com/ieee_utncs/",
+    color: "var(--red)",
+  },
+  {
+    name: "Club de Programación UTN",
+    handle: "@clubprogramacionutn",
+    role: "Comunidad de Programación UTN",
+    url: "https://www.instagram.com/clubprogramacionutn/",
+    color: "var(--orange)",
+  },
+];
+---
+
+<Layout title="Registro - DevXtreme">
+  <section class="registro-section">
+
+    <!-- ══════════════════════════════
+         HEADER
+    ═══════════════════════════════ -->
+    <div class="page-header">
+      <span class="prefix reveal">// INSCRIPCIONES</span>
+      <h1 class="main-title reveal delay-1">
+        Registro &amp; <span class="accent neon-title">Costos</span>
+      </h1>
+      <p class="subtitle reveal delay-2">
+        La competencia es por equipos de 3 personas. El costo se calcula individualmente según la membresía de cada integrante.
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════
+         PRICING CARDS
+    ═══════════════════════════════ -->
+    <div class="pricing-grid">
+      {pricing.map((plan, i) => (
+        <div
+          class="price-card reveal-zoom"
+          style={`--accent: ${plan.color}; --card-bg: ${plan.gradient}; --delay: ${0.18 + i * 0.12}s`}
+        >
+          <div class="card-glow"></div>
+
+          <div class="card-top">
+            <span class="badge">{plan.badge}</span>
+            <div class="price-amount">{plan.price}</div>
+            <div class="price-type">{plan.type}</div>
+            <p class="price-note">{plan.note}</p>
+          </div>
+
+          <ul class="perk-list">
+            {plan.perks.map(perk => (
+              <li class="perk-item">
+                <span class="perk-check">✓</span>
+                <span>{perk}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="card-bottom-bar"></div>
+        </div>
+      ))}
+    </div>
+
+    <!-- ══════════════════════════════
+         TEAM COST CALCULATOR INFO
+    ═══════════════════════════════ -->
+    <div class="team-info reveal delay-2">
+      <div class="team-info-inner">
+        <div class="team-icon">👥</div>
+        <div class="team-text">
+          <strong>Pago por equipo completo</strong>
+          <p>
+            El monto total se calcula sumando el valor individual de cada integrante según su membresía.
+            Ejemplo: 2 miembros IEEE + 1 general = <span class="highlight-price">$1 + $1 + $2 = $4</span>.
+            El pago debe realizarse en su totalidad por equipo.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         PAYMENT METHODS
+    ═══════════════════════════════ -->
+    <div class="payment-section">
+      <span class="prefix reveal">// MÉTODOS DE PAGO</span>
+      <h2 class="section-title reveal delay-1">¿Cómo <span class="accent neon-title">pagar?</span></h2>
+
+      <div class="payment-grid">
+
+        <!-- Transferencia -->
+        <div class="payment-card reveal-left" style="--delay: 0.2s">
+          <div class="payment-icon-wrap transfer">
+            <!-- Transfer icon SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2"/>
+              <line x1="2" y1="10" x2="22" y2="10"/>
+            </svg>
+          </div>
+          <div class="payment-info">
+            <h3>Pago por Transferencia</h3>
+            <p>Realiza tu transferencia bancaria y registra el comprobante de pago a través del formulario oficial.</p>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSf4WLvdGXD1bmyWqee9N5IfMA6szlF5eUniLZvVFHSRzQWXCw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary"
+            >
+              <span>SUBIR COMPROBANTE</span>
+              <svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="2.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Efectivo -->
+        <div class="payment-card reveal-right" style="--delay: 0.3s">
+          <div class="payment-icon-wrap cash">
+            <!-- Cash icon SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <div class="payment-info">
+            <h3>Pago en Efectivo</h3>
+            <p>Si prefieres pagar en persona, comunícate directamente con el organizador para coordinar el pago físico.</p>
+            <a
+              href="https://wa.me/593978640544"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-secondary"
+            >
+              <svg class="wa-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+              <span>097 864 0544</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         SOCIAL LINKS
+    ═══════════════════════════════ -->
+    <div class="social-section">
+      <span class="prefix reveal">// SÍGUENOS</span>
+      <h2 class="section-title reveal delay-1">Comunidad &amp; <span class="accent neon-title">Contacto</span></h2>
+      <p class="social-intro reveal delay-2">
+        Mantente al día con las novedades del evento siguiendo a los organizadores y comunidades en Instagram.
+      </p>
+
+      <div class="social-grid">
+        {socials.map((s, i) => (
+          <a
+            href={s.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card reveal-zoom"
+            style={`--s-color: ${s.color}; --delay: ${0.1 + i * 0.1}s`}
+            aria-label={`Instagram de ${s.name}`}
+          >
+            <!-- Instagram SVG icon -->
+            <div class="ig-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round" class="ig-icon">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </div>
+            <div class="social-info">
+              <span class="social-name">{s.name}</span>
+              <span class="social-handle">{s.handle}</span>
+              <span class="social-role">{s.role}</span>
+            </div>
+            <div class="social-arrow">→</div>
+            <div class="social-bar"></div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+  </section>
+</Layout>
+
+<style>
+  /* ══════════════════════════════════
+     LAYOUT
+  ══════════════════════════════════ */
+  .registro-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px 60px;
+  }
+
+  /* ══════════════════════════════════
+     PAGE HEADER
+  ══════════════════════════════════ */
+  .page-header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  .prefix {
+    display: inline-block;
+    color: var(--orange);
+    font-family: monospace;
+    font-weight: 800;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+
+  .main-title {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin: 10px 0 20px;
+    transition: color 0.4s ease;
+  }
+
+  .accent {
+    background: linear-gradient(90deg, var(--orange), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    transition: color 0.4s ease;
+  }
+
+  /* ══════════════════════════════════
+     PRICING GRID
+  ══════════════════════════════════ */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 780px;
+    margin: 0 auto 40px;
+  }
+
+  .price-card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    padding: 36px 28px 32px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transition:
+      transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      border-color 0.35s ease,
+      box-shadow 0.35s ease,
+      background 0.4s ease;
+    cursor: default;
+  }
+
+  .price-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--card-bg);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+  }
+
+  .price-card:hover {
+    transform: translateY(-10px) scale(1.01);
+    border-color: var(--accent);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.1), 0 0 0 1px var(--accent);
+  }
+
+  [data-theme="dark"] .price-card:hover {
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 25px rgba(255,122,0,0.12);
+  }
+
+  .price-card:hover::before { opacity: 1; }
+
+  /* Ambient glow */
+  .card-glow {
+    position: absolute;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: var(--accent);
+    filter: blur(80px);
+    opacity: 0;
+    top: -40px; right: -40px;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+  }
+  .price-card:hover .card-glow { opacity: 0.08; }
+  [data-theme="dark"] .price-card:hover .card-glow { opacity: 0.18; }
+
+  /* Card content (above pseudo) */
+  .card-top, .perk-list { position: relative; z-index: 2; }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    font-family: monospace;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 3px 10px;
+    margin-bottom: 20px;
+  }
+
+  .price-amount {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(90deg, var(--accent), var(--orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+    transition: filter 0.3s ease;
+  }
+
+  .price-card:hover .price-amount {
+    filter: drop-shadow(0 0 16px var(--accent));
+  }
+
+  .price-type {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-card-title);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    transition: color 0.4s ease;
+  }
+
+  .price-note {
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    font-family: monospace;
+    line-height: 1.4;
+    margin: 0;
+    transition: color 0.4s ease;
+  }
+
+  /* Perks */
+  .perk-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .perk-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    transition: color 0.4s ease;
+  }
+
+  .perk-check {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Bottom bar */
+  .card-bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    transform: scaleX(0.12);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+  }
+  .price-card:hover .card-bottom-bar { transform: scaleX(1); }
+
+  /* ══════════════════════════════════
+     TEAM INFO BANNER
+  ══════════════════════════════════ */
+  .team-info {
+    max-width: 780px;
+    margin: 0 auto 80px;
+  }
+
+  .team-info-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-accent);
+    border-left: 4px solid var(--orange);
+    padding: 24px 28px;
+    transition: background 0.4s ease, border-color 0.4s ease;
+  }
+
+  .team-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .team-text strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    transition: color 0.4s ease;
+  }
+
+  .team-text p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 0;
+    transition: color 0.4s ease;
+  }
+
+  .highlight-price {
+    color: var(--orange);
+    font-weight: 800;
+    font-family: monospace;
+  }
+
+  /* ══════════════════════════════════
+     PAYMENT SECTION
+  ══════════════════════════════════ */
+  .payment-section { margin-bottom: 80px; }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 10px 0 40px;
+    transition: color 0.4s ease;
+  }
+
+  .payment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .payment-card {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    padding: 32px 28px;
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease,
+      background 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .payment-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,122,0,0.03), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .payment-card:hover { transform: translateY(-6px); }
+  .payment-card:hover::after { opacity: 1; }
+  .payment-card:hover { box-shadow: var(--shadow-card-hover); }
+
+  /* Transfer card hover — orange tint */
+  .payment-card:first-child:hover { border-color: var(--orange); }
+  /* Cash card hover — green tint */
+  .payment-card:last-child:hover  { border-color: #25D366; }
+
+  .payment-icon-wrap {
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  .payment-card:hover .payment-icon-wrap { transform: scale(1.08); }
+
+  .payment-icon-wrap svg { width: 26px; height: 26px; }
+
+  .transfer {
+    background: rgba(255, 122, 0, 0.1);
+    color: var(--orange);
+    border: 1px solid rgba(255, 122, 0, 0.25);
+  }
+  [data-theme="dark"] .transfer {
+    background: rgba(255, 122, 0, 0.15);
+  }
+
+  .cash {
+    background: rgba(37, 211, 102, 0.1);
+    color: #25D366;
+    border: 1px solid rgba(37, 211, 102, 0.25);
+  }
+  [data-theme="dark"] .cash {
+    background: rgba(37, 211, 102, 0.12);
+  }
+
+  .payment-info { display: flex; flex-direction: column; gap: 10px; }
+
+  .payment-info h3 {
+    font-size: 1.1rem;
+    color: var(--text-card-title);
+    margin: 0;
+    transition: color 0.4s ease;
+  }
+
+  .payment-info p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+    transition: color 0.4s ease;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    padding: 12px 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    background: linear-gradient(90deg, var(--yellow), var(--orange));
+    color: #fff;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+  .btn-primary:hover::before  { transform: translateX(100%); }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(255, 122, 0, 0.4);
+  }
+
+  .btn-arrow { width: 16px; height: 16px; flex-shrink: 0; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+    padding: 11px 18px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    background: rgba(37, 211, 102, 0.1);
+    color: #25D366;
+    border: 1px solid rgba(37, 211, 102, 0.35);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn-secondary:hover {
+    background: #25D366;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(37, 211, 102, 0.35);
+  }
+
+  .wa-icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* ══════════════════════════════════
+     SOCIAL SECTION
+  ══════════════════════════════════ */
+  .social-section { }
+
+  .social-intro {
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.7;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    margin-bottom: 40px;
+    transition: color 0.4s ease;
+  }
+
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .social-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    padding: 20px 22px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition:
+      transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      background 0.4s ease;
+  }
+
+  .social-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    border-color: var(--s-color);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.1);
+  }
+
+  [data-theme="dark"] .social-card:hover {
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 16px rgba(255,122,0,0.08);
+  }
+
+  /* IG icon wrapper */
+  .ig-icon-wrap {
+    flex-shrink: 0;
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255,122,0,0.12), rgba(255,0,76,0.08));
+    border: 1px solid rgba(255,122,0,0.2);
+    color: var(--s-color);
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .social-card:hover .ig-icon-wrap {
+    transform: scale(1.1) rotate(-5deg);
+    background: linear-gradient(135deg, rgba(255,122,0,0.2), rgba(255,0,76,0.14));
+  }
+  [data-theme="dark"] .ig-icon-wrap {
+    background: linear-gradient(135deg, rgba(255,122,0,0.16), rgba(255,0,76,0.1));
+  }
+
+  .ig-icon { width: 22px; height: 22px; }
+
+  /* Social text */
+  .social-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .social-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-card-title);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.4s ease;
+  }
+
+  .social-handle {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--s-color);
+    font-family: monospace;
+    letter-spacing: 0.5px;
+  }
+
+  .social-role {
+    font-size: 0.7rem;
+    color: var(--text-faint);
+    font-family: system-ui, sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.4s ease;
+  }
+
+  /* Arrow */
+  .social-arrow {
+    margin-left: auto;
+    font-size: 1.1rem;
+    color: var(--text-faint);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  .social-card:hover .social-arrow {
+    transform: translateX(4px);
+    color: var(--s-color);
+  }
+
+  /* Bottom color bar */
+  .social-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--s-color), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .social-card:hover .social-bar { transform: scaleX(1); }
+
+  /* ══════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════ */
+  @media (max-width: 768px) {
+    .registro-section { padding: 100px 16px 50px; }
+
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 420px;
+    }
+
+    .payment-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .payment-card {
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px 20px;
+    }
+
+    .social-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .team-info-inner {
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .main-title  { font-size: 1.9rem; }
+    .section-title { font-size: 1.7rem; }
+  }
+
+  @media (max-width: 480px) {
+    .social-name, .social-role { white-space: normal; }
+    .price-card { padding: 28px 20px; }
+    .btn-primary, .btn-secondary { font-size: 0.7rem; padding: 10px 14px; }
+  }
+</style>
