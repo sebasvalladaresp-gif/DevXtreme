@@ -100,7 +100,7 @@ import Layout from '../layouts/Layout.astro';
   .site-footer p { margin: 5px 0; }
 
   .site-footer .highlight {
-    color: var(--orange);
+    color: var(--cyan);
     font-weight: 700;
   }
 
@@ -129,7 +129,7 @@ import Layout from '../layouts/Layout.astro';
 
   .founders-prefix {
     display: inline-block;
-    color: var(--orange);
+    color: var(--cyan);
     font-family: monospace;
     font-weight: 800;
     letter-spacing: 3px;
@@ -147,7 +147,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .founders-title .accent {
-    background: linear-gradient(90deg, var(--orange), var(--red));
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -198,17 +198,17 @@ import Layout from '../layouts/Layout.astro';
   }
 
   [data-theme="dark"] .founder-image-wrapper {
-    border-color: rgba(255, 122, 0, 0.4);
-    box-shadow: 0 8px 32px rgba(255, 122, 0, 0.1), 0 0 30px rgba(255, 122, 0, 0.05);
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1), 0 0 30px rgba(0, 212, 255, 0.05);
   }
 
   .founder-card:hover .founder-image-wrapper {
-    border-color: var(--orange);
-    box-shadow: 0 12px 40px rgba(255, 122, 0, 0.25);
+    border-color: var(--cyan);
+    box-shadow: 0 12px 40px rgba(0, 212, 255, 0.25);
   }
 
   [data-theme="dark"] .founder-card:hover .founder-image-wrapper {
-    box-shadow: 0 12px 50px rgba(255, 122, 0, 0.3), 0 0 40px rgba(255, 0, 76, 0.1);
+    box-shadow: 0 12px 50px rgba(0, 212, 255, 0.3), 0 0 40px rgba(255, 0, 110, 0.1);
   }
 
   .founder-image {
@@ -231,7 +231,7 @@ import Layout from '../layouts/Layout.astro';
   .founder-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255, 122, 0, 0.1), rgba(255, 0, 76, 0.05));
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.05));
     opacity: 0;
     transition: opacity 0.4s ease;
   }
@@ -259,7 +259,7 @@ import Layout from '../layouts/Layout.astro';
 
   .founder-role {
     font-size: clamp(0.8rem, 1.8vw, 0.9rem);
-    color: var(--orange);
+    color: var(--cyan);
     font-weight: 600;
     margin: 0;
     letter-spacing: 1px;

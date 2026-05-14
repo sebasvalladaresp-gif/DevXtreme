@@ -12,7 +12,7 @@ const rules = [
 ];
 
 const awards = [
-  { rank: '1º', title: 'Primer lugar (equipo)',   prize: 'Trofeo (uno por cada integrante, 3 trofeos), Producto IEEE, Llavero "Pingüino" Linux', color: 'var(--yellow)' },
+  { rank: '1º', title: 'Primer lugar (equipo)',   prize: 'Trofeo (uno por cada integrante, 3 trofeos), Producto IEEE, Llavero "Pingüino" Linux', color: 'var(--mint)' },
   { rank: '2º', title: 'Segundo lugar (equipo)', prize: 'Producto IEEE y Pingüino Linux para los integrantes', color: '#B5B5B5' },
   { rank: '3º', title: 'Tercer lugar (equipo)',  prize: 'Pingüino Linux para integrantes', color: '#CD7F32' }
 ];
@@ -83,7 +83,7 @@ const awards = [
   }
 
   .label {
-    color: var(--orange);
+    color: var(--cyan);
     font-family: monospace;
     font-weight: 800;
     letter-spacing: 2px;
@@ -97,7 +97,7 @@ const awards = [
   }
 
   .accent {
-    background: linear-gradient(90deg, var(--orange), var(--red));
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -147,13 +147,13 @@ const awards = [
     transition: background 0.2s ease;
   }
   .rule-row:last-child { border-bottom: none; }
-  .rule-row:hover { background: rgba(255, 122, 0, 0.04); }
-  [data-theme="dark"] .rule-row:hover { background: rgba(255, 122, 0, 0.07); }
+  .rule-row:hover { background: rgba(0, 212, 255, 0.04); }
+  [data-theme="dark"] .rule-row:hover { background: rgba(0, 212, 255, 0.07); }
 
   .rule-id {
     font-family: monospace;
     font-weight: 800;
-    color: var(--red);
+    color: var(--magenta);
     font-size: 1.1rem;
     flex-shrink: 0;
   }

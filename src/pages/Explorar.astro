@@ -25,22 +25,22 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="stats-panel">
-        <div class="stat-card reveal-zoom" style="--delay: 0.2s; --bar-color: var(--red)">
+        <div class="stat-card reveal-zoom" style="--delay: 0.2s; --bar-color: var(--purple)">
           <span class="stat-value">4H</span>
           <span class="stat-label">DE COMPETENCIA</span>
           <div class="stat-bar"></div>
         </div>
-        <div class="stat-card reveal-zoom" style="--delay: 0.28s; --bar-color: var(--orange)">
+        <div class="stat-card reveal-zoom" style="--delay: 0.28s; --bar-color: var(--cyan)">
           <span class="stat-value">3.0</span>
           <span class="stat-label">EDICIÓN</span>
           <div class="stat-bar"></div>
         </div>
-        <div class="stat-card reveal-zoom" style="--delay: 0.36s; --bar-color: var(--yellow)">
+        <div class="stat-card reveal-zoom" style="--delay: 0.36s; --bar-color: var(--mint)">
           <span class="stat-value">N+1</span>
           <span class="stat-label">RETOS TÉCNICOS</span>
           <div class="stat-bar"></div>
         </div>
-        <div class="stat-card reveal-zoom" style="--delay: 0.44s; --bar-color: var(--red)">
+        <div class="stat-card reveal-zoom" style="--delay: 0.44s; --bar-color: var(--magenta)">
           <span class="stat-value">∞</span>
           <span class="stat-label">LÍNEAS DE CÓDIGO</span>
           <div class="stat-bar"></div>
@@ -71,7 +71,7 @@ import Layout from '../layouts/Layout.astro';
   .subtitle {
     display: block;
     font-family: monospace;
-    color: var(--orange);
+    color: var(--cyan);
     font-weight: 800;
     letter-spacing: 2px;
     margin-bottom: 10px;
@@ -85,7 +85,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .highlight {
-    background: linear-gradient(90deg, var(--orange), var(--red));
+    background: linear-gradient(90deg, var(--sky-blue), var(--purple), var(--cyan));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -110,16 +110,16 @@ import Layout from '../layouts/Layout.astro';
 
   .cta-text {
     font-weight: 700;
-    color: var(--red) !important;
+    color: var(--magenta) !important;
     font-size: 1.05rem !important;
     padding: 16px 20px;
-    border-left: 3px solid var(--red);
-    background: rgba(255, 0, 76, 0.04);
+    border-left: 3px solid var(--magenta);
+    background: rgba(255, 0, 110, 0.04);
     border-radius: 0 4px 4px 0;
   }
 
   [data-theme="dark"] .cta-text {
-    background: rgba(255, 0, 76, 0.08);
+    background: rgba(255, 0, 110, 0.08);
   }
 
   /* ── STATS PANEL ── */
@@ -170,7 +170,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .stat-card:hover .stat-value {
-    color: var(--orange);
+    color: var(--cyan);
   }
 
   .stat-label {

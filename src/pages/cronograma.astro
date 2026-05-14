@@ -2,12 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 
 const agenda = [
-  { time: '09:00', title: 'Inauguración',          desc: 'Palabras de las autoridades y apertura oficial del evento (09:00 - 09:20).', tag: 'INICIO', color: 'var(--yellow)' },
-  { time: '09:20', title: 'Explicación del entorno', desc: 'Introducción a la plataforma HackerRank, normas de envío y formato de puntuación (09:20 - 10:00).', tag: 'INFO', color: 'var(--orange)' },
-  { time: '10:00', title: 'Competencia',            desc: 'Competencia principal en HackerRank. Resolución de problemas y envío de soluciones (10:00 - 14:00).', tag: 'COMP', color: 'var(--red)' },
-  { time: '13:00', title: 'Break (opcional)',        desc: 'Pausa opcional de 15 minutos para quienes deseen (13:00 - 13:15).', tag: 'PAUSA', color: 'var(--orange)' },
-  { time: '14:00', title: 'Premiación',             desc: 'Revisión final de puntajes y ceremonia de premiación (14:00 - 14:30).', tag: 'PREMIA', color: 'var(--yellow)' },
-  { time: '14:30', title: 'Cierre',                 desc: 'Cierre oficial del evento y despedida.', tag: 'FIN', color: 'var(--orange)' }
+  { time: '09:00', title: 'Inauguración',          desc: 'Palabras de las autoridades y apertura oficial del evento (09:00 - 09:20).', tag: 'INICIO', color: 'var(--sky-blue)' },
+  { time: '09:20', title: 'Explicación del entorno', desc: 'Introducción a la plataforma HackerRank, normas de envío y formato de puntuación (09:20 - 10:00).', tag: 'INFO', color: 'var(--cyan)' },
+  { time: '10:00', title: 'Competencia',            desc: 'Competencia principal en HackerRank. Resolución de problemas y envío de soluciones (10:00 - 14:00).', tag: 'COMP', color: 'var(--purple)' },
+  { time: '13:00', title: 'Break (opcional)',        desc: 'Pausa opcional de 15 minutos para quienes deseen (13:00 - 13:15).', tag: 'PAUSA', color: 'var(--mint)' },
+  { time: '14:00', title: 'Premiación',             desc: 'Revisión final de puntajes y ceremonia de premiación (14:00 - 14:30).', tag: 'PREMIA', color: 'var(--sky-blue)' },
+  { time: '14:30', title: 'Cierre',                 desc: 'Cierre oficial del evento y despedida.', tag: 'FIN', color: 'var(--cyan)' }
 ];
 ---
 
@@ -59,7 +59,7 @@ const agenda = [
   }
 
   .prefix {
-    color: var(--orange);
+    color: var(--cyan);
     font-weight: 800;
     font-family: monospace;
     letter-spacing: 2px;
@@ -74,7 +74,7 @@ const agenda = [
   }
 
   .gradient-text {
-    background: linear-gradient(90deg, var(--orange), var(--red));
+    background: linear-gradient(90deg, var(--purple), var(--cyan), var(--mint));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -145,7 +145,7 @@ const agenda = [
   .line {
     width: 2px;
     flex-grow: 1;
-    background: linear-gradient(to bottom, var(--orange), transparent);
+    background: linear-gradient(to bottom, var(--cyan), var(--purple), transparent);
     margin: 5px 0;
     opacity: 0.5;
   }
@@ -182,10 +182,10 @@ const agenda = [
 
   .info-card:hover { transform: translateX(10px); }
   .info-card:hover .card-accent-bar { transform: scaleY(1); }
-  .info-card:hover { border-color: var(--orange); }
+  .info-card:hover { border-color: var(--cyan); }
 
   [data-theme="dark"] .info-card:hover {
-    box-shadow: 8px 8px 0px rgba(255,122,0,0.15);
+    box-shadow: 8px 8px 0px rgba(0,212,255,0.15);
   }
 
   .card-header {

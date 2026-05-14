@@ -6,28 +6,28 @@ const categories = [
     title: "Algoritmos & Complejidad",
     icon: "⚡",
     desc: "Optimización, estructuras de datos avanzadas, ordenamiento y análisis de Big O (complejidad temporal y espacial).",
-    color: "var(--yellow)",
+    color: "var(--sky-blue)",
     code: "void solve() { O(log n); }"
   },
   {
     title: "Lógica & Matemáticas",
     icon: "🧠",
     desc: "Razonamiento combinatorio, teoría de números, teoría de grafos y matemática discreta aplicada a la computación.",
-    color: "var(--red)",
+    color: "var(--purple)",
     code: "P ∩ Q = { x | x ∈ P ∧ x ∈ Q }"
   },
   {
     title: "Programación Práctica",
     icon: "🛠️",
     desc: "Implementación de lógica de negocio, manejo de flujos de datos y creación de soluciones mantenibles y eficientes.",
-    color: "var(--orange)",
+    color: "var(--cyan)",
     code: "git commit -m 'feat: optimized'"
   },
   {
     title: "Estructuras de Datos",
     icon: "📚",
     desc: "Conocimiento y uso eficiente de estructuras (pilas, colas, listas, árboles, tablas hash, grafos) y sus aplicaciones en algoritmos.",
-    color: "var(--red)",
+    color: "var(--mint)",
     code: "vector<int> v; // estructura"
   }
 ];
@@ -78,7 +78,7 @@ const categories = [
   .header-block { margin-bottom: 70px; }
 
   .tag-label {
-    color: var(--orange);
+    color: var(--cyan);
     font-family: monospace;
     font-weight: 800;
     letter-spacing: 3px;
@@ -93,7 +93,7 @@ const categories = [
   }
 
   .accent {
-    background: linear-gradient(90deg, var(--orange), var(--red));
+    background: linear-gradient(90deg, var(--purple), var(--cyan), var(--mint));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -211,8 +211,8 @@ const categories = [
   .code-dot:nth-child(2) { background: #febc2e; }
   .code-dot:nth-child(3) { background: #28c840; }
 
-  code { color: var(--orange); }
-  [data-theme="dark"] code { color: var(--yellow); }
+  code { color: var(--cyan); }
+  [data-theme="dark"] code { color: var(--sky-blue); }
 
   /* Bottom bar & corner */
   .bottom-bar {

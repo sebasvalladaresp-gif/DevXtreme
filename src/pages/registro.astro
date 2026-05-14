@@ -10,28 +10,28 @@ const socials = [
     handle: "@adrx_sanz",
     role: "Presidente IEEE CS Student Branch UTN",
     url: "https://www.instagram.com/adrx_sanz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-    color: "var(--orange)",
+    color: "var(--cyan)",
   },
   {
     name: "Dario López",
     handle: "@darlopez05",
     role: "Presidente Club Programación UTN",
     url: "https://www.instagram.com/darlopez05/",
-    color: "var(--yellow)",
+    color: "var(--sky-blue)",
   },
   {
     name: "IEEE Computer Society UTN",
     handle: "@ieee_utncs",
     role: "Capítulo Estudiantil IEEE UTN",
     url: "https://www.instagram.com/ieee_utncs/",
-    color: "var(--red)",
+    color: "var(--purple)",
   },
   {
     name: "Club de Programación UTN",
     handle: "@clubprogramacionutn",
     role: "Comunidad de Programación UTN",
     url: "https://www.instagram.com/clubprogramacionutn/",
-    color: "var(--orange)",
+    color: "var(--mint)",
   },
 ];
 ---
@@ -145,7 +145,7 @@ const socials = [
 
   .prefix {
     display: inline-block;
-    color: var(--orange);
+    color: var(--cyan);
     font-family: monospace;
     font-weight: 800;
     letter-spacing: 3px;
@@ -163,7 +163,7 @@ const socials = [
   }
 
   .accent {
-    background: linear-gradient(90deg, var(--orange), var(--red));
+    background: linear-gradient(90deg, var(--sky-blue), var(--cyan), var(--purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -347,8 +347,8 @@ const socials = [
   }
 
   .form-cta-container:hover {
-    border-color: var(--orange);
-    box-shadow: 0 16px 48px rgba(255,122,0,0.15);
+    border-color: var(--cyan);
+    box-shadow: 0 16px 48px rgba(0,212,255,0.15);
   }
 
   [data-theme="dark"] .form-cta-container:hover {
@@ -360,7 +360,7 @@ const socials = [
   .form-cta-title {
     font-size: clamp(1.4rem, 4vw, 2rem);
     font-weight: 800;
-    background: linear-gradient(90deg, var(--orange), var(--red));
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 12px;
@@ -393,9 +393,9 @@ const socials = [
     text-decoration: none;
     text-transform: uppercase;
     
-    background: linear-gradient(135deg, rgba(255,0,76,0.12), rgba(255,122,0,0.1));
-    border: 2px solid var(--red);
-    color: var(--red);
+    background: linear-gradient(135deg, rgba(255,0,110,0.12), rgba(0,212,255,0.1));
+    border: 2px solid var(--magenta);
+    color: var(--magenta);
     
     position: relative;
     overflow: hidden;
@@ -418,14 +418,14 @@ const socials = [
   .form-cta-button span {
     position: relative;
     z-index: 2;
-    background: linear-gradient(90deg, var(--red), var(--orange));
+    background: linear-gradient(90deg, var(--magenta), var(--cyan));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: filter 0.3s ease;
   }
 
   .form-cta-button:hover span {
-    filter: drop-shadow(0 0 8px rgba(255,0,76,0.5));
+    filter: drop-shadow(0 0 8px rgba(255,0,110,0.5));
   }
 
   .cta-arrow {
@@ -438,12 +438,12 @@ const socials = [
 
   .form-cta-button:hover {
     transform: translateY(-4px) scale(1.02);
-    border-color: var(--orange);
-    box-shadow: 0 12px 32px rgba(255,0,76,0.25);
+    border-color: var(--cyan);
+    box-shadow: 0 12px 32px rgba(255,0,110,0.25);
   }
 
   [data-theme="dark"] .form-cta-button:hover {
-    box-shadow: 0 12px 40px rgba(255,0,76,0.4), 0 0 20px rgba(255,122,0,0.15);
+    box-shadow: 0 12px 40px rgba(255,0,110,0.4), 0 0 20px rgba(0,212,255,0.15);
   }
 
   .form-cta-button:hover .cta-arrow {
