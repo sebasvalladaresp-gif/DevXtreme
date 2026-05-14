@@ -1,68 +1,77 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const categories = [
-  {
-    title: "Algoritmos & Complejidad",
-    icon: "⚡",
-    desc: "Optimización, estructuras de datos avanzadas, ordenamiento y análisis de Big O (complejidad temporal y espacial).",
-    color: "var(--yellow)",
-    code: "void solve() { O(log n); }"
-  },
-  {
-    title: "Lógica & Matemáticas",
-    icon: "🧠",
-    desc: "Razonamiento combinatorio, teoría de números, teoría de grafos y matemática discreta aplicada a la computación.",
-    color: "var(--red)",
-    code: "P ∩ Q = { x | x ∈ P ∧ x ∈ Q }"
-  },
-  {
-    title: "Programación Práctica",
-    icon: "🛠️",
-    desc: "Implementación de lógica de negocio, manejo de flujos de datos y creación de soluciones mantenibles y eficientes.",
-    color: "var(--orange)",
-    code: "git commit -m 'feat: optimized'"
-  },
-  {
-    title: "Estructuras de Datos",
-    icon: "📚",
-    desc: "Conocimiento y uso eficiente de estructuras (pilas, colas, listas, árboles, tablas hash, grafos) y sus aplicaciones en algoritmos.",
-    color: "var(--red)",
-    code: "vector<int> v; // estructura"
-  }
-];
 ---
 
-<Layout title="Categorías - DevXtreme">
+<Layout title="Categorías - DevXtreme 3.0">
   <section class="categories-section">
-    <div class="header-block">
-      <span class="tag-label reveal">// ÁREAS EVALUADAS</span>
-      <h1 class="main-title reveal delay-1">Categorías de <span class="accent neon-title">Desafío</span></h1>
-      <p class="intro reveal delay-2">Cada reto está diseñado para poner a prueba diferentes facetas de tu capacidad como ingeniero.</p>
+    <div class="header-content reveal">
+      <span class="eyebrow">// NIVELES DE DIFICULTAD</span>
+      <h1 class="page-title">Elige tu <span class="gradient-text">Categoría</span></h1>
+      <p class="page-subtitle">Tres niveles de dificultad. Diseñados para poner a prueba tu lógica sin importar el semestre en el que te encuentres.</p>
     </div>
 
-    <div class="cards-container">
-      {categories.map((cat, index) => (
-        <div class="category-card reveal-zoom" style={`--accent-color: ${cat.color}; --delay: ${0.18 + index * 0.08}s`}>
-          <div class="card-bg"></div>
-          <div class="card-content">
-            <div class="icon-box">
-              <span class="icon">{cat.icon}</span>
-              <div class="icon-glow pulse-glow"></div>
-            </div>
-            <h3>{cat.title}</h3>
-            <p>{cat.desc}</p>
-            <div class="code-snippet">
-              <span class="code-dot"></span>
-              <span class="code-dot"></span>
-              <span class="code-dot"></span>
-              <code>{cat.code}</code>
-            </div>
+    <div class="cat-grid">
+
+      <!-- BÁSICA -->
+      <div class="cat-card reveal-zoom" style="--delay: 0.1s; --cat-color: var(--green);">
+        <div class="cat-glow"></div>
+        <div class="cat-inner">
+          <div class="cat-level">NIVEL 01</div>
+          <h2 class="cat-name">Básica</h2>
+          <p class="cat-desc">Fundamentos de programación, estructuras de control, bucles y lógica básica.</p>
+          <div class="cat-reqs">
+            <strong>REQUISITO:</strong>
+            <span>1ero a 2do Semestre</span>
           </div>
-          <div class="bottom-bar"></div>
-          <div class="corner-deco"></div>
+          <div class="cat-code">
+            <span class="code-comment">// Ejemplo esperado</span>
+            <span class="code-line">print("Hello World!")</span>
+            <span class="code-line">for i in range(10):</span>
+            <span class="code-line">&nbsp;&nbsp;solve()</span>
+          </div>
         </div>
-      ))}
+      </div>
+
+      <!-- INTERMEDIA -->
+      <div class="cat-card reveal-zoom" style="--delay: 0.2s; --cat-color: var(--orange-light);">
+        <div class="cat-glow"></div>
+        <div class="cat-inner">
+          <div class="cat-level">NIVEL 02</div>
+          <h2 class="cat-name">Intermedia</h2>
+          <p class="cat-desc">Estructuras de datos (pilas, colas, listas), algoritmos de búsqueda y ordenamiento.</p>
+          <div class="cat-reqs">
+            <strong>REQUISITO:</strong>
+            <span>3ro a 4to Semestre</span>
+          </div>
+          <div class="cat-code">
+            <span class="code-comment">// Ejemplo esperado</span>
+            <span class="code-line">vector&lt;int&gt; v;</span>
+            <span class="code-line">sort(v.begin(), v.end());</span>
+            <span class="code-line">binary_search(v, target);</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AVANZADA -->
+      <div class="cat-card reveal-zoom" style="--delay: 0.3s; --cat-color: var(--orange);">
+        <div class="cat-glow"></div>
+        <div class="cat-inner">
+          <div class="cat-level">NIVEL 03</div>
+          <h2 class="cat-name">Avanzada</h2>
+          <p class="cat-desc">Grafos, programación dinámica, árboles y algoritmos de optimización complejos.</p>
+          <div class="cat-reqs">
+            <strong>REQUISITO:</strong>
+            <span>5to Semestre en adelante</span>
+          </div>
+          <div class="cat-code">
+            <span class="code-comment">// Ejemplo esperado</span>
+            <span class="code-line">dfs(node, parent);</span>
+            <span class="code-line">dp[i][w] = max(dp...);</span>
+            <span class="code-line">Dijkstra(graph, start);</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </Layout>
@@ -71,185 +80,148 @@ const categories = [
   .categories-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 80px 20px;
+    padding: 80px 20px 100px;
+  }
+
+  .header-content {
     text-align: center;
+    margin-bottom: 80px;
   }
 
-  .header-block { margin-bottom: 70px; }
-
-  .tag-label {
-    color: var(--orange);
+  .eyebrow {
     font-family: monospace;
-    font-weight: 800;
-    letter-spacing: 3px;
+    color: var(--green);
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 16px;
   }
 
-  .main-title {
-    font-size: clamp(2.2rem, 5vw, 4rem);
-    margin: 15px 0;
-    color: var(--text-primary);
-    line-height: 1.2;
-    transition: color 0.4s ease;
+  .page-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
   }
 
-  .accent {
-    background: linear-gradient(90deg, var(--orange), var(--red));
+  .gradient-text {
+    background: linear-gradient(to right, var(--green), var(--orange));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .intro {
-    color: var(--text-muted);
+  .page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
-    line-height: 1.6;
-    transition: color 0.4s ease;
   }
 
   /* ── GRID ── */
-  .cards-container {
+  .cat-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 25px;
-    margin-top: 40px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
   }
 
-  /* ── CARD ── */
-  .category-card {
-    position: relative;
+  .cat-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-default);
-    padding: 40px 30px;
-    text-align: left;
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    position: relative;
     overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                box-shadow 0.4s ease,
-                border-color 0.4s ease,
-                background 0.4s ease;
+    backdrop-filter: var(--glass-blur);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .cat-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--cat-color);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05);
+  }
+
+  .cat-glow {
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 150px;
+    background: radial-gradient(ellipse at top, var(--cat-color) 0%, transparent 70%);
+    opacity: 0.15;
+    transition: opacity 0.4s ease;
+  }
+  .cat-card:hover .cat-glow { opacity: 0.3; }
+
+  .cat-inner {
+    padding: 40px 30px;
+    position: relative;
+    z-index: 2;
+    height: 100%;
     display: flex;
     flex-direction: column;
   }
 
-  .category-card:hover {
-    transform: translateY(-10px) scale(1.01);
-    border-color: var(--accent-color);
-    box-shadow: 0 24px 48px rgba(0,0,0,0.12), 0 0 0 1px var(--accent-color);
-  }
-
-  [data-theme="dark"] .category-card:hover {
-    box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 20px rgba(255,122,0,0.1);
-  }
-
-  /* Ambient glow bg */
-  .card-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 20% 80%, rgba(255,122,0,0.03), transparent 70%);
-    transition: opacity 0.4s ease;
-    opacity: 0;
-  }
-  .category-card:hover .card-bg { opacity: 1; }
-
-  .card-content { position: relative; z-index: 2; }
-
-  .icon-box {
-    position: relative;
-    width: 60px; height: 60px;
-    margin-bottom: 25px;
-  }
-  .icon { font-size: 2.5rem; position: relative; z-index: 2; }
-  .icon-glow {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--accent-color);
-    filter: blur(20px);
-    opacity: 0.15;
-  }
-
-  h3 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    color: var(--text-card-title);
-    transition: color 0.4s ease;
-  }
-
-  p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    min-height: 60px;
-    transition: color 0.4s ease;
-  }
-
-  /* Code snippet with fake traffic-lights */
-  .code-snippet {
-    background: var(--bg-code);
-    border-left: 3px solid var(--accent-color);
-    padding: 12px;
-    font-family: 'Courier New', Courier, monospace;
+  .cat-level {
+    font-family: monospace;
     font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--cat-color);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .cat-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .cat-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    flex-grow: 1;
+  }
+
+  .cat-reqs {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cat-reqs strong {
+    font-family: monospace;
+    font-size: 0.75rem;
     color: var(--text-muted);
-    border-radius: 4px;
-    position: relative;
+    letter-spacing: 1px;
+  }
+  .cat-reqs span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .cat-code {
+    background: #050505;
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 16px;
+    font-family: monospace;
+    font-size: 0.8rem;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    transition: background 0.4s ease;
   }
+  .code-comment { color: var(--text-muted); }
+  .code-line { color: var(--cat-color); }
 
-  .code-dot {
-    display: inline-block;
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    margin-right: 3px;
-  }
-  .code-dot:nth-child(1) { background: #ff5f57; }
-  .code-dot:nth-child(2) { background: #febc2e; }
-  .code-dot:nth-child(3) { background: #28c840; }
-
-  code { color: var(--orange); }
-  [data-theme="dark"] code { color: var(--yellow); }
-
-  /* Bottom bar & corner */
-  .bottom-bar {
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 4px;
-    background: var(--accent-color);
-    transform: scaleX(0.08);
-    transform-origin: left;
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .category-card:hover .bottom-bar { transform: scaleX(1); }
-
-  .corner-deco {
-    position: absolute;
-    top: 0; right: 0;
-    width: 0; height: 0;
-    border-style: solid;
-    border-width: 0 30px 30px 0;
-    border-color: transparent var(--accent-color) transparent transparent;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .category-card:hover .corner-deco { opacity: 0.6; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 650px) {
-    :global(.home-btn) {
-      width: 55px !important; height: 55px !important;
-      left: 15px !important; top: 95px !important;
-      font-size: 1.4rem !important;
-    }
-    .cards-container { grid-template-columns: 1fr; }
-    .categories-section { padding: 110px 15px 50px; }
-    .header-block { margin-bottom: 40px; }
-    .main-title { font-size: 1.8rem; }
-    .category-card { padding: 30px 20px; }
-    .code-snippet { font-size: 0.75rem; overflow-x: auto; }
+  @media (max-width: 900px) {
+    .cat-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
   }
 </style>

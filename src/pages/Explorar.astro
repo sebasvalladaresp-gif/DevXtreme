@@ -2,210 +2,196 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Explorar - DevXtreme">
-  <section class="explorar-container">
+<Layout title="Explorar - DevXtreme 3.0">
+  <section class="page-header reveal">
+    <div class="header-content">
+      <span class="eyebrow">// SOBRE EL EVENTO</span>
+      <h1 class="page-title">Bienvenido a la <br> <span class="gradient-text">Zona de Desarrollo</span></h1>
+      <p class="page-subtitle">
+        DevXtreme no es solo un concurso; es el ecosistema donde los mejores talentos de la Universidad Técnica del Norte demuestran su valía en el mundo del código real.
+      </p>
+    </div>
+  </section>
 
-    <header class="section-header">
-      <span class="subtitle reveal">// ACERCA DEL EVENTO</span>
-      <h1 class="title reveal delay-1">¿Qué es <span class="highlight neon-title">DevXtreme?</span></h1>
-    </header>
-
-    <div class="content-grid">
-
-      <div class="main-text">
-        <p class="reveal delay-2">
-          DevXtreme 3.0 es la tercera edición de la competencia de programación que reúne a los mejores talentos en desarrollo de software para medirse en retos de algoritmos, lógica y resolución de problemas bajo presión real.
-        </p>
-        <p class="reveal delay-3">
-          Los participantes enfrentarán un conjunto de problemas cuidadosamente diseñados para evaluar eficiencia, creatividad y dominio técnico en un entorno de alta intensidad.
-        </p>
-        <p class="cta-text reveal delay-4">
-          Solo tienes cuatro horas. Cada segundo cuenta. ¿Estás listo para llevar tu código al límite?
-        </p>
+  <section class="details-section">
+    <div class="details-grid">
+      
+      <div class="detail-card reveal-left" style="--delay: 0.1s">
+        <div class="card-icon">🧠</div>
+        <h3>Desafío Mental</h3>
+        <p>Afronta problemas diseñados para poner a prueba tus estructuras de datos, algoritmos y pensamiento lateral bajo presión extrema de tiempo.</p>
       </div>
 
-      <div class="stats-panel">
-        <div class="stat-card reveal-zoom" style="--delay: 0.2s; --bar-color: var(--red)">
-          <span class="stat-value">4H</span>
-          <span class="stat-label">DE COMPETENCIA</span>
-          <div class="stat-bar"></div>
-        </div>
-        <div class="stat-card reveal-zoom" style="--delay: 0.28s; --bar-color: var(--orange)">
-          <span class="stat-value">3.0</span>
-          <span class="stat-label">EDICIÓN</span>
-          <div class="stat-bar"></div>
-        </div>
-        <div class="stat-card reveal-zoom" style="--delay: 0.36s; --bar-color: var(--yellow)">
-          <span class="stat-value">N+1</span>
-          <span class="stat-label">RETOS TÉCNICOS</span>
-          <div class="stat-bar"></div>
-        </div>
-        <div class="stat-card reveal-zoom" style="--delay: 0.44s; --bar-color: var(--red)">
-          <span class="stat-value">∞</span>
-          <span class="stat-label">LÍNEAS DE CÓDIGO</span>
-          <div class="stat-bar"></div>
-        </div>
+      <div class="detail-card reveal-right" style="--delay: 0.2s">
+        <div class="card-icon">🤝</div>
+        <h3>Trabajo en Equipo</h3>
+        <p>Conforma un escuadrón de 3 personas. La comunicación, división de tareas y el debugging colaborativo serán la clave de la victoria.</p>
       </div>
 
+      <div class="detail-card reveal-left" style="--delay: 0.3s">
+        <div class="card-icon">📈</div>
+        <h3>Proyección Profesional</h3>
+        <p>El código habla más que un currículum. Destaca ante la comunidad universitaria y organizaciones de prestigio como IEEE Computer Society.</p>
+      </div>
+
+      <div class="detail-card reveal-right" style="--delay: 0.4s">
+        <div class="card-icon">⚔️</div>
+        <h3>Competencia Justa</h3>
+        <p>Plataforma HackerRank automatizada. Casos de prueba ciegos. Sistema anti-plagio estricto. Solo el mejor código sobrevive.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="quote-section reveal-zoom" style="--delay: 0.5s">
+    <div class="quote-box">
+      <span class="quote-mark">"</span>
+      <blockquote>
+        El código es poesía lógica. Una competencia de programación es el escenario donde esa poesía cobra vida a la velocidad del pensamiento.
+      </blockquote>
+      <div class="quote-author">- Organización DevXtreme</div>
     </div>
   </section>
 </Layout>
 
 <style>
-  .explorar-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 120px 20px 60px;
+  .page-header {
+    text-align: center;
+    padding: 80px 20px 60px;
+    position: relative;
   }
 
-  :global(.home-btn) {
-    left: 20px !important;
-    top: 120px !important;
-    width: 55px !important;
-    height: 55px !important;
-  }
-
-  /* ── HEADER ── */
-  .section-header { margin-bottom: 50px; }
-
-  .subtitle {
-    display: block;
-    font-family: monospace;
-    color: var(--orange);
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-  }
-
-  .title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 800;
-    color: var(--text-primary);
-    transition: color 0.4s ease;
-  }
-
-  .highlight {
-    background: linear-gradient(90deg, var(--orange), var(--red));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* ── CONTENT GRID ── */
-  .content-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-    align-items: start;
+  .header-content {
     max-width: 800px;
     margin: 0 auto;
   }
 
-  .main-text p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    margin-bottom: 25px;
-    transition: color 0.4s ease;
-  }
-
-  .cta-text {
+  .eyebrow {
+    font-family: monospace;
+    color: var(--green);
+    letter-spacing: 4px;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: var(--red) !important;
-    font-size: 1.05rem !important;
-    padding: 16px 20px;
-    border-left: 3px solid var(--red);
-    background: rgba(255, 0, 76, 0.04);
-    border-radius: 0 4px 4px 0;
+    display: block;
+    margin-bottom: 24px;
   }
 
-  [data-theme="dark"] .cta-text {
-    background: rgba(255, 0, 76, 0.08);
+  .page-title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
   }
 
-  /* ── STATS PANEL ── */
-  .stats-panel {
+  .gradient-text {
+    background: linear-gradient(to right, var(--green), var(--orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ── DETAILS GRID ── */
+  .details-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  .details-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 30px;
   }
 
-  .stat-card {
+  .detail-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-default);
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    box-shadow: var(--shadow-card);
-    overflow: hidden;
-    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                box-shadow 0.35s ease,
-                border-color 0.35s ease,
-                background 0.4s ease;
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .stat-card::before {
-    content: "";
+  .detail-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 107, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  .detail-card h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  .detail-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ── QUOTE SECTION ── */
+  .quote-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 100px;
+  }
+
+  .quote-box {
+    position: relative;
+    padding: 50px 60px;
+    background: linear-gradient(135deg, rgba(0, 255, 157, 0.05), rgba(255, 107, 0, 0.05));
+    border: 1px solid var(--border-accent);
+    border-radius: 24px;
+    text-align: center;
+  }
+
+  .quote-mark {
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 80% 80%, rgba(255,122,0,0.04), transparent 70%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  .stat-card:hover::before { opacity: 1; }
-
-  .stat-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: var(--shadow-card-hover);
-    border-color: var(--bar-color);
+    top: -20px;
+    left: 40px;
+    font-size: 8rem;
+    font-family: serif;
+    color: rgba(255, 107, 0, 0.15);
+    line-height: 1;
   }
 
-  .stat-value {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--text-card-title);
+  .quote-box blockquote {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.4;
     position: relative;
     z-index: 2;
-    transition: color 0.4s ease;
+    font-style: italic;
   }
 
-  .stat-card:hover .stat-value {
-    color: var(--orange);
+  .quote-author {
+    margin-top: 30px;
+    color: var(--green);
+    font-family: monospace;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
   }
-
-  .stat-label {
-    font-size: 0.7rem;
-    letter-spacing: 1px;
-    color: var(--text-faint);
-    margin-top: 5px;
-    position: relative;
-    z-index: 2;
-    transition: color 0.4s ease;
-  }
-
-  .stat-bar {
-    height: 4px;
-    width: 40px;
-    margin-top: 15px;
-    background: var(--bar-color);
-    position: relative;
-    z-index: 2;
-    transition: width 0.4s ease;
-  }
-
-  .stat-card:hover .stat-bar { width: 70%; }
 
   @media (max-width: 768px) {
-    .explorar-container { padding-top: 140px; }
-
-    :global(.home-btn) {
-      top: 90px !important;
-      width: 45px !important;
-      height: 45px !important;
-      left: 15px !important;
-    }
-
-    .title { font-size: 1.8rem; }
-    .stats-panel { grid-template-columns: 1fr; }
+    .details-grid { grid-template-columns: 1fr; }
+    .quote-box { padding: 40px 30px; }
+    .quote-mark { left: 20px; font-size: 6rem; top: -10px; }
   }
 </style>

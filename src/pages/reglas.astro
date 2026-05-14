@@ -2,66 +2,76 @@
 import Layout from '../layouts/Layout.astro';
 
 const rules = [
-  { id: '01', text: 'No se permite la comunicación entre equipos durante la competencia.' },
-  { id: '02', text: 'No se permite la copia entre equipos; si se detecta, habrá descalificación.' },
-  { id: '03', text: 'No se puede copiar soluciones completas de herramientas de IA; la IA solo puede usarse para aprender o generar ideas.' },
-  { id: '04', text: 'La competencia se realiza en equipos de 3 personas.' },
-  { id: '05', text: 'Se puede programar en cualquier lenguaje soportado por la plataforma HackerRank.' },
-  { id: '06', text: 'Los ejercicios en inglés recibirán mayor puntuación cuando aplique.' },
-  { id: '07', text: 'Puntuación basada en dificultad del problema y velocidad de envío correcto; decisiones del jurado son inapelables.' }
+  { id: 'SYS.REQ.01', title: 'EQUIPOS', text: 'De 3 integrantes por equipo. Cada uno con su propia laptop o máquina del laboratorio.', color: 'var(--green)', alert: false },
+  { id: 'SYS.ERR.01', title: 'SIN COMUNICACIÓN', text: 'No se permite pasar información entre equipos durante la competencia.', color: 'var(--orange)', alert: true },
+  { id: 'SYS.CRT.01', title: 'COPIA PROHIBIDA', text: 'Copy-paste prohibido. El código debe ser tuyo. Detección = descalificación inmediata.', color: '#ff3366', alert: true },
+  { id: 'SYS.REQ.02', title: 'IA PERMITIDA', text: 'Puedes consultar IA como apoyo. No está permitido copiar soluciones completas.', color: 'var(--green)', alert: false },
+  { id: 'SYS.INF.01', title: 'PLATAFORMA', text: 'HackerRank. Se puede programar en cualquier lenguaje soportado por la plataforma.', color: 'var(--orange-light)', alert: false },
+  { id: 'SYS.INF.02', title: 'IDIOMA', text: 'Los ejercicios resueltos en inglés recibirán mayor puntuación cuando aplique.', color: 'var(--green)', alert: false },
+  { id: 'SYS.INF.03', title: 'RANKING', text: 'Puntuación basada en dificultad y velocidad de envío. Gana quien obtenga el mejor score.', color: 'var(--orange-light)', alert: false },
+  { id: 'SYS.LOC.01', title: 'LUGAR Y HORA', text: 'FICA Labs #1, #3 y #4. 15 de Mayo, 09:00 a 14:00.', color: 'var(--green)', alert: false },
 ];
 
 const awards = [
-  { rank: '1º', title: 'Primer lugar (equipo)',   prize: 'Trofeo (uno por cada integrante, 3 trofeos), Producto IEEE, Llavero "Pingüino" Linux', color: 'var(--yellow)' },
-  { rank: '2º', title: 'Segundo lugar (equipo)', prize: 'Producto IEEE y Pingüino Linux para los integrantes', color: '#B5B5B5' },
-  { rank: '3º', title: 'Tercer lugar (equipo)',  prize: 'Pingüino Linux para integrantes', color: '#CD7F32' }
+  { rank: '1°', title: 'Primer lugar', prize: '3 Trofeos + Producto IEEE + Llavero Pingüino 🐧', color: 'var(--orange)' },
+  { rank: '2°', title: 'Segundo lugar', prize: 'Producto IEEE + Pingüino Linux 🐧', color: 'var(--text-secondary)' },
+  { rank: '3°', title: 'Tercer lugar', prize: 'Pingüino Linux 🐧', color: 'var(--green)' }
 ];
 ---
 
-<Layout title="Reglas - DevXtreme">
-  <section class="rules-section">
-    <div class="grid-layout">
+<Layout title="Reglas - DevXtreme 3.0">
+  <section class="rules-page">
+    <div class="header-content reveal">
+      <span class="eyebrow">// DIRECTIVAS DEL SISTEMA</span>
+      <h1 class="page-title">Reglas & <span class="gradient-text">Premios</span></h1>
+      <p class="page-subtitle">Conoce las normativas del evento y los incentivos para los mejores desarrolladores.</p>
+    </div>
 
-      <!-- RULES -->
-      <div class="rules-container">
-        <span class="label reveal">// REGLAMENTO</span>
-        <h2 class="section-title reveal delay-1">Reglas del <span class="accent neon-title">Juego</span></h2>
-
-        <div class="terminal-list">
-          <div class="terminal-bar">
-            <span class="t-dot red"></span>
-            <span class="t-dot yellow"></span>
-            <span class="t-dot green"></span>
-            <span class="t-title">rules.sh</span>
+    <div class="rules-grid">
+      
+      <!-- RULES TERMINAL -->
+      <div class="rules-terminal reveal-left" style="--delay: 0.1s">
+        <div class="terminal-header">
+          <div class="window-controls">
+            <span></span><span></span><span></span>
           </div>
-          <div class="terminal-body">
-            {rules.map((rule, index) => (
-              <div class="rule-row reveal-left" style={`--delay: ${0.12 + index * 0.06}s`}>
-                <span class="rule-id">{rule.id}</span>
+          <div class="terminal-title">~/devxtreme/rules.sh</div>
+        </div>
+        <div class="terminal-content">
+          {rules.map((rule, i) => (
+            <div class={`rule-item ${rule.alert ? 'rule-alert' : ''}`} style={`--rule-color: ${rule.color}`}>
+              <div class="rule-id">{rule.id}</div>
+              <div class="rule-body">
+                <h3 class="rule-title">{rule.title}</h3>
                 <p class="rule-text">{rule.text}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <!-- AWARDS -->
-      <div class="awards-container">
-        <span class="label reveal">// PREMIACIÓN</span>
-        <h2 class="section-title reveal delay-1">Reconoci<span class="accent neon-title">mientos</span></h2>
-
-        <div class="podium">
-          {awards.map((award, index) => (
-            <div class="award-card reveal-right" style={`--rank-color: ${award.color}; --delay: ${0.14 + index * 0.08}s`}>
-              <div class="rank-badge">{award.rank}</div>
-              <div class="award-info">
-                <strong class="award-title">{award.title}</strong>
-                <p class="award-prize">{award.prize}</p>
-              </div>
-              <div class="award-shine"></div>
             </div>
           ))}
         </div>
+      </div>
+
+      <!-- AWARDS BENTO -->
+      <div class="awards-container">
+        
+        {awards.map((award, i) => (
+          <div class="award-card reveal-right" style={`--delay: ${0.2 + i * 0.1}s; --award-color: ${award.color};`}>
+            <div class="award-glow"></div>
+            <div class="award-rank">{award.rank}</div>
+            <div class="award-info">
+              <h3>{award.title}</h3>
+              <p>{award.prize}</p>
+            </div>
+          </div>
+        ))}
+
+        <div class="penguin-card reveal-zoom" style="--delay: 0.5s">
+          <div class="penguin-icon">🐧</div>
+          <div class="penguin-info">
+            <h3>Llavero Pingüino Linux</h3>
+            <p>Premio artesanal especial — Ícono del mundo Open Source exclusivo para ganadores.</p>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -69,168 +79,137 @@ const awards = [
 </Layout>
 
 <style>
-  .rules-section {
+  .rules-page {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 80px 20px;
+    padding: 80px 20px 100px;
   }
 
-  .grid-layout {
+  .header-content { text-align: center; margin-bottom: 60px; }
+  .eyebrow { font-family: monospace; color: #ff3366; letter-spacing: 4px; font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 16px; }
+  .page-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; line-height: 1; margin-bottom: 20px; letter-spacing: -1px; }
+  .gradient-text { background: linear-gradient(to right, #ff3366, var(--orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-subtitle { font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+
+  /* ── GRID ── */
+  .rules-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
     align-items: start;
   }
 
-  .label {
-    color: var(--orange);
-    font-family: monospace;
-    font-weight: 800;
-    letter-spacing: 2px;
-  }
-
-  .section-title {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    margin: 10px 0 40px;
-    color: var(--text-primary);
-    transition: color 0.4s ease;
-  }
-
-  .accent {
-    background: linear-gradient(90deg, var(--orange), var(--red));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* ── TERMINAL BOX ── */
-  .terminal-list {
-    background: var(--bg-terminal);
-    border: 1px solid var(--border-default);
-    border-radius: 8px;
+  /* ── TERMINAL ── */
+  .rules-terminal {
+    background: #08080a;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
     overflow: hidden;
-    transition: background 0.4s ease, border-color 0.4s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
   }
 
-  .terminal-bar {
+  .terminal-header {
+    background: #111116;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 12px 20px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 10px 15px;
-    background: var(--bg-code);
-    border-bottom: 1px solid var(--border-default);
   }
-
-  .t-dot {
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  .t-dot.red    { background: #ff5f57; }
-  .t-dot.yellow { background: #febc2e; }
-  .t-dot.green  { background: #28c840; }
-
-  .t-title {
+  .window-controls { display: flex; gap: 8px; }
+  .window-controls span { width: 12px; height: 12px; border-radius: 50%; background: #333; }
+  .window-controls span:nth-child(1) { background: #ff5f56; }
+  .window-controls span:nth-child(2) { background: #ffbd2e; }
+  .window-controls span:nth-child(3) { background: #27c93f; }
+  
+  .terminal-title {
     font-family: monospace;
-    font-size: 0.75rem;
-    color: var(--text-faint);
-    margin-left: 8px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-left: 20px;
   }
 
-  .terminal-body { padding: 8px; }
+  .terminal-content { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
 
-  .rule-row {
+  .rule-item {
     display: flex;
-    gap: 20px;
-    padding: 18px 12px;
-    border-bottom: 1px solid var(--border-rule);
-    border-radius: 4px;
-    transition: background 0.2s ease;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+    border-left: 3px solid var(--rule-color);
+    transition: background 0.3s ease;
   }
-  .rule-row:last-child { border-bottom: none; }
-  .rule-row:hover { background: rgba(255, 122, 0, 0.04); }
-  [data-theme="dark"] .rule-row:hover { background: rgba(255, 122, 0, 0.07); }
+  .rule-item:hover { background: rgba(255,255,255,0.04); }
+  
+  .rule-alert { background: rgba(255, 51, 102, 0.05); }
+  .rule-alert:hover { background: rgba(255, 51, 102, 0.08); }
 
   .rule-id {
     font-family: monospace;
-    font-weight: 800;
-    color: var(--red);
-    font-size: 1.1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--rule-color);
     flex-shrink: 0;
+    padding-top: 4px;
   }
 
-  .rule-text {
-    color: var(--text-secondary);
-    line-height: 1.6;
-    font-size: 0.95rem;
-    transition: color 0.4s ease;
-    margin: 0;
-  }
+  .rule-title { font-size: 1rem; color: #fff; font-weight: 600; margin-bottom: 4px; }
+  .rule-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin: 0; }
 
   /* ── AWARDS ── */
-  .podium {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
+  .awards-container { display: flex; flex-direction: column; gap: 20px; }
 
   .award-card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 24px;
     display: flex;
     align-items: center;
-    background: var(--bg-card);
-    padding: 20px;
-    border-left: 5px solid var(--rank-color);
-    box-shadow: var(--shadow-card);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
-    position: relative;
+    gap: 24px;
     overflow: hidden;
+    backdrop-filter: var(--glass-blur);
+    transition: transform 0.3s ease, border-color 0.3s ease;
   }
+  .award-card:hover { transform: translateX(10px); border-color: var(--award-color); }
 
-  .award-card:hover {
-    transform: translateX(6px);
-    box-shadow: var(--shadow-card-hover);
-  }
-
-  .award-shine {
+  .award-glow {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent 60%, rgba(255,255,255,0.04) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .award-card:hover .award-shine { opacity: 1; }
-
-  .rank-badge {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--rank-color);
-    margin-right: 25px;
-    min-width: 50px;
-    text-align: center;
-    text-shadow: 0 0 10px var(--rank-color);
-    transition: text-shadow 0.3s ease;
+    left: 0; top: 0; bottom: 0; width: 80px;
+    background: radial-gradient(circle at left, var(--award-color) 0%, transparent 70%);
+    opacity: 0.15;
   }
 
-  .award-card:hover .rank-badge {
-    text-shadow: 0 0 20px var(--rank-color), 0 0 40px var(--rank-color);
+  .award-rank {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--award-color);
+    font-family: monospace;
+    line-height: 1;
+    z-index: 2;
   }
 
-  .award-title {
-    display: block;
-    font-size: 1.1rem;
-    color: var(--text-card-title);
-    margin-bottom: 4px;
-    transition: color 0.4s ease;
-  }
+  .award-info { z-index: 2; }
+  .award-info h3 { font-size: 1.2rem; color: #fff; font-weight: 600; margin-bottom: 6px; }
+  .award-info p { font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.5; }
 
-  .award-prize {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin: 0;
-    transition: color 0.4s ease;
+  /* Penguin */
+  .penguin-card {
+    background: linear-gradient(135deg, rgba(0, 255, 157, 0.05), rgba(255, 107, 0, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
+  .penguin-icon { font-size: 2.5rem; }
+  .penguin-info h3 { font-size: 1rem; color: var(--orange); margin-bottom: 4px; }
+  .penguin-info p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; margin: 0; }
 
   @media (max-width: 900px) {
-    .grid-layout { grid-template-columns: 1fr; gap: 60px; }
-    .section-title { font-size: 2.2rem; }
+    .rules-grid { grid-template-columns: 1fr; }
+    .rules-terminal { margin-bottom: 20px; }
   }
 </style>

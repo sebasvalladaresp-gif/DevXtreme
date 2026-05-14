@@ -2,313 +2,181 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Contacto - DevXtreme">
-  <div class="main-container">
-
-    <!-- ══════════════════════════════
-         FOUNDERS MENTION
-    ═══════════════════════════════ -->
-    <div class="founders-section">
-      <div class="founders-header">
-        <span class="founders-prefix reveal">// MENCIÓN ESPECIAL</span>
-        <h2 class="founders-title reveal delay-1">Fundadores &amp; <span class="accent neon-title">Organizadores</span></h2>
-        <p class="founders-description reveal delay-2">
-          Estos visionarios hicieron posible DevXtreme 3.0. Su dedicación y pasión por la programación impulsan este evento.
-        </p>
-      </div>
-
-      <div class="founders-grid">
-        <!-- Víctor Echeverría -->
-        <div class="founder-card reveal-zoom" style="--delay: 0.18s">
-          <div class="founder-image-wrapper">
-            <img src="/VictorEcheverria.jpeg" alt="Víctor Echeverría" class="founder-image" />
-            <div class="founder-overlay"></div>
-          </div>
-          <div class="founder-info">
-            <h3>Víctor Echeverría</h3>
-            <p class="founder-role">Fundador DevXtreme</p>
-          </div>
-        </div>
-
-        <!-- Adrián Urresta -->
-        <div class="founder-card reveal-zoom" style="--delay: 0.26s">
-          <div class="founder-image-wrapper">
-            <img src="/AdrianUrresta.jpeg" alt="Adrián Urresta" class="founder-image" />
-            <div class="founder-overlay"></div>
-          </div>
-          <div class="founder-info">
-            <h3>Adrián Urresta</h3>
-            <p class="founder-role">Creador Página Web</p>
-            <p class="founder-role">Chair CS 2026</p>
-          </div>
-        </div>
-
-        <!-- Francisco Valladares -->
-        <div class="founder-card reveal-zoom" style="--delay: 0.34s">
-          <div class="founder-image-wrapper">
-            <img src="/FranciscoValladares.jpeg" alt="Francisco Valladares" class="founder-image" />
-            <div class="founder-overlay"></div>
-          </div>
-          <div class="founder-info">
-            <h3>Francisco Valladares</h3>
-            <p class="founder-role">Creador Página Web </p>
-            <p class="founder-role">Colaborador</p>
-
-          </div>
-        </div>
-      </div>
+<Layout title="Créditos - DevXtreme 3.0">
+  <section class="credits-section">
+    <div class="header-content reveal">
+      <span class="eyebrow">// BEHIND THE SCENES</span>
+      <h1 class="page-title">Equipo <span class="gradient-text">Fundador</span></h1>
+      <p class="page-subtitle">Las mentes detrás de DevXtreme. Agradecimiento especial a quienes hicieron posible este ecosistema de desarrollo competitivo.</p>
     </div>
 
-    <!-- ══════════════════════════════
-         CONTACTS
-    ═══════════════════════════════ -->
+    <div class="founders-grid">
 
-    <footer class="site-footer reveal delay-3">
-      <p>Somos parte de <span class="highlight">IEEE</span> y de la <span class="highlight">UTN</span>.</p>
-      <p>Ibarra - Ecuador</p>
-      <p class="copyright">&copy; Todos los derechos reservados 2026</p>
-    </footer>
+      <!-- Víctor Echeverría -->
+      <div class="founder-card reveal-zoom" style="--delay: 0.1s">
+        <div class="founder-image-wrapper">
+          <div class="founder-glow"></div>
+          <img src="/VictorEcheverria.jpeg" alt="Víctor Echeverría" class="founder-image" />
+          <div class="founder-ring"></div>
+        </div>
+        <div class="founder-info">
+          <h3>Víctor Echeverría</h3>
+          <p class="founder-role">Fundador DevXtreme</p>
+        </div>
+      </div>
 
-  </div>
+      <!-- Adrián Urresta -->
+      <div class="founder-card reveal-zoom" style="--delay: 0.2s">
+        <div class="founder-image-wrapper">
+          <div class="founder-glow"></div>
+          <img src="/AdrianUrresta.jpeg" alt="Adrián Urresta" class="founder-image" />
+          <div class="founder-ring"></div>
+        </div>
+        <div class="founder-info">
+          <h3>Adrián Urresta</h3>
+          <p class="founder-role">Creador Página Web / Chair CS</p>
+          <a href="https://www.instagram.com/adrx_sanz" target="_blank" class="founder-ig">@adrx_sanz</a>
+        </div>
+      </div>
+
+      <!-- Francisco Valladares -->
+      <div class="founder-card reveal-zoom" style="--delay: 0.3s">
+        <div class="founder-image-wrapper">
+          <div class="founder-glow"></div>
+          <img src="/FranciscoValladares.jpeg" alt="Francisco Valladares" class="founder-image" />
+          <div class="founder-ring"></div>
+        </div>
+        <div class="founder-info">
+          <h3>Francisco Valladares</h3>
+          <p class="founder-role">Creador Página Web / Colaborador</p>
+        </div>
+      </div>
+
+      <!-- Dario López -->
+      <div class="founder-card reveal-zoom" style="--delay: 0.4s">
+        <div class="founder-image-wrapper">
+          <div class="founder-glow"></div>
+          <img src="/Darlopc.png" alt="Dario López" class="founder-image" />
+          <div class="founder-ring"></div>
+        </div>
+        <div class="founder-info">
+          <h3>Dario López</h3>
+          <p class="founder-role">Presidente Club Programación</p>
+          <a href="https://www.instagram.com/darlopez05/" target="_blank" class="founder-ig">@darlopez05</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
 </Layout>
 
 <style>
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: clamp(80px, 10vh, 120px) 20px 40px;
-    font-family: 'Orbitron', sans-serif;
-  }
-
-  /* ── FOOTER ── */
-  .site-footer {
-    text-align: center;
-    color: var(--footer-text);
-    font-size: clamp(0.75rem, 1.5vw + 0.3rem, 0.85rem);
-    line-height: 1.6;
-    margin-top: 40px;
-    padding: 20px;
-    border-top: 1px solid var(--footer-border);
-    width: 100%;
-    max-width: 600px;
-    transition: color 0.4s ease, border-color 0.4s ease;
-  }
-
-  .site-footer p { margin: 5px 0; }
-
-  .site-footer .highlight {
-    color: var(--orange);
-    font-weight: 700;
-  }
-
-  .site-footer .copyright {
-    margin-top: 15px;
-    font-size: clamp(0.65rem, 1.2vw + 0.2rem, 0.75rem);
-    color: var(--text-faint);
-    letter-spacing: 1px;
-    font-family: system-ui, -apple-system, sans-serif;
-  }
-
-  /* ══════════════════════════════════
-     FOUNDERS SECTION
-  ══════════════════════════════════ */
-  .founders-section {
-    width: 100%;
+  .credits-section {
     max-width: 1000px;
-    margin-bottom: 70px;
-    padding: 0 20px;
-  }
-
-  .founders-header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-
-  .founders-prefix {
-    display: inline-block;
-    color: var(--orange);
-    font-family: monospace;
-    font-weight: 800;
-    letter-spacing: 3px;
-    font-size: 0.85rem;
-    margin-bottom: 12px;
-  }
-
-  .founders-title {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 800;
-    color: var(--text-primary);
-    line-height: 1.15;
-    margin: 10px 0 20px;
-    transition: color 0.4s ease;
-  }
-
-  .founders-title .accent {
-    background: linear-gradient(90deg, var(--orange), var(--red));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .founders-description {
-    color: var(--text-muted);
-    max-width: 600px;
     margin: 0 auto;
-    line-height: 1.7;
-    font-size: clamp(0.85rem, 2vw, 0.95rem);
-    transition: color 0.4s ease;
+    padding: 80px 20px 100px;
   }
+
+  .header-content { text-align: center; margin-bottom: 80px; }
+  .eyebrow { font-family: monospace; color: var(--orange); letter-spacing: 4px; font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 16px; }
+  .page-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; line-height: 1; margin-bottom: 20px; letter-spacing: -1px; }
+  .gradient-text { background: linear-gradient(to right, var(--orange), var(--orange-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-subtitle { font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
   /* ── FOUNDERS GRID ── */
   .founders-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: clamp(24px, 4vw, 36px);
-    max-width: 800px;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
   }
 
-  /* ── FOUNDER CARD ── */
   .founder-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: transparent;
   }
 
-  .founder-card:hover {
-    transform: translateY(-8px) scale(1.02);
-  }
-
-  /* ── CIRCULAR IMAGE WRAPPER ── */
   .founder-image-wrapper {
     position: relative;
-    width: clamp(140px, 25vw, 180px);
-    height: clamp(140px, 25vw, 180px);
-    margin-bottom: 20px;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 24px;
     border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--border-accent);
-    background: var(--bg-card);
-    transition: all 0.4s ease;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   }
 
-  [data-theme="dark"] .founder-image-wrapper {
-    border-color: rgba(255, 122, 0, 0.4);
-    box-shadow: 0 8px 32px rgba(255, 122, 0, 0.1), 0 0 30px rgba(255, 122, 0, 0.05);
+  .founder-glow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle, var(--orange-glow) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    border-radius: 50%;
+    z-index: 0;
   }
-
-  .founder-card:hover .founder-image-wrapper {
-    border-color: var(--orange);
-    box-shadow: 0 12px 40px rgba(255, 122, 0, 0.25);
-  }
-
-  [data-theme="dark"] .founder-card:hover .founder-image-wrapper {
-    box-shadow: 0 12px 50px rgba(255, 122, 0, 0.3), 0 0 40px rgba(255, 0, 76, 0.1);
-  }
+  .founder-card:hover .founder-glow { opacity: 1; }
 
   .founder-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease, filter 0.4s ease;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    filter: grayscale(80%) contrast(1.2);
+    transition: filter 0.5s ease, transform 0.5s ease;
   }
-
   .founder-card:hover .founder-image {
-    transform: scale(1.08);
-    filter: brightness(1.1);
+    filter: grayscale(0%) contrast(1.1);
+    transform: scale(1.05);
   }
 
-  [data-theme="dark"] .founder-card:hover .founder-image {
-    filter: brightness(1.2);
-  }
-
-  .founder-overlay {
+  .founder-ring {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 122, 0, 0.1), rgba(255, 0, 76, 0.05));
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    inset: -4px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0 270deg, var(--orange) 360deg);
+    z-index: 3;
+    opacity: 0.3;
+    animation: spinRing 4s linear infinite;
   }
+  .founder-card:hover .founder-ring { opacity: 1; animation-duration: 2s; }
 
-  .founder-card:hover .founder-overlay {
-    opacity: 0.8;
-  }
-
-  /* ── FOUNDER INFO ── */
-  .founder-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  @keyframes spinRing { 100% { transform: rotate(360deg); } }
 
   .founder-info h3 {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    font-weight: 800;
-    color: var(--text-card-title);
-    margin: 0;
-    transition: color 0.4s ease;
-    letter-spacing: 0.5px;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 6px;
+    font-weight: 600;
   }
 
   .founder-role {
-    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
-    color: var(--orange);
-    font-weight: 600;
-    margin: 0;
-    letter-spacing: 1px;
     font-family: monospace;
-    transition: color 0.4s ease;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 8px;
   }
 
-  /* ══════════════════════════════════
-     RESPONSIVE
-  ══════════════════════════════════ */
-  @media (max-width: 768px) {
-    .founders-section {
-      margin-bottom: 60px;
-      padding: 0 16px;
-    }
-
-    .founders-title {
-      font-size: 1.8rem;
-    }
-
-    .founders-grid {
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    }
-
-    .founder-image-wrapper {
-      width: clamp(120px, 28vw, 160px);
-      height: clamp(120px, 28vw, 160px);
-      margin-bottom: 16px;
-    }
+  .founder-ig {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--orange);
+    text-decoration: none;
+    border-bottom: 1px dashed transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+  .founder-ig:hover {
+    color: #fff;
+    border-color: #fff;
   }
 
-  @media (max-width: 480px) {
-    .founders-section {
-      margin-bottom: 50px;
-      padding: 0 12px;
-    }
-
-    .founders-grid {
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 16px;
-    }
-
-    .founder-info h3 {
-      font-size: 0.95rem;
-    }
-
-    .founder-role {
-      font-size: 0.75rem;
-    }
+  @media (max-width: 900px) {
+    .founders-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  }
+  @media (max-width: 500px) {
+    .founders-grid { grid-template-columns: 1fr; gap: 50px; }
   }
 </style>

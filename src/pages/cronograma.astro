@@ -1,48 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const agenda = [
-  { time: '09:00', title: 'Inauguración',          desc: 'Palabras de las autoridades y apertura oficial del evento (09:00 - 09:20).', tag: 'INICIO', color: 'var(--yellow)' },
-  { time: '09:20', title: 'Explicación del entorno', desc: 'Introducción a la plataforma HackerRank, normas de envío y formato de puntuación (09:20 - 10:00).', tag: 'INFO', color: 'var(--orange)' },
-  { time: '10:00', title: 'Competencia',            desc: 'Competencia principal en HackerRank. Resolución de problemas y envío de soluciones (10:00 - 14:00).', tag: 'COMP', color: 'var(--red)' },
-  { time: '13:00', title: 'Break (opcional)',        desc: 'Pausa opcional de 15 minutos para quienes deseen (13:00 - 13:15).', tag: 'PAUSA', color: 'var(--orange)' },
-  { time: '14:00', title: 'Premiación',             desc: 'Revisión final de puntajes y ceremonia de premiación (14:00 - 14:30).', tag: 'PREMIA', color: 'var(--yellow)' },
-  { time: '14:30', title: 'Cierre',                 desc: 'Cierre oficial del evento y despedida.', tag: 'FIN', color: 'var(--orange)' }
+const schedule = [
+  { time: "08:30", act: "Acreditación y Asignación de Laboratorios", type: "logistic" },
+  { time: "09:00", act: "Inauguración DevXtreme v3.0", type: "main" },
+  { time: "09:30", act: "Inicio de la Competencia (HackerRank habilitado)", type: "code" },
+  { time: "11:30", act: "Checkpoint 1 - Actualización de Leaderboard", type: "alert" },
+  { time: "13:30", act: "Cierre de Plataforma", type: "alert" },
+  { time: "13:45", act: "Revisión Final de Código por el Jurado", type: "main" },
+  { time: "14:00", act: "Premiación y Clausura", type: "main" }
 ];
 ---
 
-<Layout title="Cronograma - DevXtreme">
-  <section class="cronograma-wrapper">
-    <div class="header">
-      <span class="prefix reveal">// AGENDA DEL DÍA</span>
-      <h1 class="main-title reveal delay-1">Horario de <span class="gradient-text neon-title">Competencia</span></h1>
+<Layout title="Cronograma - DevXtreme 3.0">
+  <section class="schedule-section">
+    <div class="header-content reveal">
+      <span class="eyebrow">// MISSION TIMELINE</span>
+      <h1 class="page-title">Cronograma <span class="gradient-text">Oficial</span></h1>
+      <p class="page-subtitle">Sincroniza tus relojes. La ventana de ejecución es crítica.</p>
     </div>
 
     <div class="timeline-container">
-      {agenda.map((item, index) => (
-        <div class="timeline-entry reveal-left" style={`--delay: ${0.12 + index * 0.08}s`}>
-
-          <div class="time-column">
-            <span class="time-stamp">{item.time}</span>
-            <div class="indicator">
-              <div class="outer-dot" style={`border-color: ${item.color}`}>
-                <div class="inner-dot" style={`background: ${item.color}`}></div>
-              </div>
-              <div class="line"></div>
-            </div>
+      <div class="timeline-line"></div>
+      
+      {schedule.map((item, i) => (
+        <div class="timeline-node reveal-left" style={`--delay: ${0.1 + i * 0.15}s`}>
+          
+          <div class="time-block">
+            <span class="time-text">{item.time}</span>
           </div>
 
-          <div class="info-card">
-            <div class="card-accent-bar" style={`background: ${item.color}`}></div>
-            <div class="card-header">
-              <h3>{item.title}</h3>
-              {item.tag && (
-                <span class="status-tag" style={`color: ${item.color}; border-color: ${item.color}`}>
-                  {item.tag}
-                </span>
-              )}
-            </div>
-            <p>{item.desc}</p>
+          <div class="node-connector">
+            <div class={`node-dot ${item.type}`}></div>
+          </div>
+
+          <div class={`event-card ${item.type}`}>
+            <div class="event-glow"></div>
+            <p class="event-act">{item.act}</p>
           </div>
 
         </div>
@@ -52,175 +46,153 @@ const agenda = [
 </Layout>
 
 <style>
-  .cronograma-wrapper {
-    max-width: 800px;
+  .schedule-section {
+    max-width: 900px;
     margin: 0 auto;
-    padding: 80px 20px;
+    padding: 80px 20px 100px;
   }
 
-  .prefix {
-    color: var(--orange);
-    font-weight: 800;
+  .header-content {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .eyebrow {
     font-family: monospace;
-    letter-spacing: 2px;
+    color: var(--orange);
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 16px;
   }
 
-  .main-title {
-    font-size: clamp(1.8rem, 5vw, 3rem);
-    margin-top: 10px;
-    margin-bottom: 60px;
-    color: var(--text-primary);
-    transition: color 0.4s ease;
+  .page-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
   }
 
   .gradient-text {
-    background: linear-gradient(90deg, var(--orange), var(--red));
+    background: linear-gradient(to right, var(--orange), var(--orange-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .timeline-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  /* ── ENTRY ── */
-  .timeline-entry {
-    display: flex;
-    gap: 30px;
-  }
-
-  /* ── TIME COLUMN ── */
-  .time-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 80px;
-  }
-
-  .time-stamp {
-    font-family: monospace;
-    font-weight: 800;
-    color: var(--text-time);
+  .page-subtitle {
     font-size: 1.1rem;
-    margin-bottom: 10px;
-    transition: color 0.4s ease;
+    color: var(--text-secondary);
   }
 
-  .indicator {
-    flex-grow: 1;
+  /* ── TIMELINE ── */
+  .timeline-container {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 140px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--border-subtle) 10%, var(--border-subtle) 90%, transparent);
+    z-index: 1;
+  }
+
+  .timeline-node {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
   }
 
-  .outer-dot {
-    width: 18px; height: 18px;
-    border: 2px solid;
-    border-radius: 4px;
+  .time-block {
+    width: 100px;
+    flex-shrink: 0;
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  .time-text {
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--green);
+    text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+  }
+
+  .node-connector {
+    width: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .node-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 4px var(--bg-dark);
+    position: relative;
+    z-index: 3;
+  }
+  .node-dot.logistic { background: var(--text-secondary); }
+  .node-dot.main { background: var(--orange); box-shadow: 0 0 0 4px var(--bg-dark), 0 0 15px var(--orange); }
+  .node-dot.code { background: var(--green); box-shadow: 0 0 0 4px var(--bg-dark), 0 0 15px var(--green); }
+  .node-dot.alert { background: #ff3366; box-shadow: 0 0 0 4px var(--bg-dark), 0 0 15px #ff3366; }
+
+  .event-card {
+    flex: 1;
     background: var(--bg-card);
-    z-index: 2;
-    transition: background 0.4s ease, box-shadow 0.3s ease;
-  }
-
-  .timeline-entry:hover .outer-dot {
-    box-shadow: 0 0 10px currentColor;
-  }
-
-  .inner-dot {
-    width: 8px; height: 8px;
-    border-radius: 1px;
-    animation: dotPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes dotPulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50%       { transform: scale(1.3); opacity: 0.7; }
-  }
-
-  .line {
-    width: 2px;
-    flex-grow: 1;
-    background: linear-gradient(to bottom, var(--orange), transparent);
-    margin: 5px 0;
-    opacity: 0.5;
-  }
-
-  [data-theme="dark"] .line { opacity: 0.8; }
-
-  .timeline-entry:last-child .line { display: none; }
-
-  /* ── INFO CARD ── */
-  .info-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-default);
-    padding: 25px;
-    margin-bottom: 40px;
-    flex-grow: 1;
-    transition: transform 0.35s ease,
-                border-color 0.35s ease,
-                box-shadow 0.35s ease,
-                background 0.4s ease;
-    box-shadow: var(--card-box-shadow);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 24px 30px;
+    margin-left: 20px;
     position: relative;
     overflow: hidden;
+    backdrop-filter: var(--glass-blur);
+    transition: transform 0.3s ease, border-color 0.3s ease;
   }
 
-  /* Left accent bar */
-  .card-accent-bar {
+  .event-card:hover {
+    transform: translateX(10px);
+  }
+
+  .event-card.logistic:hover { border-color: var(--text-secondary); }
+  .event-card.main:hover { border-color: var(--orange); }
+  .event-card.code:hover { border-color: var(--green); }
+  .event-card.alert:hover { border-color: #ff3366; }
+
+  .event-glow {
     position: absolute;
-    left: 0; top: 0;
-    width: 3px; height: 100%;
-    transform: scaleY(0.3);
-    transform-origin: top;
-    transition: transform 0.4s ease;
+    top: 0; left: 0; bottom: 0; width: 4px;
+    background: #fff;
+    opacity: 0.5;
+  }
+  .event-card.logistic .event-glow { background: var(--text-secondary); }
+  .event-card.main .event-glow { background: var(--orange); }
+  .event-card.code .event-glow { background: var(--green); }
+  .event-card.alert .event-glow { background: #ff3366; }
+
+  .event-act {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    margin: 0;
   }
 
-  .info-card:hover { transform: translateX(10px); }
-  .info-card:hover .card-accent-bar { transform: scaleY(1); }
-  .info-card:hover { border-color: var(--orange); }
-
-  [data-theme="dark"] .info-card:hover {
-    box-shadow: 8px 8px 0px rgba(255,122,0,0.15);
-  }
-
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-
-  .card-header h3 {
-    font-size: 1.2rem;
-    color: var(--text-card-title);
-    transition: color 0.4s ease;
-  }
-
-  .status-tag {
-    font-size: 0.65rem;
-    font-weight: 800;
-    padding: 2px 8px;
-    border: 1px solid;
-    font-family: monospace;
-    letter-spacing: 1px;
-  }
-
-  .info-card p {
-    color: var(--text-muted);
-    line-height: 1.5;
-    font-size: 0.95rem;
-    transition: color 0.4s ease;
-  }
-
-  @media (max-width: 600px) {
-    .timeline-entry { gap: 15px; }
-    .time-column { min-width: 60px; }
-    .time-stamp { font-size: 0.9rem; }
-    .card-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .timeline-container { padding-left: 0; }
+    .timeline-line { left: 30px; }
+    .timeline-node { flex-direction: column; align-items: flex-start; }
+    .time-block { text-align: left; padding-left: 50px; padding-right: 0; margin-bottom: 10px; }
+    .node-connector { position: absolute; left: 10px; top: 0; height: 100%; align-items: flex-start; padding-top: 5px; }
+    .event-card { margin-left: 50px; width: calc(100% - 50px); padding: 20px; }
   }
 </style>

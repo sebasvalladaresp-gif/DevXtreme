@@ -1,260 +1,403 @@
 ---
-// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
-
-const stats = [
-  { label: "FECHA", value: "15 MAYO" },
-  { label: "INICIO", value: "09:00" },
-  { label: "CIERRE", value: "14:00" },
-  { label: "DURACIÓN", value: "4 HRS" },
-];
 ---
 
-<Layout title="DevXtreme">
-  <main>
+<Layout title="DevXtreme 3.0 | Next-Gen Coding Competition">
+  <div class="hero-section reveal">
+    <div class="hero-content">
+      <div class="badge-pill reveal-zoom" style="--delay: 0.2s">
+        <span class="live-dot"></span> V3.0 OFFICIAL LAUNCH
+      </div>
+      
+      <h1 class="hero-title reveal" style="--delay: 0.4s">
+        DEV<span class="gradient-text">XTREME</span>
+      </h1>
+      
+      <p class="hero-subtitle reveal" style="--delay: 0.6s">
+        <strong>CODE BEYOND LIMITS.</strong><br/>
+        4 horas. HackerRank. Adrenalina pura. <br/> Demuestra tu dominio absoluto de la lógica y la programación.
+      </p>
 
-    <div class="title">
-      <span class="reveal">DEVXTREME 3.0</span>
+      <div class="hero-actions reveal" style="--delay: 0.8s">
+        <a href="#bento-grid" class="btn-scroll">Explorar <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+      </div>
     </div>
+  </div>
 
-    <p class="description reveal delay-2">
-      Demuestra tu dominio del código. El evento dura 4 horas: inauguración, explicación del entorno y una
-      competencia práctica en HackerRank con clasificación por puntos.
-    </p>
-
-    <div class="stats">
-      {stats.map((item, index) => (
-        <div class="card reveal-zoom" style={`--delay: ${0.2 + index * 0.08}s`}>
-          <div class="card-inner">
-            <span>{item.label}</span>
-            <h3>{item.value}</h3>
+  <section id="bento-grid" class="bento-section">
+    <div class="bento-grid">
+      
+      <!-- Bento Item: Overview (Large) -->
+      <a href="/Explorar" class="bento-card bento-large reveal-left" style="--delay: 0.1s">
+        <div class="bento-inner">
+          <div class="bento-icon">🚀</div>
+          <h2>La Competencia</h2>
+          <p>Equipos de 3 personas enfrentándose a retos algorítmicos en tiempo real. 
+          Diseñado para llevar tus habilidades al extremo en un entorno competitivo y profesional.</p>
+          <div class="bento-stats">
+            <div class="stat"><span class="stat-val">15</span><span class="stat-lbl">MAYO</span></div>
+            <div class="stat"><span class="stat-val">4</span><span class="stat-lbl">HORAS</span></div>
           </div>
-          <div class="card-shine"></div>
+          <span class="bento-link-indicator">Descubre Más →</span>
         </div>
-      ))}
-    </div>
+      </a>
 
-    <div class="buttons">
-      <a href="/Explorar"   class="btn reveal" style="--delay: 0.4s"><span>EXPLORAR EVENTO</span></a>
-      <a href="/cronograma" class="btn reveal" style="--delay: 0.48s"><span>CRONOGRAMA</span></a>
-      <a href="/categorias" class="btn reveal" style="--delay: 0.56s"><span>CATEGORÍAS</span></a>
-      <a href="/reglas"     class="btn reveal" style="--delay: 0.64s"><span>REGLAS</span></a>
-      <a href="/registro"
-         target="_blank" class="btn btn-cta reveal" style="--delay: 0.72s"><span>REGISTRARSE</span></a>
-    </div>
+      <!-- Bento Item: Prizes (Tall) -->
+      <a href="/reglas" class="bento-card bento-tall reveal-right" style="--delay: 0.2s">
+        <div class="bento-bg-gradient"></div>
+        <div class="bento-inner">
+          <div class="bento-icon">🏆</div>
+          <h2>Premios</h2>
+          <p>Reconocimiento a los mejores. Trofeos físicos, productos exclusivos IEEE y el legendario Llavero Pingüino Linux para los campeones.</p>
+          <div class="podium-peek">
+            <div class="podium-bar pos-2">2°</div>
+            <div class="podium-bar pos-1">1°</div>
+            <div class="podium-bar pos-3">3°</div>
+          </div>
+          <span class="bento-link-indicator">Ver Reglas y Premios →</span>
+        </div>
+      </a>
 
-  </main>
+      <!-- Bento Item: Categories (Wide) -->
+      <a href="/categorias" class="bento-card bento-wide reveal-zoom" style="--delay: 0.3s">
+        <div class="bento-inner bento-flex">
+          <div>
+            <div class="bento-icon">💻</div>
+            <h2>Categorías</h2>
+            <p>Básica / Intermedia / Avanzada. <br>Elige tu nivel de dificultad.</p>
+          </div>
+          <div class="tech-stack-visual">
+            <span>C++</span><span>Python</span><span>Java</span><span>JS</span>
+          </div>
+          <span class="bento-link-indicator">Ver Categorías →</span>
+        </div>
+      </a>
+
+      <!-- Bento Item: Agenda (Small) -->
+      <a href="/cronograma" class="bento-card bento-small reveal-left" style="--delay: 0.4s">
+        <div class="bento-inner">
+          <div class="bento-icon">⏱️</div>
+          <h3>Agenda</h3>
+          <p>Itinerario completo.</p>
+          <span class="bento-link-indicator">Cronograma →</span>
+        </div>
+      </a>
+
+      <!-- Bento Item: Registration CTA (Wide/Action) -->
+      <div class="bento-card bento-cta reveal" style="--delay: 0.5s">
+        <div class="cta-glow"></div>
+        <div class="bento-inner cta-inner">
+          <div class="cta-text">
+            <h2>¿Listo para el Reto?</h2>
+            <p>Asegura el lugar de tu equipo. Cupos limitados.</p>
+          </div>
+          <a href="/registro" target="_blank" class="btn-primary">Registrar Equipo Ahora</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
 </Layout>
 
 <style>
-  main {
-    padding: 60px 20px;
-    text-align: center;
-    position: relative;
-    z-index: 10;
-  }
-
-  /* ── TITLE ── */
-  .title {
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: 20px;
+  /* =============================================
+     HERO SECTION
+  ============================================== */
+  .hero-section {
+    min-height: 80vh;
     display: flex;
+    align-items: center;
     justify-content: center;
-  }
-
-  .title span {
-    display: block;
-    font-size: clamp(1.4rem, 10vw, 8rem);
-    font-weight: 800;
-    line-height: 1.1;
-    white-space: nowrap;
-    background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-transform: uppercase;
-    letter-spacing: -1px;
     text-align: center;
-    filter: drop-shadow(0 0 30px rgba(255, 122, 0, 0.15));
-    animation: titlePop 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards, titleGlow 4s ease-in-out 0.8s infinite alternate;
-  }
-
-  [data-theme="dark"] .title span {
-    filter: drop-shadow(0 0 40px rgba(255, 122, 0, 0.4));
-  }
-
-  @keyframes titlePop {
-    from { opacity: 0; transform: scale(0.95) translateY(10px); }
-    to   { opacity: 1; transform: scale(1) translateY(0); }
-  }
-  @keyframes titleGlow {
-    from { filter: drop-shadow(0 0 20px rgba(255, 122, 0, 0.15)); }
-    to   { filter: drop-shadow(0 0 50px rgba(255, 122, 0, 0.35)); }
-  }
-
-  /* ── DESCRIPTION ── */
-  .description {
-    max-width: 650px;
-    margin: 0 auto 50px;
-    line-height: 1.6;
-    color: var(--orange);
-    font-weight: 500;
-    font-size: clamp(0.85rem, 3vw, 1rem);
-    padding: 0 10px;
-  }
-
-  /* ── STATS GRID ── */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 700px;
-    margin: 0 auto 60px;
-  }
-
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-accent);
-    padding: 24px 20px;
+    padding: 0 20px;
     position: relative;
-    overflow: hidden;
-    cursor: default;
-    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                box-shadow 0.35s ease,
-                border-color 0.35s ease;
   }
 
-  .card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: var(--shadow-card-hover);
-    border-color: var(--orange);
-  }
-
-  .card-inner { position: relative; z-index: 2; }
-
-  .card span {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    color: var(--text-faint);
-    display: block;
-  }
-
-  .card h3 {
-    font-size: 1.5rem;
-    color: var(--orange);
-    margin-top: 5px;
-  }
-
-  /* Shine sweep on hover */
-  .card-shine {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0) 40%, rgba(255,200,100,0.08) 50%, rgba(255,255,255,0) 60%);
-    background-size: 200% 200%;
-    background-position: 200% 200%;
-    transition: background-position 0.6s ease;
-    z-index: 1;
-  }
-
-  .card:hover .card-shine {
-    background-position: -50% -50%;
-  }
-
-  [data-theme="dark"] .card-shine {
-    background: linear-gradient(135deg, rgba(255,255,255,0) 40%, rgba(255,200,100,0.05) 50%, rgba(255,255,255,0) 60%);
-    background-size: 200% 200%;
-    background-position: 200% 200%;
-  }
-
-  /* ── BUTTONS ── */
-  .buttons {
+  .hero-content {
+    max-width: 900px;
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .btn {
-    min-width: 200px;
-    padding: 15px 25px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    border: 2px solid var(--orange);
-    background: var(--bg-card);
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  }
-
-  .btn::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,122,0,0.06), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.5s ease;
-  }
-
-  .btn:hover::before { transform: translateX(100%); }
-
-  .btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(255, 122, 0, 0.2);
-    border-color: var(--yellow);
-  }
-
-  .btn span {
-    background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
+    flex-direction: column;
+    align-items: center;
     z-index: 2;
   }
 
-  .btn-cta {
-    border-color: var(--red);
-    background: linear-gradient(135deg, rgba(255, 0, 76, 0.25), rgba(255, 122, 0, 0.2));
-    animation: ctaPulse 2.5s ease-in-out infinite;
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
   }
 
-  .btn-cta span {
-    background: var(--red) !important;
-    -webkit-text-fill-color: white !important;
-    -webkit-background-clip: unset !important;
-    padding: 10px 10px;
-    border-radius: 5%;
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--green);
+    animation: blink 2s infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
+  .hero-title {
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin-bottom: 24px;
+    color: #ffffff;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
   }
 
-  [data-theme="dark"] .btn-cta {
-    background: linear-gradient(135deg, rgba(255, 0, 76, 0.12), rgba(255, 122, 0, 0.1));
+  .gradient-text {
+    background: linear-gradient(to right, var(--green), var(--orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
-  [data-theme="dark"] .btn-cta span {
-    background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red)) !important;
-    -webkit-text-fill-color: transparent !important;
-    -webkit-background-clip: text !important;
-
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-secondary);
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-weight: 400;
   }
 
-  .btn-cta.reveal {
-    animation: revealUp 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards,
-               ctaPulse 2.5s ease-in-out infinite;
-    animation-delay: var(--delay, 0s), 0s;
+  .btn-scroll {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 12px 24px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 30px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  .btn-scroll:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.4);
   }
 
-  @keyframes ctaPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255,0,76,0); }
-    50%       { box-shadow: 0 0 0 6px rgba(255,0,76,0.1); }
+  /* =============================================
+     BENTO GRID SYSTEM
+  ============================================== */
+  .bento-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 120px;
   }
 
-  @media (max-width: 400px) {
-    .title span { font-size: 1.5rem; letter-spacing: -2px; }
-    .description { font-size: 0.85rem; padding: 0 5px; }
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    gap: 24px;
+  }
+
+  /* Bento Card Base */
+  .bento-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+  .bento-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  }
+  
+  /* Link Indicator */
+  .bento-link-indicator {
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--orange);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+  }
+  .bento-card:hover .bento-link-indicator {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .bento-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bento-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+  }
+
+  .bento-card h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .bento-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .bento-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  /* Specific Sizes */
+  .bento-large { grid-column: span 2; grid-row: span 2; }
+  .bento-tall  { grid-column: span 1; grid-row: span 2; }
+  .bento-wide  { grid-column: span 2; grid-row: span 1; }
+  .bento-small { grid-column: span 1; grid-row: span 1; }
+  .bento-cta   { grid-column: span 3; grid-row: span 1; text-align: center; padding: 48px; border-color: rgba(0, 255, 157, 0.2); }
+
+  /* Feature Customizations */
+  .bento-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat-val { font-size: 3rem; font-weight: 700; color: #fff; line-height: 1; }
+  .stat-lbl { font-size: 0.7rem; letter-spacing: 2px; color: var(--green); font-weight: 600; margin-top: 4px; }
+
+  .bento-bg-gradient {
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(to top, rgba(255,107,0,0.1), transparent);
+  }
+
+  /* Podium Peek Graphic */
+  .podium-peek {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+    height: 80px;
+  }
+  .podium-bar {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .pos-1 { height: 100%; width: 40px; background: rgba(255,107,0,0.2); border-color: var(--orange); color: var(--orange); }
+  .pos-2 { height: 70%; width: 35px; color: var(--text-secondary); }
+  .pos-3 { height: 50%; width: 35px; color: var(--text-secondary); }
+
+  /* Flex Layout for Wide Card */
+  .bento-flex {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bento-flex > div { flex: 1; }
+  .tech-stack-visual {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+    flex: 1;
+  }
+  .tech-stack-visual span {
+    background: rgba(0, 255, 157, 0.1);
+    color: var(--green);
+    border: 1px solid rgba(0, 255, 157, 0.2);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  /* CTA Card */
+  .cta-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 255, 157, 0.15) 0%, transparent 60%);
+  }
+  .cta-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cta-text { text-align: left; }
+  .cta-text p { margin-bottom: 0; }
+
+  .btn-primary {
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 32px;
+    border-radius: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255,255,255,0.4);
+  }
+
+  /* =============================================
+     RESPONSIVE GRID
+  ============================================== */
+  @media (max-width: 1024px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .bento-large, .bento-wide, .bento-cta { grid-column: span 2; }
+    .bento-tall, .bento-small { grid-column: span 1; }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title { font-size: 3.5rem; }
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+    .bento-large, .bento-tall, .bento-wide, .bento-small, .bento-cta { grid-column: span 1; }
+    .bento-tall { grid-row: span 1; }
+    .bento-flex { flex-direction: column; align-items: flex-start; }
+    .tech-stack-visual { justify-content: flex-start; margin-top: 16px; margin-bottom: 20px;}
+    .cta-inner { flex-direction: column; text-align: center; gap: 24px; }
+    .cta-text { text-align: center; }
   }
 </style>
