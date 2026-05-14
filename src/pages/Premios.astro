@@ -1,0 +1,234 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const premios = [
+  { 
+    lugar: "1º", 
+    titulo: "Primer lugar (equipo)",
+    descripcion: "Trofeo (uno por cada integrante, 3 trofeos), Producto IEEE, Llavero \"Pingüino\" Linux",
+    premiosImg: ["trofeo.png", "trofeoIee.png", "pinguinitoLinux.png"],
+    color: "#ffd700" 
+  },
+  { 
+    lugar: "2º", 
+    titulo: "Segundo lugar (equipo)",
+    descripcion: "Producto IEEE y Pingüino Linux para los integrantes",
+    premiosImg: ["trofeoIee.png", "pinguinitoLinux.png"],
+    color: "#c0c0c0"
+  },
+  { 
+    lugar: "3º", 
+    titulo: "Tercer lugar (equipo)",
+    descripcion: "Pingüino Linux para integrantes",
+    premiosImg: ["pinguinitoLinux.png"],
+    color: "#cd7f32"
+  },
+];
+---
+
+<Layout title="Premios - DevXtreme">
+  <main>
+    <div class="header-section">
+      <span class="sub-header">// PREMIACIÓN</span>
+      <h1 class="main-title">Reconoci<span>mientos</span></h1>
+    </div>
+
+    <div class="premios-list">
+      {premios.map((p) => (
+        <div class="award-row" style={`--accent: ${p.color}`}>
+          <div class="award-indicator">
+            <span class="number">{p.lugar}</span>
+          </div>
+          
+          <div class="award-info">
+            <h2 class="award-title">{p.titulo}</h2>
+            <p class="award-text">{p.descripcion}</p>
+          </div>
+
+          <div class="award-images">
+            {p.premiosImg.map((img) => (
+              <img 
+                src={`/${img}`} 
+                alt="Premio" 
+                class={img === 'trofeo.png' ? 'trofeo-main' : 'item-img'} 
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="buttons">
+      <a href="/" class="btn-back">VOLVER AL INICIO</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 60px 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .header-section {
+    text-align: left;
+    margin-bottom: 50px;
+  }
+
+  .sub-header {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 3px;
+    color: #666;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .main-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    margin: 0;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .main-title span {
+    color: #ff4d4d; /* El acento rojo de la imagen de referencia */
+  }
+
+  .premios-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .award-row {
+    background: rgba(255, 255, 255, 0.03); /* Fondo oscuro traslúcido para que las fotos negras no choquen */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    align-items: center;
+    padding: 30px 45px;
+    border-radius: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .award-row:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(10px);
+  }
+
+  /* Indicador lateral de color */
+  .award-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 6px;
+    background: var(--accent);
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 0 15px var(--accent);
+  }
+
+  .award-indicator .number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--accent);
+    opacity: 0.9;
+  }
+
+  .award-info {
+    padding: 0 30px;
+    text-align: left;
+  }
+
+  .award-title {
+    color: #fff;
+    font-size: 1.6rem;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+  }
+
+  .award-text {
+    color: #aaa;
+    margin: 0;
+    font-size: 1.1rem;
+    max-width: 500px;
+  }
+
+  .award-images {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .item-img {
+    height: 70px;
+    width: auto;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+  }
+
+  /* Estilo especial para el trofeo grande del 1er lugar */
+  .trofeo-main {
+    height: 160px;
+    margin-top: -40px;
+    margin-bottom: -40px;
+    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.8));
+    transform: rotate(-5deg);
+  }
+
+  .btn-back {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 15px 40px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+
+  .btn-back:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  /* Responsive para móviles */
+  @media (max-width: 900px) {
+    .award-row {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding: 40px 20px;
+      gap: 30px;
+    }
+
+    .award-info {
+      padding: 0;
+      text-align: center;
+    }
+
+    .award-images {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .trofeo-main {
+      height: 120px;
+      margin: 0;
+      transform: none;
+    }
+
+    .award-row::before {
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      border-radius: 10px 10px 0 0;
+    }
+  }
+</style>
