@@ -28,52 +28,68 @@ const premios = [
 
 <Layout title="Premios - DevXtreme">
   <main>
+
     <div class="header-section">
       <span class="sub-header">// PREMIACIÓN</span>
-      <h1 class="main-title">Reconoci<span>mientos</span></h1>
+
+      <h1 class="main-title">
+        Reconoci<span>mientos</span>
+      </h1>
     </div>
 
     <div class="premios-list">
       {premios.map((p) => (
         <div class="award-row" style={`--accent: ${p.color}`}>
+
           <div class="award-indicator">
             <span class="number">{p.lugar}</span>
           </div>
-          
+
           <div class="award-info">
             <h2 class="award-title">{p.titulo}</h2>
-            <p class="award-text">{p.descripcion}</p>
+
+            <p class="award-text">
+              {p.descripcion}
+            </p>
           </div>
 
           <div class="award-images">
             {p.premiosImg.map((img) => (
-              <img 
-                src={`/${img}`} 
-                alt="Premio" 
-                class={img === 'trofeo.png' ? 'trofeo-main' : 'item-img'} 
+              <img
+                src={`/${img}`}
+                alt="Premio"
+                class={img === 'trofeo.png'
+                  ? 'trofeo-main'
+                  : 'item-img'}
               />
             ))}
           </div>
+
         </div>
       ))}
     </div>
 
     <div class="buttons">
-      <a href="/" class="btn-back">VOLVER AL INICIO</a>
+      <a href="/" class="btn-back">
+        VOLVER AL INICIO
+      </a>
     </div>
+
   </main>
 </Layout>
 
 <style>
+
   main {
-    padding: 60px 5%;
-    max-width: 1100px;
+    padding: clamp(30px, 5vw, 60px) 5%;
+    max-width: 1200px;
     margin: 0 auto;
+    overflow-x: hidden;
   }
 
   .header-section {
     text-align: left;
-    margin-bottom: 50px;
+    margin-bottom: clamp(30px, 6vw, 50px);
   }
 
   .sub-header {
@@ -83,18 +99,29 @@ const premios = [
     font-weight: bold;
     display: block;
     margin-bottom: 10px;
+    font-size: clamp(0.8rem, 2vw, 1rem);
   }
 
   .main-title {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    font-weight: 900;
-    margin: 0;
-    color: #fff;
-    text-transform: uppercase;
-  }
+  /* 1.5rem: Tamaño mínimo
+     8vw: Crece proporcionalmente al ancho de pantalla
+     4rem: Tamaño máximo (reducido para que no desborde en desktop)
+  */
+  font-size: clamp(1.5rem, 8vw, 4rem); 
+  font-weight: 900;
+  margin: 0;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1;
+  
+  /* Esto ayuda a que si la palabra es demasiado larga, intente ajustarse */
+  word-break: break-word;
+  hyphens: auto; 
+  letter-spacing: -1px; /* Un poco más apretado suele verse mejor en títulos grandes */
+}
 
   .main-title span {
-    color: #ff4d4d; /* El acento rojo de la imagen de referencia */
+    color: #ff4d4d;
   }
 
   .premios-list {
@@ -104,93 +131,168 @@ const premios = [
   }
 
   .award-row {
-    background: rgba(255, 255, 255, 0.03); /* Fondo oscuro traslúcido para que las fotos negras no choquen */
+    background: rgba(255, 255, 255, 0.03);
+
     border: 1px solid rgba(255, 255, 255, 0.1);
+
     display: grid;
-    grid-template-columns: 100px 1fr auto;
+
+    grid-template-columns:
+      minmax(60px, 100px)
+      1fr
+      auto;
+
     align-items: center;
-    padding: 30px 45px;
+
+    padding: clamp(20px, 4vw, 35px);
+
     border-radius: 20px;
+
     position: relative;
-    transition: transform 0.3s ease;
+
+    transition: 0.3s ease;
+
+    overflow: hidden;
+
+    gap: 20px;
   }
 
   .award-row:hover {
     background: rgba(255, 255, 255, 0.05);
-    transform: translateX(10px);
+    transform: translateY(-5px);
   }
 
-  /* Indicador lateral de color */
   .award-row::before {
     content: '';
+
     position: absolute;
+
     left: 0;
     top: 20%;
     bottom: 20%;
+
     width: 6px;
+
     background: var(--accent);
+
     border-radius: 0 10px 10px 0;
+
     box-shadow: 0 0 15px var(--accent);
   }
 
+  .award-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .award-indicator .number {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 900;
     color: var(--accent);
     opacity: 0.9;
   }
 
   .award-info {
-    padding: 0 30px;
-    text-align: left;
+    padding: 0 10px;
+    min-width: 0;
   }
 
   .award-title {
     color: #fff;
-    font-size: 1.6rem;
-    margin: 0 0 8px 0;
+
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+
+    margin: 0 0 10px 0;
+
     font-weight: 700;
+
+    line-height: 1.2;
   }
 
   .award-text {
     color: #aaa;
+
     margin: 0;
-    font-size: 1.1rem;
-    max-width: 500px;
+
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+
+    line-height: 1.5;
+
+    word-break: break-word;
   }
 
   .award-images {
     display: flex;
+
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+
+    gap: clamp(10px, 2vw, 20px);
+
+    flex-wrap: wrap;
   }
 
   .item-img {
-    height: 70px;
+    height: clamp(50px, 8vw, 75px);
+
     width: auto;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    filter: drop-shadow(
+      0 5px 15px rgba(0,0,0,0.5)
+    );
   }
 
-  /* Estilo especial para el trofeo grande del 1er lugar */
   .trofeo-main {
-    height: 160px;
-    margin-top: -40px;
-    margin-bottom: -40px;
-    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.8));
+    height: clamp(90px, 15vw, 160px);
+
+    width: auto;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    filter: drop-shadow(
+      0 10px 25px rgba(0,0,0,0.8)
+    );
+
     transform: rotate(-5deg);
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
   }
 
   .btn-back {
     display: inline-block;
-    margin-top: 50px;
-    padding: 15px 40px;
+
+    padding:
+      clamp(12px, 2vw, 15px)
+      clamp(25px, 4vw, 40px);
+
     background: transparent;
+
     border: 1px solid rgba(255,255,255,0.2);
+
     color: #fff;
+
     text-decoration: none;
+
     font-weight: bold;
+
     border-radius: 10px;
+
     transition: 0.3s;
+
+    text-align: center;
+
+    font-size: clamp(0.9rem, 2vw, 1rem);
   }
 
   .btn-back:hover {
@@ -198,37 +300,81 @@ const premios = [
     color: #000;
   }
 
-  /* Responsive para móviles */
+  /* ========================= */
+  /* TABLETS */
+  /* ========================= */
+
   @media (max-width: 900px) {
+
     .award-row {
       grid-template-columns: 1fr;
       text-align: center;
-      padding: 40px 20px;
-      gap: 30px;
     }
 
     .award-info {
-      padding: 0;
       text-align: center;
-    }
-
-    .award-images {
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .trofeo-main {
-      height: 120px;
-      margin: 0;
-      transform: none;
+      padding: 0;
     }
 
     .award-row::before {
       top: 0;
-      bottom: 0;
+      bottom: auto;
+
       width: 100%;
       height: 4px;
+
       border-radius: 10px 10px 0 0;
     }
+
+    .trofeo-main {
+      transform: none;
+    }
   }
+
+  /* ========================= */
+  /* MÓVILES */
+  /* ========================= */
+
+@media (max-width: 480px) {
+  .main-title {
+    /* Bajamos el valor medio a 7vw para que quepa en una sola línea o rompa mejor */
+    font-size: clamp(1.2rem, 7vw, 2rem);
+    text-align: center; /* Opcional: centrar el título en móviles se ve más limpio */
+  }
+  
+  .header-section {
+    text-align: center;
+  }
+}
+    .award-row {
+      border-radius: 15px;
+      gap: 15px;
+      padding: 20px 15px;
+    }
+
+    .award-title {
+      font-size: 1.3rem;
+    }
+
+    .award-text {
+      font-size: 0.95rem;
+    }
+
+    .award-images {
+      gap: 12px;
+    }
+
+    .item-img {
+      height: 55px;
+    }
+
+    .trofeo-main {
+      height: 95px;
+    }
+
+    .btn-back {
+      width: 100%;
+    }
+  
+
 </style>
