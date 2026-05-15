@@ -103,17 +103,22 @@ const premios = [
   }
 
   .main-title {
-    font-size: clamp(1.5rem, 6vw, 5rem);
-    font-weight: 900;
-    margin: 0;
-    color: #fff;
-    text-transform: uppercase;
-
-    line-height: 0.95;
-
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
+  /* 1.5rem: Tamaño mínimo
+     8vw: Crece proporcionalmente al ancho de pantalla
+     4rem: Tamaño máximo (reducido para que no desborde en desktop)
+  */
+  font-size: clamp(1.5rem, 8vw, 4rem); 
+  font-weight: 900;
+  margin: 0;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1;
+  
+  /* Esto ayuda a que si la palabra es demasiado larga, intente ajustarse */
+  word-break: break-word;
+  hyphens: auto; 
+  letter-spacing: -1px; /* Un poco más apretado suele verse mejor en títulos grandes */
+}
 
   .main-title span {
     color: #ff4d4d;
@@ -330,20 +335,17 @@ const premios = [
   /* MÓVILES */
   /* ========================= */
 
-  @media (max-width: 480px) {
-
-    main {
-      padding: 25px 15px;
-    }
-
-    .header-section {
-      margin-bottom: 25px;
-    }
-
-    .main-title {
-      font-size: clamp(1.4rem, 9vw, 2.4rem);
-    }
-
+@media (max-width: 480px) {
+  .main-title {
+    /* Bajamos el valor medio a 7vw para que quepa en una sola línea o rompa mejor */
+    font-size: clamp(1.2rem, 7vw, 2rem);
+    text-align: center; /* Opcional: centrar el título en móviles se ve más limpio */
+  }
+  
+  .header-section {
+    text-align: center;
+  }
+}
     .award-row {
       border-radius: 15px;
       gap: 15px;
@@ -373,6 +375,6 @@ const premios = [
     .btn-back {
       width: 100%;
     }
-  }
+  
 
 </style>
