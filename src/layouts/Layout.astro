@@ -202,11 +202,13 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
     ============================================== */
     :root,
     [data-theme="light"] {
-        --yellow: #ffcc00;
-        --orange: #ff7a00;
-        --red: #ff004c;
+        /* Modo claro: paleta fría — negro, azul marino, azul eléctrico */
+        --yellow: #16a1c0;  /* cian eléctrico (antes amarillo) */
+        --orange: #1457bb;  /* azul eléctrico (antes naranja)  */
+        --red:    #0a2540;  /* azul marino    (antes rojo)     */
+        --accent-rgb: 0, 102, 255;
 
-        --bg: #fdfdfd;
+        --bg: #e0f9fd;
         --bg-secondary: #ffffff;
         --bg-card: #ffffff;
         --bg-card-hover: #fff8f0;
@@ -217,43 +219,49 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
         --bg-terminal: rgba(255, 255, 255, 0.5);
 
         --text-primary: #111111;
-        --text-secondary: #444444;
-        --text-muted: #666666;
-        --text-faint: #999999;
+        --text-secondary: #000000;
+        --text-muted: #0f0f0f;
+        --text-faint: #161515;
         --text-card-title: #111;
-        --text-time: #444;
+        --text-time: #0e0d0d;
 
         --border-default: rgba(0, 0, 0, 0.08);
-        --border-accent: rgba(255, 122, 0, 0.3);
+        --border-accent: rgba(0, 102, 255, 0.3);
         --border-rule: rgba(0, 0, 0, 0.05);
-        --border-nav: rgba(255, 122, 0, 0.2);
+        --border-nav: rgba(0, 102, 255, 0.2);
 
-        --grid: rgba(255, 120, 0, 0.05);
-        --logo-glow: rgba(255, 122, 0, 0.4);
+        --grid: rgba(0, 102, 255, 0.05);
+        --logo-glow: rgba(0, 102, 255, 0.4);
         --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.06);
         --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
         --scan-line: rgba(0, 0, 0, 0.08);
 
-        --topbar-border: rgba(255, 120, 0, 0.1);
-        --home-btn-shadow: 0 10px 20px rgba(255, 122, 0, 0.3);
+        --topbar-border: rgba(0, 102, 255, 0.1);
+        --home-btn-shadow: 0 10px 20px rgba(0, 102, 255, 0.3);
 
         --footer-text: #666;
-        --footer-border: rgba(255, 122, 0, 0.1);
+        --footer-border: rgba(0, 102, 255, 0.1);
         --wa-bg: #d9fdd3;
         --wa-color: #128c7e;
         --action-bg: #f0f2f5;
         --action-color: #555;
-        --profile-border: rgba(255, 122, 0, 0.2);
+        --profile-border: rgba(0, 102, 255, 0.2);
         --contact-divider: #f0f0f0;
         --email-text: #444;
 
-        --stat-bar-shadow: rgba(255, 122, 0, 0.05);
+        --stat-bar-shadow: rgba(0, 102, 255, 0.05);
         --card-box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.05);
     }
 
     [data-theme="dark"] {
-        --bg: #0d0d0f;
-        --bg-secondary: #121214;
+        /* Modo oscuro: naranja como protagonista (rojo reducido a ámbar) */
+        --yellow: #ffcc00;
+        --orange: #ff7a00;
+        --red:    #e0870a;
+        --accent-rgb: 255, 122, 0;
+
+        --bg: #000000;
+        --bg-secondary: #000000;
         --bg-card: #18181c;
         --bg-card-hover: #1e1e24;
         --bg-nav: rgba(13, 13, 15, 0.98);
@@ -263,11 +271,11 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
         --bg-terminal: rgba(18, 18, 22, 0.8);
 
         --text-primary: #f0f0f0;
-        --text-secondary: #c8c8d0;
-        --text-muted: #9090a0;
-        --text-faint: #606070;
+        --text-secondary: #d1d1e6;
+        --text-muted: #e7e7f3;
+        --text-faint: #c3c3cf;
         --text-card-title: #f0f0f0;
-        --text-time: #b0b0c0;
+        --text-time: #e1e1ee;
 
         --border-default: rgba(255, 255, 255, 0.07);
         --border-accent: rgba(255, 122, 0, 0.35);
@@ -334,9 +342,9 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
         top: 0; left: 0; width: 100%; height: 100%;
         z-index: 0;
         background:
-            radial-gradient(circle at 15% 20%, rgba(255, 204, 0, 0.08), transparent 88%),
-            radial-gradient(circle at 85% 30%, rgba(255, 0, 76, 0.08), transparent 80%),
-            radial-gradient(circle at 50% 80%, rgba(255, 122, 0, 0.08), transparent 80%);
+            radial-gradient(circle at 15% 20%, rgba(0, 208, 255, 0.08), transparent 88%),
+            radial-gradient(circle at 85% 30%, rgba(10, 37, 64, 0.10), transparent 80%),
+            radial-gradient(circle at 50% 80%, rgba(0, 102, 255, 0.08), transparent 80%);
         filter: blur(60px);
         animation: glowMove 15s ease-in-out infinite alternate;
     }
@@ -344,7 +352,7 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
     [data-theme="dark"] .tech-grid-bg::before {
         background:
             radial-gradient(circle at 15% 20%, rgba(255, 204, 0, 0.12), transparent 88%),
-            radial-gradient(circle at 85% 30%, rgba(255, 0, 76, 0.12), transparent 80%),
+            radial-gradient(circle at 85% 30%, rgba(255, 149, 0, 0.10), transparent 80%),
             radial-gradient(circle at 50% 80%, rgba(255, 122, 0, 0.12), transparent 80%);
     }
 
@@ -407,11 +415,11 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
     .delay-5 { --delay: 0.6s; }
 
     .neon-title {
-        text-shadow: 0 0 12px rgba(255, 122, 0, 0.3), 0 0 24px rgba(255, 0, 76, 0.2);
+        text-shadow: 0 0 12px rgba(var(--accent-rgb), 0.3), 0 0 24px rgba(var(--accent-rgb), 0.2);
         animation: neonPulse 3s ease-in-out infinite;
     }
     [data-theme="dark"] .neon-title {
-        text-shadow: 0 0 16px rgba(255, 122, 0, 0.6), 0 0 32px rgba(255, 0, 76, 0.4), 0 0 60px rgba(255, 122, 0, 0.2);
+        text-shadow: 0 0 16px rgba(var(--accent-rgb), 0.6), 0 0 32px rgba(var(--accent-rgb), 0.35), 0 0 60px rgba(var(--accent-rgb), 0.2);
     }
 
     .pulse-glow { animation: glowPulse 2.5s ease-in-out infinite; }
@@ -422,8 +430,8 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
     @keyframes revealZoom  { to { opacity: 1; transform: translateY(0) scale(1); } }
 
     @keyframes neonPulse {
-        0%, 100% { text-shadow: 0 0 10px rgba(255, 122, 0, 0.2), 0 0 24px rgba(255, 0, 76, 0.12); }
-        50%       { text-shadow: 0 0 18px rgba(255, 122, 0, 0.4), 0 0 32px rgba(255, 0, 76, 0.2); }
+        0%, 100% { text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.2), 0 0 24px rgba(var(--accent-rgb), 0.12); }
+        50%       { text-shadow: 0 0 18px rgba(var(--accent-rgb), 0.4), 0 0 32px rgba(var(--accent-rgb), 0.2); }
     }
     @keyframes glowPulse {
         0%, 100% { opacity: 0.12; transform: scale(0.95); }
@@ -457,7 +465,7 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
         transition: filter 0.3s ease;
     }
     .logo-gradient:hover {
-        filter: drop-shadow(0 0 8px rgba(255, 122, 0, 0.5));
+        filter: drop-shadow(0 0 8px rgba(var(--accent-rgb), 0.5));
     }
     .logo a { text-decoration: none; color: inherit; display: inline-block; }
 
@@ -508,10 +516,10 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
         overflow: hidden;
         cursor: pointer;
         position: relative;
-        border: 2px solid rgba(255, 122, 0, 0.4);
-        box-shadow: 
-            inset 0 0 12px rgba(255, 204, 0, 0.1),
-            0 0 16px rgba(255, 122, 0, 0.15);
+        border: 2px solid rgba(var(--accent-rgb), 0.4);
+        box-shadow:
+            inset 0 0 12px rgba(var(--accent-rgb), 0.1),
+            0 0 16px rgba(var(--accent-rgb), 0.15);
         transition: all var(--transition);
     }
 
@@ -601,10 +609,10 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
 
     /* ── HOVER EFFECTS ── */
     .theme-switch__container:hover {
-        border-color: rgba(255, 122, 0, 0.6);
-        box-shadow: 
-            inset 0 0 16px rgba(255, 204, 0, 0.15),
-            0 0 24px rgba(255, 122, 0, 0.25);
+        border-color: rgba(var(--accent-rgb), 0.6);
+        box-shadow:
+            inset 0 0 16px rgba(var(--accent-rgb), 0.15),
+            0 0 24px rgba(var(--accent-rgb), 0.25);
     }
 
     .theme-switch__checkbox:checked + .theme-switch__container:hover {
@@ -676,7 +684,7 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
         letter-spacing: 1px;
     }
     .nav-menu a:hover {
-        background: rgba(255, 122, 0, 0.08);
+        background: rgba(var(--accent-rgb), 0.08);
         color: var(--orange);
         padding-left: 30px;
     }
@@ -739,7 +747,7 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
     }
 
     [data-theme="dark"] .bottom-logos {
-        background: linear-gradient(135deg, rgba(223, 210, 198, 0.08) 0%, rgba(255, 0, 76, 0.04) 100%);
+        background: linear-gradient(135deg, rgba(141, 80, 22, 0.884) 0%, rgba(255, 0, 76, 0.04) 100%);
         border-radius: 16px;
         backdrop-filter: blur(8px);
         border: 1px solid rgba(255, 122, 0, 0.12);
