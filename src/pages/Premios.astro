@@ -6,21 +6,21 @@ const premios = [
     lugar: "1º", 
     titulo: "Primer lugar (equipo)",
     descripcion: "Trofeo (uno por cada integrante, 3 trofeos), Producto IEEE, Llavero \"Pingüino\" Linux",
-    premiosImg: ["trofeo.png", "trofeoIee.png", "pinguinitoLinux.png"],
+    premiosImg: ["trofeo.webp", "trofeoIee.webp", "pinguinitoLinux.webp"],
     color: "#ffd700" 
   },
   { 
     lugar: "2º", 
     titulo: "Segundo lugar (equipo)",
     descripcion: "Producto IEEE y Pingüino Linux para los integrantes",
-    premiosImg: ["trofeoIee.png", "pinguinitoLinux.png"],
+    premiosImg: ["trofeoIee.webp", "pinguinitoLinux.webp"],
     color: "#c0c0c0"
   },
   { 
     lugar: "3º", 
     titulo: "Tercer lugar (equipo)",
     descripcion: "Pingüino Linux para integrantes",
-    premiosImg: ["pinguinitoLinux.png"],
+    premiosImg: ["pinguinitoLinux.webp"],
     color: "#cd7f32"
   },
 ];
@@ -58,7 +58,7 @@ const premios = [
               <img
                 src={`/${img}`}
                 alt="Premio"
-                class={img === 'trofeo.png'
+                class={img === 'trofeo.webp'
                   ? 'trofeo-main'
                   : 'item-img'}
               />

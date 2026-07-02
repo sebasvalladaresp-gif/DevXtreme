@@ -16,6 +16,8 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&display=swap" rel="stylesheet" />
 </head>
 
@@ -116,7 +118,7 @@ const mostrarFlecha = pathname !== "/" && pathname !== "/index.html";
         
         const saved = localStorage.getItem('devxtreme-theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const isDark = saved ? saved === 'dark' : prefersDark;
+        const isDark = saved ? saved === 'dark' : true;
         
         toggle.checked = isDark;
         if (mobileToggle) mobileToggle.checked = isDark;
